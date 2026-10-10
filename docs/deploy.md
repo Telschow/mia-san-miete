@@ -10,7 +10,7 @@ Your private files (`config.yaml`, `profile/profile.yaml`, `.private-terms`, the
 ## Common setup (both machines)
 
 ```bash
-git clone https://github.com/Telschow/mia-san-miete-clean.git mia && cd mia
+git clone https://github.com/Telschow/mia-san-miete.git mia && cd mia
 python3 -m venv .venv && . .venv/bin/activate && pip install -e ".[dev]"
 cp config.example.yaml config.yaml                     # edit: your values
 cp profile/profile.example.yaml profile/profile.yaml   # edit: your values
