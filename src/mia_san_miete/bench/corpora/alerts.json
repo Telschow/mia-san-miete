@@ -1,0 +1,1122 @@
+[
+ {
+  "style": "A",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><div><a href=\"https://www.immobilienscout24.de/expose/78707214\">Gemütliche 4-Zimmer-Altbauwohnung</a><br>1.900 € Gesamtmiete · 106,1 m² · 4 Zimmer<br>22336 Beispielstadt</div><div><a href=\"https://www.immobilienscout24.de/expose/15621083\">Moderne 2-Zimmer-Dachgeschosswohnung</a><br>1.940 € Gesamtmiete · 45,8 m² · 2 Zimmer<br>69374 Beispielstadt</div><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "immoscout",
+    "source_id": "78707214",
+    "title": "Gemütliche 4-Zimmer-Altbauwohnung",
+    "warm": 1900.0,
+    "cold": null,
+    "area": 106.1,
+    "rooms": 4.0,
+    "postal": "22336"
+   },
+   {
+    "source": "immoscout",
+    "source_id": "15621083",
+    "title": "Moderne 2-Zimmer-Dachgeschosswohnung",
+    "warm": 1940.0,
+    "cold": null,
+    "area": 45.8,
+    "rooms": 2.0,
+    "postal": "69374"
+   }
+  ]
+ },
+ {
+  "style": "B",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><table><tr><td><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-14785235/14785235-203-1234\">Ruhige 2-Zimmer-Altbauwohnung</a></td></tr><tr><td>Kaltmiete: 1.680 €</td></tr><tr><td>Warmmiete: 1.840 €</td></tr><tr><td>Wohnfläche: 56,5 m²</td></tr><tr><td>Zimmer: 2</td></tr><tr><td>88593 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-36215591/36215591-203-1234\">Moderne 1-Zimmer-Altbauwohnung</a></td></tr><tr><td>Kaltmiete: 1.020 €</td></tr><tr><td>Warmmiete: 1.290 €</td></tr><tr><td>Wohnfläche: 29,8 m²</td></tr><tr><td>Zimmer: 1</td></tr><tr><td>93924 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-47334392/47334392-203-1234\">Gemütliche 2.5-Zimmer-Wohnung mit Balkon</a></td></tr><tr><td>Kaltmiete: 1.460 €</td></tr><tr><td>Warmmiete: 1.700 €</td></tr><tr><td>Wohnfläche: 67,5 m²</td></tr><tr><td>Zimmer: 2,5</td></tr><tr><td>43291 Beispielstadt</td></tr></table><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "kleinanzeigen",
+    "source_id": "14785235",
+    "title": "Ruhige 2-Zimmer-Altbauwohnung",
+    "warm": 1840.0,
+    "cold": 1680.0,
+    "area": 56.5,
+    "rooms": 2.0,
+    "postal": "88593"
+   },
+   {
+    "source": "kleinanzeigen",
+    "source_id": "36215591",
+    "title": "Moderne 1-Zimmer-Altbauwohnung",
+    "warm": 1290.0,
+    "cold": 1020.0,
+    "area": 29.8,
+    "rooms": 1.0,
+    "postal": "93924"
+   },
+   {
+    "source": "kleinanzeigen",
+    "source_id": "47334392",
+    "title": "Gemütliche 2.5-Zimmer-Wohnung mit Balkon",
+    "warm": 1700.0,
+    "cold": 1460.0,
+    "area": 67.5,
+    "rooms": 2.5,
+    "postal": "43291"
+   }
+  ]
+ },
+ {
+  "style": "C",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nGemütliche 2-Zimmer-Wohnung mit Balkon\n640 € kalt, 900 € warm, 54,3 m², 2 Zimmer, 48129\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.24485705.html\n\nRuhige 3.5-Zimmer-Wohnung mit Balkon\n620 € kalt, 910 € warm, 79,3 m², 3,5 Zimmer, 71602\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.38655710.html\n",
+  "truth": [
+   {
+    "source": "wg_gesucht",
+    "source_id": "24485705",
+    "title": "Gemütliche 2-Zimmer-Wohnung mit Balkon",
+    "warm": 900.0,
+    "cold": 640.0,
+    "area": 54.3,
+    "rooms": 2.0,
+    "postal": "48129"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "38655710",
+    "title": "Ruhige 3.5-Zimmer-Wohnung mit Balkon",
+    "warm": 910.0,
+    "cold": 620.0,
+    "area": 79.3,
+    "rooms": 3.5,
+    "postal": "71602"
+   }
+  ]
+ },
+ {
+  "style": "D",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nSanierte 3.5-Zimmer-Wohnung mit Balkon\n1530,00 EUR, 91.7 qm, 3,5 Zi., 50790\nhttps://www.immowelt.de/expose/46208666\n\nRuhige 3-Zimmer-Wohnung mit Balkon\n1460,00 EUR, 66.5 qm, 3 Zi., 11435\nhttps://www.immowelt.de/expose/28065232\n",
+  "truth": [
+   {
+    "source": "immowelt",
+    "source_id": "46208666",
+    "title": "Sanierte 3.5-Zimmer-Wohnung mit Balkon",
+    "warm": 1530.0,
+    "cold": null,
+    "area": 91.7,
+    "rooms": 3.5,
+    "postal": "50790"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "28065232",
+    "title": "Ruhige 3-Zimmer-Wohnung mit Balkon",
+    "warm": 1460.0,
+    "cold": null,
+    "area": 66.5,
+    "rooms": 3.0,
+    "postal": "11435"
+   }
+  ]
+ },
+ {
+  "style": "E",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nModerne 4-Zimmer-Altbauwohnung\nab 1.090 Euro Gesamtmiete | 119,9 m2 | 4 Räume\nhttps://www.immobilienscout24.de/expose/70052350\n",
+  "truth": [
+   {
+    "source": "immoscout",
+    "source_id": "70052350",
+    "title": "Moderne 4-Zimmer-Altbauwohnung",
+    "warm": 1090.0,
+    "cold": null,
+    "area": 119.9,
+    "rooms": 4.0,
+    "postal": null
+   }
+  ]
+ },
+ {
+  "style": "A",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><div><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-46211268/46211268-203-1234\">Moderne 3.5-Zimmer-Wohnung nahe Park</a><br>1.340 € Gesamtmiete · 3,5 Zimmer<br>12573 Beispielstadt</div><div><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-15651615/15651615-203-1234\">Ruhige 3.5-Zimmer-Altbauwohnung</a><br>1.650 € Gesamtmiete · 111,9 m² · 3,5 Zimmer<br>67873 Beispielstadt</div><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "kleinanzeigen",
+    "source_id": "46211268",
+    "title": "Moderne 3.5-Zimmer-Wohnung nahe Park",
+    "warm": 1340.0,
+    "cold": null,
+    "area": null,
+    "rooms": 3.5,
+    "postal": "12573"
+   },
+   {
+    "source": "kleinanzeigen",
+    "source_id": "15651615",
+    "title": "Ruhige 3.5-Zimmer-Altbauwohnung",
+    "warm": 1650.0,
+    "cold": null,
+    "area": 111.9,
+    "rooms": 3.5,
+    "postal": "67873"
+   }
+  ]
+ },
+ {
+  "style": "B",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><table><tr><td><a href=\"https://www.wg-gesucht.de/wohnung-in-beispielstadt.38015710.html\">Moderne 3-Zimmer-Altbauwohnung</a></td></tr><tr><td>Kaltmiete: 1.100 €</td></tr><tr><td>Warmmiete: 1.260 €</td></tr><tr><td>Wohnfläche: 90,9 m²</td></tr><tr><td>Zimmer: 3</td></tr><tr><td>12032 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.wg-gesucht.de/wohnung-in-beispielstadt.74924407.html\">Moderne 3-Zimmer-Altbauwohnung</a></td></tr><tr><td>Kaltmiete: 1.190 €</td></tr><tr><td>Warmmiete: 1.530 €</td></tr><tr><td>Wohnfläche: 77,2 m²</td></tr><tr><td>Zimmer: 3</td></tr><tr><td>60606 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.wg-gesucht.de/wohnung-in-beispielstadt.91932517.html\">Ruhige 2-Zimmer-Altbauwohnung</a></td></tr><tr><td>Kaltmiete: 1.000 €</td></tr><tr><td>Warmmiete: 1.200 €</td></tr><tr><td>Wohnfläche: 56,5 m²</td></tr><tr><td>Zimmer: 2</td></tr><tr><td>30771 Beispielstadt</td></tr></table><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "wg_gesucht",
+    "source_id": "38015710",
+    "title": "Moderne 3-Zimmer-Altbauwohnung",
+    "warm": 1260.0,
+    "cold": 1100.0,
+    "area": 90.9,
+    "rooms": 3.0,
+    "postal": "12032"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "74924407",
+    "title": "Moderne 3-Zimmer-Altbauwohnung",
+    "warm": 1530.0,
+    "cold": 1190.0,
+    "area": 77.2,
+    "rooms": 3.0,
+    "postal": "60606"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "91932517",
+    "title": "Ruhige 2-Zimmer-Altbauwohnung",
+    "warm": 1200.0,
+    "cold": 1000.0,
+    "area": 56.5,
+    "rooms": 2.0,
+    "postal": "30771"
+   }
+  ]
+ },
+ {
+  "style": "C",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nGemütliche 2-Zimmer-Wohnung mit Balkon\n1.100 € kalt, 1.350 € warm, 57,7 m², 2 Zimmer, 23610\nhttps://www.immowelt.de/expose/20535797\n\nSanierte 1.5-Zimmer-Dachgeschosswohnung\n1.850 € kalt, 2.050 € warm, 33,6 m², 1,5 Zimmer, 88180\nhttps://www.immowelt.de/expose/62561134\n\nRuhige 4-Zimmer-Altbauwohnung\n830 € kalt, 1.120 € warm, 99,7 m², 4 Zimmer, 72822\nhttps://www.immowelt.de/expose/19230975\n",
+  "truth": [
+   {
+    "source": "immowelt",
+    "source_id": "20535797",
+    "title": "Gemütliche 2-Zimmer-Wohnung mit Balkon",
+    "warm": 1350.0,
+    "cold": 1100.0,
+    "area": 57.7,
+    "rooms": 2.0,
+    "postal": "23610"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "62561134",
+    "title": "Sanierte 1.5-Zimmer-Dachgeschosswohnung",
+    "warm": 2050.0,
+    "cold": 1850.0,
+    "area": 33.6,
+    "rooms": 1.5,
+    "postal": "88180"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "19230975",
+    "title": "Ruhige 4-Zimmer-Altbauwohnung",
+    "warm": 1120.0,
+    "cold": 830.0,
+    "area": 99.7,
+    "rooms": 4.0,
+    "postal": "72822"
+   }
+  ]
+ },
+ {
+  "style": "D",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nHelle 1.5-Zimmer-Wohnung nahe Park\n1980,00 EUR, 37.2 qm, 1,5 Zi., 63926\nhttps://www.immobilienscout24.de/expose/12224631\n\nModerne 4-Zimmer-Altbauwohnung\n870,00 EUR, 98 qm, 4 Zi., 22083\nhttps://www.immobilienscout24.de/expose/81270099\n\nModerne 3-Zimmer-Altbauwohnung\n1410,00 EUR, 70.2 qm, 3 Zi., 87316\nhttps://www.immobilienscout24.de/expose/80053462\n",
+  "truth": [
+   {
+    "source": "immoscout",
+    "source_id": "12224631",
+    "title": "Helle 1.5-Zimmer-Wohnung nahe Park",
+    "warm": 1980.0,
+    "cold": null,
+    "area": 37.2,
+    "rooms": 1.5,
+    "postal": "63926"
+   },
+   {
+    "source": "immoscout",
+    "source_id": "81270099",
+    "title": "Moderne 4-Zimmer-Altbauwohnung",
+    "warm": 870.0,
+    "cold": null,
+    "area": 98.0,
+    "rooms": 4.0,
+    "postal": "22083"
+   },
+   {
+    "source": "immoscout",
+    "source_id": "80053462",
+    "title": "Moderne 3-Zimmer-Altbauwohnung",
+    "warm": 1410.0,
+    "cold": null,
+    "area": 70.2,
+    "rooms": 3.0,
+    "postal": "87316"
+   }
+  ]
+ },
+ {
+  "style": "E",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nHelle 1-Zimmer-Wohnung mit Balkon\nab 1.270 Euro Gesamtmiete | 26,7 m2 | 1 Räume\nhttps://www.kleinanzeigen.de/s-anzeige/wohnung-14501911/14501911-203-1234\n",
+  "truth": [
+   {
+    "source": "kleinanzeigen",
+    "source_id": "14501911",
+    "title": "Helle 1-Zimmer-Wohnung mit Balkon",
+    "warm": 1270.0,
+    "cold": null,
+    "area": 26.7,
+    "rooms": 1.0,
+    "postal": null
+   }
+  ]
+ },
+ {
+  "style": "A",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><div><a href=\"https://www.wg-gesucht.de/wohnung-in-beispielstadt.83295678.html\">Sanierte 2.5-Zimmer-Wohnung mit Balkon</a><br>2.070 € Gesamtmiete · 63,0 m² · 2,5 Zimmer<br>26979 Beispielstadt</div><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "wg_gesucht",
+    "source_id": "83295678",
+    "title": "Sanierte 2.5-Zimmer-Wohnung mit Balkon",
+    "warm": 2070.0,
+    "cold": null,
+    "area": 63.0,
+    "rooms": 2.5,
+    "postal": "26979"
+   }
+  ]
+ },
+ {
+  "style": "B",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><table><tr><td><a href=\"https://www.immowelt.de/expose/65989346\">Helle 3-Zimmer-Dachgeschosswohnung</a></td></tr><tr><td>Kaltmiete: 1.220 €</td></tr><tr><td>Warmmiete: 1.390 €</td></tr><tr><td>Wohnfläche: 68,5 m²</td></tr><tr><td>Zimmer: 3</td></tr><tr><td>85079 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.immowelt.de/expose/91720732\">Helle 1-Zimmer-Wohnung mit Balkon</a></td></tr><tr><td>Kaltmiete: 1.100 €</td></tr><tr><td>Warmmiete: 1.370 €</td></tr><tr><td>Wohnfläche: 28,2 m²</td></tr><tr><td>Zimmer: 1</td></tr><tr><td>21881 Beispielstadt</td></tr></table><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "immowelt",
+    "source_id": "65989346",
+    "title": "Helle 3-Zimmer-Dachgeschosswohnung",
+    "warm": 1390.0,
+    "cold": 1220.0,
+    "area": 68.5,
+    "rooms": 3.0,
+    "postal": "85079"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "91720732",
+    "title": "Helle 1-Zimmer-Wohnung mit Balkon",
+    "warm": 1370.0,
+    "cold": 1100.0,
+    "area": 28.2,
+    "rooms": 1.0,
+    "postal": "21881"
+   }
+  ]
+ },
+ {
+  "style": "C",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nSchöne 1.5-Zimmer-Dachgeschosswohnung\n1.740 € kalt, 2.040 € warm, 47,9 m², 1,5 Zimmer, 67740\nhttps://www.immobilienscout24.de/expose/62135041\n\nSanierte 4-Zimmer-Wohnung mit Balkon\n710 € kalt, 1.010 € warm, 121,5 m², 4 Zimmer, 73039\nhttps://www.immobilienscout24.de/expose/13998323\n\nSchöne 1-Zimmer-Dachgeschosswohnung\n1.510 € kalt, 1.760 € warm, 24,3 m², 1 Zimmer, 43532\nhttps://www.immobilienscout24.de/expose/92477231\n",
+  "truth": [
+   {
+    "source": "immoscout",
+    "source_id": "62135041",
+    "title": "Schöne 1.5-Zimmer-Dachgeschosswohnung",
+    "warm": 2040.0,
+    "cold": 1740.0,
+    "area": 47.9,
+    "rooms": 1.5,
+    "postal": "67740"
+   },
+   {
+    "source": "immoscout",
+    "source_id": "13998323",
+    "title": "Sanierte 4-Zimmer-Wohnung mit Balkon",
+    "warm": 1010.0,
+    "cold": 710.0,
+    "area": 121.5,
+    "rooms": 4.0,
+    "postal": "73039"
+   },
+   {
+    "source": "immoscout",
+    "source_id": "92477231",
+    "title": "Schöne 1-Zimmer-Dachgeschosswohnung",
+    "warm": 1760.0,
+    "cold": 1510.0,
+    "area": 24.3,
+    "rooms": 1.0,
+    "postal": "43532"
+   }
+  ]
+ },
+ {
+  "style": "D",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nSanierte 3-Zimmer-Dachgeschosswohnung\n1670,00 EUR, 75 qm, 3 Zi., 75314\nhttps://www.kleinanzeigen.de/s-anzeige/wohnung-32764286/32764286-203-1234\n",
+  "truth": [
+   {
+    "source": "kleinanzeigen",
+    "source_id": "32764286",
+    "title": "Sanierte 3-Zimmer-Dachgeschosswohnung",
+    "warm": 1670.0,
+    "cold": null,
+    "area": 75.0,
+    "rooms": 3.0,
+    "postal": "75314"
+   }
+  ]
+ },
+ {
+  "style": "E",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nRuhige 3-Zimmer-Dachgeschosswohnung\nab 1.210 Euro Gesamtmiete | 78,1 m2 | 3 Räume\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.36882721.html\n",
+  "truth": [
+   {
+    "source": "wg_gesucht",
+    "source_id": "36882721",
+    "title": "Ruhige 3-Zimmer-Dachgeschosswohnung",
+    "warm": 1210.0,
+    "cold": null,
+    "area": 78.1,
+    "rooms": 3.0,
+    "postal": null
+   }
+  ]
+ },
+ {
+  "style": "A",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><div><a href=\"https://www.immowelt.de/expose/15445540\">Schöne 3-Zimmer-Wohnung mit Balkon</a><br>990 € Gesamtmiete · 72,3 m² · 3 Zimmer<br>46280 Beispielstadt</div><div><a href=\"https://www.immowelt.de/expose/65564099\">Gemütliche 1.5-Zimmer-Dachgeschosswohnung</a><br>1.150 € Gesamtmiete · 39,8 m² · 1,5 Zimmer<br>98099 Beispielstadt</div><div><a href=\"https://www.immowelt.de/expose/91544591\">Helle 4-Zimmer-Wohnung nahe Park</a><br>1.890 € Gesamtmiete · 100,8 m² · 4 Zimmer<br>84787 Beispielstadt</div><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "immowelt",
+    "source_id": "15445540",
+    "title": "Schöne 3-Zimmer-Wohnung mit Balkon",
+    "warm": 990.0,
+    "cold": null,
+    "area": 72.3,
+    "rooms": 3.0,
+    "postal": "46280"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "65564099",
+    "title": "Gemütliche 1.5-Zimmer-Dachgeschosswohnung",
+    "warm": 1150.0,
+    "cold": null,
+    "area": 39.8,
+    "rooms": 1.5,
+    "postal": "98099"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "91544591",
+    "title": "Helle 4-Zimmer-Wohnung nahe Park",
+    "warm": 1890.0,
+    "cold": null,
+    "area": 100.8,
+    "rooms": 4.0,
+    "postal": "84787"
+   }
+  ]
+ },
+ {
+  "style": "B",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><table><tr><td><a href=\"https://www.immobilienscout24.de/expose/45757280\">Ruhige 1-Zimmer-Altbauwohnung</a></td></tr><tr><td>Kaltmiete: 1.130 €</td></tr><tr><td>Warmmiete: 1.320 €</td></tr><tr><td>Wohnfläche: 28,4 m²</td></tr><tr><td>Zimmer: 1</td></tr><tr><td>16152 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.immobilienscout24.de/expose/59483807\">Helle 1.5-Zimmer-Altbauwohnung</a></td></tr><tr><td>Kaltmiete: 1.420 €</td></tr><tr><td>Warmmiete: 1.700 €</td></tr><tr><td>Wohnfläche: 39,7 m²</td></tr><tr><td>Zimmer: 1,5</td></tr><tr><td>36128 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.immobilienscout24.de/expose/81786153\">Schöne 4-Zimmer-Wohnung mit Balkon</a></td></tr><tr><td>Kaltmiete: 1.530 €</td></tr><tr><td>Warmmiete: 1.830 €</td></tr><tr><td>Wohnfläche: 98,2 m²</td></tr><tr><td>Zimmer: 4</td></tr><tr><td>33474 Beispielstadt</td></tr></table><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "immoscout",
+    "source_id": "45757280",
+    "title": "Ruhige 1-Zimmer-Altbauwohnung",
+    "warm": 1320.0,
+    "cold": 1130.0,
+    "area": 28.4,
+    "rooms": 1.0,
+    "postal": "16152"
+   },
+   {
+    "source": "immoscout",
+    "source_id": "59483807",
+    "title": "Helle 1.5-Zimmer-Altbauwohnung",
+    "warm": 1700.0,
+    "cold": 1420.0,
+    "area": 39.7,
+    "rooms": 1.5,
+    "postal": "36128"
+   },
+   {
+    "source": "immoscout",
+    "source_id": "81786153",
+    "title": "Schöne 4-Zimmer-Wohnung mit Balkon",
+    "warm": 1830.0,
+    "cold": 1530.0,
+    "area": 98.2,
+    "rooms": 4.0,
+    "postal": "33474"
+   }
+  ]
+ },
+ {
+  "style": "C",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nModerne 2.5-Zimmer-Altbauwohnung\n1.300 € kalt, 1.640 € warm, 74,5 m², 2,5 Zimmer, 61578\nhttps://www.kleinanzeigen.de/s-anzeige/wohnung-77164701/77164701-203-1234\n",
+  "truth": [
+   {
+    "source": "kleinanzeigen",
+    "source_id": "77164701",
+    "title": "Moderne 2.5-Zimmer-Altbauwohnung",
+    "warm": 1640.0,
+    "cold": 1300.0,
+    "area": 74.5,
+    "rooms": 2.5,
+    "postal": "61578"
+   }
+  ]
+ },
+ {
+  "style": "D",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nGemütliche 2-Zimmer-Dachgeschosswohnung\n2100,00 EUR, 45.7 qm, 2 Zi., 35805\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.27436214.html\n\nGemütliche 1-Zimmer-Wohnung nahe Park\n1670,00 EUR, 25.8 qm, 1 Zi., 95370\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.56049778.html\n\nRuhige 2-Zimmer-Altbauwohnung\n2040,00 EUR, 46 qm, 2 Zi., 61147\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.26573750.html\n",
+  "truth": [
+   {
+    "source": "wg_gesucht",
+    "source_id": "27436214",
+    "title": "Gemütliche 2-Zimmer-Dachgeschosswohnung",
+    "warm": 2100.0,
+    "cold": null,
+    "area": 45.7,
+    "rooms": 2.0,
+    "postal": "35805"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "56049778",
+    "title": "Gemütliche 1-Zimmer-Wohnung nahe Park",
+    "warm": 1670.0,
+    "cold": null,
+    "area": 25.8,
+    "rooms": 1.0,
+    "postal": "95370"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "26573750",
+    "title": "Ruhige 2-Zimmer-Altbauwohnung",
+    "warm": 2040.0,
+    "cold": null,
+    "area": 46.0,
+    "rooms": 2.0,
+    "postal": "61147"
+   }
+  ]
+ },
+ {
+  "style": "E",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nSanierte 2.5-Zimmer-Wohnung mit Balkon\nab 1.840 Euro Gesamtmiete | 68,4 m2 | 2,5 Räume\nhttps://www.immowelt.de/expose/12100247\n",
+  "truth": [
+   {
+    "source": "immowelt",
+    "source_id": "12100247",
+    "title": "Sanierte 2.5-Zimmer-Wohnung mit Balkon",
+    "warm": 1840.0,
+    "cold": null,
+    "area": 68.4,
+    "rooms": 2.5,
+    "postal": null
+   }
+  ]
+ },
+ {
+  "style": "A",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><div><a href=\"https://www.immobilienscout24.de/expose/13813174\">Ruhige 3-Zimmer-Wohnung mit Balkon</a><br>1.850 € Gesamtmiete · 82,5 m² · 3 Zimmer<br>66221 Beispielstadt</div><div><a href=\"https://www.immobilienscout24.de/expose/73157761\">Ruhige 2-Zimmer-Dachgeschosswohnung</a><br>1.820 € Gesamtmiete · 54,7 m² · 2 Zimmer<br>74563 Beispielstadt</div><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "immoscout",
+    "source_id": "13813174",
+    "title": "Ruhige 3-Zimmer-Wohnung mit Balkon",
+    "warm": 1850.0,
+    "cold": null,
+    "area": 82.5,
+    "rooms": 3.0,
+    "postal": "66221"
+   },
+   {
+    "source": "immoscout",
+    "source_id": "73157761",
+    "title": "Ruhige 2-Zimmer-Dachgeschosswohnung",
+    "warm": 1820.0,
+    "cold": null,
+    "area": 54.7,
+    "rooms": 2.0,
+    "postal": "74563"
+   }
+  ]
+ },
+ {
+  "style": "B",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><table><tr><td><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-85367436/85367436-203-1234\">Schöne 1.5-Zimmer-Altbauwohnung</a></td></tr><tr><td>Kaltmiete: 1.170 €</td></tr><tr><td>Warmmiete: 1.430 €</td></tr><tr><td>Wohnfläche: 44,4 m²</td></tr><tr><td>Zimmer: 1,5</td></tr><tr><td>78522 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-91796921/91796921-203-1234\">Ruhige 2.5-Zimmer-Wohnung nahe Park</a></td></tr><tr><td>Kaltmiete: 1.100 €</td></tr><tr><td>Warmmiete: 1.420 €</td></tr><tr><td>Wohnfläche: 62,8 m²</td></tr><tr><td>Zimmer: 2,5</td></tr><tr><td>28500 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-77534885/77534885-203-1234\">Helle 2.5-Zimmer-Dachgeschosswohnung</a></td></tr><tr><td>Kaltmiete: 860 €</td></tr><tr><td>Warmmiete: 1.120 €</td></tr><tr><td>Wohnfläche: 69,3 m²</td></tr><tr><td>Zimmer: 2,5</td></tr><tr><td>13637 Beispielstadt</td></tr></table><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "kleinanzeigen",
+    "source_id": "85367436",
+    "title": "Schöne 1.5-Zimmer-Altbauwohnung",
+    "warm": 1430.0,
+    "cold": 1170.0,
+    "area": 44.4,
+    "rooms": 1.5,
+    "postal": "78522"
+   },
+   {
+    "source": "kleinanzeigen",
+    "source_id": "91796921",
+    "title": "Ruhige 2.5-Zimmer-Wohnung nahe Park",
+    "warm": 1420.0,
+    "cold": 1100.0,
+    "area": 62.8,
+    "rooms": 2.5,
+    "postal": "28500"
+   },
+   {
+    "source": "kleinanzeigen",
+    "source_id": "77534885",
+    "title": "Helle 2.5-Zimmer-Dachgeschosswohnung",
+    "warm": 1120.0,
+    "cold": 860.0,
+    "area": 69.3,
+    "rooms": 2.5,
+    "postal": "13637"
+   }
+  ]
+ },
+ {
+  "style": "C",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nHelle 1-Zimmer-Dachgeschosswohnung\n1.120 € kalt, 1.430 € warm, 27,2 m², 1 Zimmer, 22218\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.85546688.html\n\nSanierte 2-Zimmer-Altbauwohnung\n1.300 € kalt, 1.530 € warm, 45,3 m², 2 Zimmer, 72018\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.64245353.html\n\nModerne 4-Zimmer-Wohnung nahe Park\n1.160 € kalt, 1.470 € warm, 93,1 m², 4 Zimmer, 24236\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.73959138.html\n",
+  "truth": [
+   {
+    "source": "wg_gesucht",
+    "source_id": "85546688",
+    "title": "Helle 1-Zimmer-Dachgeschosswohnung",
+    "warm": 1430.0,
+    "cold": 1120.0,
+    "area": 27.2,
+    "rooms": 1.0,
+    "postal": "22218"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "64245353",
+    "title": "Sanierte 2-Zimmer-Altbauwohnung",
+    "warm": 1530.0,
+    "cold": 1300.0,
+    "area": 45.3,
+    "rooms": 2.0,
+    "postal": "72018"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "73959138",
+    "title": "Moderne 4-Zimmer-Wohnung nahe Park",
+    "warm": 1470.0,
+    "cold": 1160.0,
+    "area": 93.1,
+    "rooms": 4.0,
+    "postal": "24236"
+   }
+  ]
+ },
+ {
+  "style": "D",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nHelle 3.5-Zimmer-Altbauwohnung\n1980,00 EUR, 98.6 qm, 3,5 Zi., 30385\nhttps://www.immowelt.de/expose/13058277\n",
+  "truth": [
+   {
+    "source": "immowelt",
+    "source_id": "13058277",
+    "title": "Helle 3.5-Zimmer-Altbauwohnung",
+    "warm": 1980.0,
+    "cold": null,
+    "area": 98.6,
+    "rooms": 3.5,
+    "postal": "30385"
+   }
+  ]
+ },
+ {
+  "style": "E",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nGemütliche 1-Zimmer-Wohnung mit Balkon\nab 1.240 Euro Gesamtmiete | 28,9 m2 | 1 Räume\nhttps://www.immobilienscout24.de/expose/93183629\n",
+  "truth": [
+   {
+    "source": "immoscout",
+    "source_id": "93183629",
+    "title": "Gemütliche 1-Zimmer-Wohnung mit Balkon",
+    "warm": 1240.0,
+    "cold": null,
+    "area": 28.9,
+    "rooms": 1.0,
+    "postal": null
+   }
+  ]
+ },
+ {
+  "style": "A",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><div><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-81182624/81182624-203-1234\">Gemütliche 1.5-Zimmer-Wohnung mit Balkon</a><br>1.700 € Gesamtmiete · 45,8 m² · 1,5 Zimmer<br>59248 Beispielstadt</div><div><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-39305601/39305601-203-1234\">Moderne 2-Zimmer-Altbauwohnung</a><br>1.980 € Gesamtmiete · 54,8 m² · 2 Zimmer<br>81164 Beispielstadt</div><div><a href=\"https://www.kleinanzeigen.de/s-anzeige/wohnung-34311527/34311527-203-1234\">Sanierte 2-Zimmer-Wohnung nahe Park</a><br>1.870 € Gesamtmiete · 2 Zimmer<br>35517 Beispielstadt</div><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "kleinanzeigen",
+    "source_id": "81182624",
+    "title": "Gemütliche 1.5-Zimmer-Wohnung mit Balkon",
+    "warm": 1700.0,
+    "cold": null,
+    "area": 45.8,
+    "rooms": 1.5,
+    "postal": "59248"
+   },
+   {
+    "source": "kleinanzeigen",
+    "source_id": "39305601",
+    "title": "Moderne 2-Zimmer-Altbauwohnung",
+    "warm": 1980.0,
+    "cold": null,
+    "area": 54.8,
+    "rooms": 2.0,
+    "postal": "81164"
+   },
+   {
+    "source": "kleinanzeigen",
+    "source_id": "34311527",
+    "title": "Sanierte 2-Zimmer-Wohnung nahe Park",
+    "warm": 1870.0,
+    "cold": null,
+    "area": null,
+    "rooms": 2.0,
+    "postal": "35517"
+   }
+  ]
+ },
+ {
+  "style": "B",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><table><tr><td><a href=\"https://www.wg-gesucht.de/wohnung-in-beispielstadt.44829166.html\">Gemütliche 1.5-Zimmer-Wohnung mit Balkon</a></td></tr><tr><td>Kaltmiete: 910 €</td></tr><tr><td>Warmmiete: 1.210 €</td></tr><tr><td>Wohnfläche: 35,0 m²</td></tr><tr><td>Zimmer: 1,5</td></tr><tr><td>66989 Beispielstadt</td></tr></table><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "wg_gesucht",
+    "source_id": "44829166",
+    "title": "Gemütliche 1.5-Zimmer-Wohnung mit Balkon",
+    "warm": 1210.0,
+    "cold": 910.0,
+    "area": 35.0,
+    "rooms": 1.5,
+    "postal": "66989"
+   }
+  ]
+ },
+ {
+  "style": "C",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nRuhige 2-Zimmer-Wohnung nahe Park\n1.420 € kalt, 1.730 € warm, 48,0 m², 2 Zimmer, 57359\nhttps://www.immowelt.de/expose/22892530\n\nHelle 1.5-Zimmer-Dachgeschosswohnung\n1.430 € kalt, 1.650 € warm, 43,6 m², 1,5 Zimmer, 23916\nhttps://www.immowelt.de/expose/35368128\n",
+  "truth": [
+   {
+    "source": "immowelt",
+    "source_id": "22892530",
+    "title": "Ruhige 2-Zimmer-Wohnung nahe Park",
+    "warm": 1730.0,
+    "cold": 1420.0,
+    "area": 48.0,
+    "rooms": 2.0,
+    "postal": "57359"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "35368128",
+    "title": "Helle 1.5-Zimmer-Dachgeschosswohnung",
+    "warm": 1650.0,
+    "cold": 1430.0,
+    "area": 43.6,
+    "rooms": 1.5,
+    "postal": "23916"
+   }
+  ]
+ },
+ {
+  "style": "D",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nRuhige 1-Zimmer-Altbauwohnung\n1730,00 EUR, 29.6 qm, 1 Zi., 34187\nhttps://www.immobilienscout24.de/expose/74595894\n",
+  "truth": [
+   {
+    "source": "immoscout",
+    "source_id": "74595894",
+    "title": "Ruhige 1-Zimmer-Altbauwohnung",
+    "warm": 1730.0,
+    "cold": null,
+    "area": 29.6,
+    "rooms": 1.0,
+    "postal": "34187"
+   }
+  ]
+ },
+ {
+  "style": "E",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nModerne 2-Zimmer-Wohnung mit Balkon\nab 1.020 Euro Gesamtmiete | 47,4 m2 | 2 Räume\nhttps://www.kleinanzeigen.de/s-anzeige/wohnung-22783758/22783758-203-1234\n",
+  "truth": [
+   {
+    "source": "kleinanzeigen",
+    "source_id": "22783758",
+    "title": "Moderne 2-Zimmer-Wohnung mit Balkon",
+    "warm": 1020.0,
+    "cold": null,
+    "area": 47.4,
+    "rooms": 2.0,
+    "postal": null
+   }
+  ]
+ },
+ {
+  "style": "A",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><div><a href=\"https://www.wg-gesucht.de/wohnung-in-beispielstadt.67236265.html\">Moderne 4-Zimmer-Wohnung nahe Park</a><br>960 € Gesamtmiete · 4 Zimmer<br>66371 Beispielstadt</div><div><a href=\"https://www.wg-gesucht.de/wohnung-in-beispielstadt.34329538.html\">Gemütliche 3-Zimmer-Dachgeschosswohnung</a><br>1.830 € Gesamtmiete · 66,4 m² · 3 Zimmer<br>57129 Beispielstadt</div><div><a href=\"https://www.wg-gesucht.de/wohnung-in-beispielstadt.12069323.html\">Sanierte 3.5-Zimmer-Wohnung mit Balkon</a><br>1.560 € Gesamtmiete · 109,3 m² · 3,5 Zimmer<br>92494 Beispielstadt</div><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "wg_gesucht",
+    "source_id": "67236265",
+    "title": "Moderne 4-Zimmer-Wohnung nahe Park",
+    "warm": 960.0,
+    "cold": null,
+    "area": null,
+    "rooms": 4.0,
+    "postal": "66371"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "34329538",
+    "title": "Gemütliche 3-Zimmer-Dachgeschosswohnung",
+    "warm": 1830.0,
+    "cold": null,
+    "area": 66.4,
+    "rooms": 3.0,
+    "postal": "57129"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "12069323",
+    "title": "Sanierte 3.5-Zimmer-Wohnung mit Balkon",
+    "warm": 1560.0,
+    "cold": null,
+    "area": 109.3,
+    "rooms": 3.5,
+    "postal": "92494"
+   }
+  ]
+ },
+ {
+  "style": "B",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><table><tr><td><a href=\"https://www.immowelt.de/expose/44663640\">Sanierte 2-Zimmer-Wohnung mit Balkon</a></td></tr><tr><td>Kaltmiete: 1.880 €</td></tr><tr><td>Warmmiete: 2.190 €</td></tr><tr><td>Wohnfläche: 54,1 m²</td></tr><tr><td>Zimmer: 2</td></tr><tr><td>30976 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.immowelt.de/expose/59642854\">Gemütliche 3.5-Zimmer-Altbauwohnung</a></td></tr><tr><td>Kaltmiete: 1.030 €</td></tr><tr><td>Warmmiete: 1.290 €</td></tr><tr><td>Wohnfläche: 81,7 m²</td></tr><tr><td>Zimmer: 3,5</td></tr><tr><td>63181 Beispielstadt</td></tr></table><table><tr><td><a href=\"https://www.immowelt.de/expose/72926692\">Helle 2-Zimmer-Wohnung mit Balkon</a></td></tr><tr><td>Kaltmiete: 690 €</td></tr><tr><td>Warmmiete: 910 €</td></tr><tr><td>Wohnfläche: 58,5 m²</td></tr><tr><td>Zimmer: 2</td></tr><tr><td>56614 Beispielstadt</td></tr></table><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "immowelt",
+    "source_id": "44663640",
+    "title": "Sanierte 2-Zimmer-Wohnung mit Balkon",
+    "warm": 2190.0,
+    "cold": 1880.0,
+    "area": 54.1,
+    "rooms": 2.0,
+    "postal": "30976"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "59642854",
+    "title": "Gemütliche 3.5-Zimmer-Altbauwohnung",
+    "warm": 1290.0,
+    "cold": 1030.0,
+    "area": 81.7,
+    "rooms": 3.5,
+    "postal": "63181"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "72926692",
+    "title": "Helle 2-Zimmer-Wohnung mit Balkon",
+    "warm": 910.0,
+    "cold": 690.0,
+    "area": 58.5,
+    "rooms": 2.0,
+    "postal": "56614"
+   }
+  ]
+ },
+ {
+  "style": "C",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nRuhige 1-Zimmer-Dachgeschosswohnung\n1.830 € kalt, 2.110 € warm, 24,3 m², 1 Zimmer, 84655\nhttps://www.immobilienscout24.de/expose/55340844\n\nRuhige 2-Zimmer-Wohnung mit Balkon\n1.110 € kalt, 1.460 € warm, 54,7 m², 2 Zimmer, 61822\nhttps://www.immobilienscout24.de/expose/96203384\n\nGemütliche 1-Zimmer-Wohnung mit Balkon\n740 € kalt, 940 € warm, 23,1 m², 1 Zimmer, 35617\nhttps://www.immobilienscout24.de/expose/69545222\n",
+  "truth": [
+   {
+    "source": "immoscout",
+    "source_id": "55340844",
+    "title": "Ruhige 1-Zimmer-Dachgeschosswohnung",
+    "warm": 2110.0,
+    "cold": 1830.0,
+    "area": 24.3,
+    "rooms": 1.0,
+    "postal": "84655"
+   },
+   {
+    "source": "immoscout",
+    "source_id": "96203384",
+    "title": "Ruhige 2-Zimmer-Wohnung mit Balkon",
+    "warm": 1460.0,
+    "cold": 1110.0,
+    "area": 54.7,
+    "rooms": 2.0,
+    "postal": "61822"
+   },
+   {
+    "source": "immoscout",
+    "source_id": "69545222",
+    "title": "Gemütliche 1-Zimmer-Wohnung mit Balkon",
+    "warm": 940.0,
+    "cold": 740.0,
+    "area": 23.1,
+    "rooms": 1.0,
+    "postal": "35617"
+   }
+  ]
+ },
+ {
+  "style": "D",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nModerne 3.5-Zimmer-Dachgeschosswohnung\n1150,00 EUR, 77.4 qm, 3,5 Zi., 78245\nhttps://www.kleinanzeigen.de/s-anzeige/wohnung-55747813/55747813-203-1234\n\nSchöne 1.5-Zimmer-Wohnung mit Balkon\n1820,00 EUR, 42.6 qm, 1,5 Zi., 60649\nhttps://www.kleinanzeigen.de/s-anzeige/wohnung-90200002/90200002-203-1234\n\nModerne 2-Zimmer-Wohnung mit Balkon\n2180,00 EUR, 51.7 qm, 2 Zi., 66305\nhttps://www.kleinanzeigen.de/s-anzeige/wohnung-82739793/82739793-203-1234\n",
+  "truth": [
+   {
+    "source": "kleinanzeigen",
+    "source_id": "55747813",
+    "title": "Moderne 3.5-Zimmer-Dachgeschosswohnung",
+    "warm": 1150.0,
+    "cold": null,
+    "area": 77.4,
+    "rooms": 3.5,
+    "postal": "78245"
+   },
+   {
+    "source": "kleinanzeigen",
+    "source_id": "90200002",
+    "title": "Schöne 1.5-Zimmer-Wohnung mit Balkon",
+    "warm": 1820.0,
+    "cold": null,
+    "area": 42.6,
+    "rooms": 1.5,
+    "postal": "60649"
+   },
+   {
+    "source": "kleinanzeigen",
+    "source_id": "82739793",
+    "title": "Moderne 2-Zimmer-Wohnung mit Balkon",
+    "warm": 2180.0,
+    "cold": null,
+    "area": 51.7,
+    "rooms": 2.0,
+    "postal": "66305"
+   }
+  ]
+ },
+ {
+  "style": "E",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nSanierte 3.5-Zimmer-Dachgeschosswohnung\nab 1.330 Euro Gesamtmiete | 87,0 m2 | 3,5 Räume\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.81190156.html\n\nHelle 2.5-Zimmer-Wohnung mit Balkon\nab 1.260 Euro Gesamtmiete | 69,0 m2 | 2,5 Räume\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.49733883.html\n",
+  "truth": [
+   {
+    "source": "wg_gesucht",
+    "source_id": "81190156",
+    "title": "Sanierte 3.5-Zimmer-Dachgeschosswohnung",
+    "warm": 1330.0,
+    "cold": null,
+    "area": 87.0,
+    "rooms": 3.5,
+    "postal": null
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "49733883",
+    "title": "Helle 2.5-Zimmer-Wohnung mit Balkon",
+    "warm": 1260.0,
+    "cold": null,
+    "area": 69.0,
+    "rooms": 2.5,
+    "postal": null
+   }
+  ]
+ },
+ {
+  "style": "A",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><div><a href=\"https://www.immowelt.de/expose/17085548\">Sanierte 1-Zimmer-Dachgeschosswohnung</a><br>1.420 € Gesamtmiete · 28,3 m² · 1 Zimmer<br>16574 Beispielstadt</div><div><a href=\"https://www.immowelt.de/expose/74103520\">Sanierte 3-Zimmer-Altbauwohnung</a><br>2.020 € Gesamtmiete · 68,2 m² · 3 Zimmer<br>15955 Beispielstadt</div><div><a href=\"https://www.immowelt.de/expose/25447556\">Helle 4-Zimmer-Dachgeschosswohnung</a><br>2.050 € Gesamtmiete · 4 Zimmer<br>69728 Beispielstadt</div><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "immowelt",
+    "source_id": "17085548",
+    "title": "Sanierte 1-Zimmer-Dachgeschosswohnung",
+    "warm": 1420.0,
+    "cold": null,
+    "area": 28.3,
+    "rooms": 1.0,
+    "postal": "16574"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "74103520",
+    "title": "Sanierte 3-Zimmer-Altbauwohnung",
+    "warm": 2020.0,
+    "cold": null,
+    "area": 68.2,
+    "rooms": 3.0,
+    "postal": "15955"
+   },
+   {
+    "source": "immowelt",
+    "source_id": "25447556",
+    "title": "Helle 4-Zimmer-Dachgeschosswohnung",
+    "warm": 2050.0,
+    "cold": null,
+    "area": null,
+    "rooms": 4.0,
+    "postal": "69728"
+   }
+  ]
+ },
+ {
+  "style": "B",
+  "kind": "html",
+  "body": "<html><body><p>Neue Treffer für Ihre Suche</p><table><tr><td><a href=\"https://www.immobilienscout24.de/expose/99642847\">Gemütliche 3-Zimmer-Dachgeschosswohnung</a></td></tr><tr><td>Kaltmiete: 760 €</td></tr><tr><td>Warmmiete: 1.000 €</td></tr><tr><td>Wohnfläche: 81,8 m²</td></tr><tr><td>Zimmer: 3</td></tr><tr><td>88780 Beispielstadt</td></tr></table><a href=\"https://example.test/unsubscribe\">Abmelden</a></body></html>",
+  "truth": [
+   {
+    "source": "immoscout",
+    "source_id": "99642847",
+    "title": "Gemütliche 3-Zimmer-Dachgeschosswohnung",
+    "warm": 1000.0,
+    "cold": 760.0,
+    "area": 81.8,
+    "rooms": 3.0,
+    "postal": "88780"
+   }
+  ]
+ },
+ {
+  "style": "C",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nSanierte 3.5-Zimmer-Altbauwohnung\n1.570 € kalt, 1.880 € warm, 89,7 m², 3,5 Zimmer, 41249\nhttps://www.kleinanzeigen.de/s-anzeige/wohnung-28384264/28384264-203-1234\n\nSanierte 4-Zimmer-Wohnung nahe Park\n1.760 € kalt, 2.070 € warm, 92,6 m², 4 Zimmer, 45587\nhttps://www.kleinanzeigen.de/s-anzeige/wohnung-93882915/93882915-203-1234\n",
+  "truth": [
+   {
+    "source": "kleinanzeigen",
+    "source_id": "28384264",
+    "title": "Sanierte 3.5-Zimmer-Altbauwohnung",
+    "warm": 1880.0,
+    "cold": 1570.0,
+    "area": 89.7,
+    "rooms": 3.5,
+    "postal": "41249"
+   },
+   {
+    "source": "kleinanzeigen",
+    "source_id": "93882915",
+    "title": "Sanierte 4-Zimmer-Wohnung nahe Park",
+    "warm": 2070.0,
+    "cold": 1760.0,
+    "area": 92.6,
+    "rooms": 4.0,
+    "postal": "45587"
+   }
+  ]
+ },
+ {
+  "style": "D",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nModerne 2-Zimmer-Altbauwohnung\n1770,00 EUR, 56.7 qm, 2 Zi., 99544\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.43414984.html\n\nModerne 1-Zimmer-Wohnung mit Balkon\n810,00 EUR, 28.3 qm, 1 Zi., 23430\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.13610969.html\n\nModerne 2-Zimmer-Altbauwohnung\n860,00 EUR, 54.8 qm, 2 Zi., 92720\nhttps://www.wg-gesucht.de/wohnung-in-beispielstadt.31589891.html\n",
+  "truth": [
+   {
+    "source": "wg_gesucht",
+    "source_id": "43414984",
+    "title": "Moderne 2-Zimmer-Altbauwohnung",
+    "warm": 1770.0,
+    "cold": null,
+    "area": 56.7,
+    "rooms": 2.0,
+    "postal": "99544"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "13610969",
+    "title": "Moderne 1-Zimmer-Wohnung mit Balkon",
+    "warm": 810.0,
+    "cold": null,
+    "area": 28.3,
+    "rooms": 1.0,
+    "postal": "23430"
+   },
+   {
+    "source": "wg_gesucht",
+    "source_id": "31589891",
+    "title": "Moderne 2-Zimmer-Altbauwohnung",
+    "warm": 860.0,
+    "cold": null,
+    "area": 54.8,
+    "rooms": 2.0,
+    "postal": "92720"
+   }
+  ]
+ },
+ {
+  "style": "E",
+  "kind": "plain",
+  "body": "Neue Treffer für Ihre Suche\n\nHelle 4-Zimmer-Wohnung mit Balkon\nab 1.090 Euro Gesamtmiete | 107,1 m2 | 4 Räume\nhttps://www.immowelt.de/expose/27899611\n\nSanierte 2-Zimmer-Altbauwohnung\nab 1.800 Euro Gesamtmiete | 52,9 m2 | 2 Räume\nhttps://www.immowelt.de/expose/30224613\n",
+  "truth": [
+   {
+    "source": "immowelt",
+    "source_id": "27899611",
+    "title": "Helle 4-Zimmer-Wohnung mit Balkon",
+    "warm": 1090.0,
+    "cold": null,
+    "area": 107.1,
+    "rooms": 4.0,
+    "postal": null
+   },
+   {
+    "source": "immowelt",
+    "source_id": "30224613",
+    "title": "Sanierte 2-Zimmer-Altbauwohnung",
+    "warm": 1800.0,
+    "cold": null,
+    "area": 52.9,
+    "rooms": 2.0,
+    "postal": null
+   }
+  ]
+ }
+]

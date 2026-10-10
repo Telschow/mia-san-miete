@@ -1,0 +1,172 @@
+[
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Guten Abend,\n\nvielen Dank für Ihre Nachricht. Die Wohnung steht noch zur Verfügung. Ich könnte Ihnen morgen um 19 Uhr die Räume zeigen.\n\nViele Grüße\nK. Hoffmann",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Hallo Herr Mustermann, wir sind am Wochenende vor Ort. Schauen Sie gern am Samstag um 11 vorbei.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Ja, gerne, bitte um Rückruf unter der Nummer unten.\n\nAm 02.11.2026 um 10:12 schrieb Max Mustermann:\n> Besichtigungen sind bei uns werktags ab 17:30 Uhr möglich.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Enquiry",
+  "body": "Dear Sir or Madam, the flat can be viewed this Thursday from 6 pm. Please confirm by return.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Wir würden uns freuen, Sie bei uns begrüßen zu dürfen. Bitte melden Sie sich für einen Slot an.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Besichtigung",
+  "body": "Besichtigung: Samstag 14:00, Treffpunkt vor dem Haus.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Schicken Sie uns bitte noch Ihre letzten drei Lohnzettel.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Wir bräuchten noch einen aktuellen Auszug der Schufa.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Enquiry",
+  "body": "Please attach a copy of your ID and proof of employment.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Wohnung",
+  "body": "Gerne senden wir Ihnen den Bewerberbogen zu. Bitte füllen Sie ihn aus.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Bitte reichen Sie Gehaltsnachweise nach, dann prüfen wir weiter.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Hallo, danke für Ihre Anfrage. Wir haben so viele Anfragen bekommen und uns bereits entschieden. Alles Gute bei der Suche.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Die Wohnung steht nicht mehr zur Verfügung.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Leider wurde die Wohnung heute morgen schon zugesagt.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Enquiry",
+  "body": "Sorry, the flat was taken yesterday.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Hallo, ich muss Ihnen leider absagen.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Leider ist die Wohnung bereits weg.\n\n> Wir bitten um einen Besichtigungstermin.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Re: Ihre Anfrage",
+  "body": "Bin bis 08.11. auf Dienstreise und antworte danach.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Abwesenheitsnotiz",
+  "body": "Vielen Dank für Ihre E-Mail.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Re: Anfrage",
+  "body": "Ihre E-Mail wurde empfangen. Wir bearbeiten Anfragen in der Reihenfolge des Eingangs.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Auto-Reply: Anfrage",
+  "body": "Ich melde mich.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Re: Anfrage",
+  "body": "Danke.",
+  "headers": {
+   "Precedence": "auto_reply"
+  }
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Können Sie mir sagen, wie viele Personen einziehen?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Ja, die Wohnung hat einen Balkon nach Süden.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Der Vormieter lässt die Küche gegen Ablöse da, 1.500 Euro. Hätten Sie daran Interesse?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Vielen Dank für Ihr Interesse. Wir melden uns, sobald wir alle Anfragen gesichtet haben.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Bitte schreiben Sie uns, wie lange Sie schon in Ihrer aktuellen Wohnung wohnen.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Wann wäre denn Ihr Wunsch-Einzugstermin?",
+  "headers": {}
+ }
+]

@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Local, personal, never commit
+config.yaml
+profile/profile.yaml
+.env
+*.db
+*.sqlite
+data/
+logs/
+secrets/
+.private-terms
+*.local.yaml
+.env.*

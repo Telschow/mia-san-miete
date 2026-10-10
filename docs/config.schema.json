@@ -1,0 +1,1193 @@
+{
+ "config": {
+  "$defs": {
+   "Alerts": {
+    "additionalProperties": false,
+    "description": "Inbox that receives portal alert emails (saved-search notifications).",
+    "properties": {
+     "folder": {
+      "default": "INBOX",
+      "title": "Folder",
+      "type": "string"
+     },
+     "imap_host": {
+      "title": "Imap Host",
+      "type": "string"
+     },
+     "imap_port": {
+      "default": 993,
+      "title": "Imap Port",
+      "type": "integer"
+     },
+     "lookback_days": {
+      "default": 3,
+      "exclusiveMinimum": 0,
+      "title": "Lookback Days",
+      "type": "integer"
+     },
+     "password_env": {
+      "title": "Password Env",
+      "type": "string"
+     },
+     "sender_domains": {
+      "items": {
+       "type": "string"
+      },
+      "minItems": 1,
+      "title": "Sender Domains",
+      "type": "array"
+     },
+     "username_env": {
+      "title": "Username Env",
+      "type": "string"
+     }
+    },
+    "required": [
+     "imap_host",
+     "username_env",
+     "password_env",
+     "sender_domains"
+    ],
+    "title": "Alerts",
+    "type": "object"
+   },
+   "Area": {
+    "additionalProperties": false,
+    "description": "Where a flat may be. Every part is optional. Postcode and district lists need no network;\nthe radius needs the flat and the center placed on a map. An unknown location goes to\nreview, never to reject.",
+    "properties": {
+     "center": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Center"
+     },
+     "exclude_districts": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Exclude Districts",
+      "type": "array"
+     },
+     "exclude_postal_codes": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Exclude Postal Codes",
+      "type": "array"
+     },
+     "include_postal_codes": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Include Postal Codes",
+      "type": "array"
+     },
+     "max_km": {
+      "anyOf": [
+       {
+        "exclusiveMinimum": 0,
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Max Km"
+     }
+    },
+    "title": "Area",
+    "type": "object"
+   },
+   "AutoReply": {
+    "additionalProperties": false,
+    "description": "Automatic answer to a landlord's viewing offer. Off by default; shadow first.",
+    "properties": {
+     "daily_cap": {
+      "default": 5,
+      "minimum": 0,
+      "title": "Daily Cap",
+      "type": "integer"
+     },
+     "enabled": {
+      "default": false,
+      "title": "Enabled",
+      "type": "boolean"
+     },
+     "horizon_days": {
+      "default": 21,
+      "exclusiveMinimum": 0,
+      "title": "Horizon Days",
+      "type": "integer"
+     },
+     "max_replies_per_thread": {
+      "default": 1,
+      "minimum": 1,
+      "title": "Max Replies Per Thread",
+      "type": "integer"
+     },
+     "mode": {
+      "default": "shadow",
+      "enum": [
+       "shadow",
+       "live"
+      ],
+      "title": "Mode",
+      "type": "string"
+     }
+    },
+    "title": "AutoReply",
+    "type": "object"
+   },
+   "City": {
+    "additionalProperties": false,
+    "properties": {
+     "name": {
+      "title": "Name",
+      "type": "string"
+     }
+    },
+    "required": [
+     "name"
+    ],
+    "title": "City",
+    "type": "object"
+   },
+   "Commute": {
+    "additionalProperties": false,
+    "properties": {
+     "borderline_margin_minutes": {
+      "minimum": 0,
+      "title": "Borderline Margin Minutes",
+      "type": "integer"
+     },
+     "car_api_key_env": {
+      "default": "GOOGLE_ROUTES_API_KEY",
+      "title": "Car Api Key Env",
+      "type": "string"
+     },
+     "car_router": {
+      "const": "google_routes",
+      "title": "Car Router",
+      "type": "string"
+     },
+     "combine": {
+      "default": "all",
+      "enum": [
+       "all",
+       "any"
+      ],
+      "title": "Combine",
+      "type": "string"
+     },
+     "motis_base_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Motis Base Url"
+     },
+     "pt_router": {
+      "enum": [
+       "mvg",
+       "motis"
+      ],
+      "title": "Pt Router",
+      "type": "string"
+     },
+     "targets": {
+      "items": {
+       "$ref": "#/$defs/Target"
+      },
+      "minItems": 1,
+      "title": "Targets",
+      "type": "array"
+     }
+    },
+    "required": [
+     "targets",
+     "borderline_margin_minutes",
+     "pt_router",
+     "car_router"
+    ],
+    "title": "Commute",
+    "type": "object"
+   },
+   "Criteria": {
+    "additionalProperties": false,
+    "properties": {
+     "area": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Area"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "exclude_keywords": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Exclude Keywords",
+      "type": "array"
+     },
+     "max_cold_rent_eur": {
+      "exclusiveMinimum": 0,
+      "title": "Max Cold Rent Eur",
+      "type": "integer"
+     },
+     "max_warm_rent_eur": {
+      "exclusiveMinimum": 0,
+      "title": "Max Warm Rent Eur",
+      "type": "integer"
+     },
+     "min_area_m2": {
+      "exclusiveMinimum": 0,
+      "title": "Min Area M2",
+      "type": "integer"
+     },
+     "min_lease_months": {
+      "minimum": 0,
+      "title": "Min Lease Months",
+      "type": "integer"
+     },
+     "min_rooms": {
+      "exclusiveMinimum": 0,
+      "title": "Min Rooms",
+      "type": "number"
+     },
+     "move_in": {
+      "$ref": "#/$defs/MoveIn"
+     },
+     "nice_to_have": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Nice To Have",
+      "type": "array"
+     },
+     "station": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Station"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "max_warm_rent_eur",
+     "max_cold_rent_eur",
+     "min_area_m2",
+     "min_rooms",
+     "move_in",
+     "min_lease_months"
+    ],
+    "title": "Criteria",
+    "type": "object"
+   },
+   "Llm": {
+    "additionalProperties": false,
+    "properties": {
+     "api_key_env": {
+      "title": "Api Key Env",
+      "type": "string"
+     },
+     "base_url": {
+      "title": "Base Url",
+      "type": "string"
+     },
+     "log_answering_model": {
+      "default": true,
+      "title": "Log Answering Model",
+      "type": "boolean"
+     },
+     "timeout_seconds": {
+      "exclusiveMinimum": 0,
+      "title": "Timeout Seconds",
+      "type": "number"
+     }
+    },
+    "required": [
+     "base_url",
+     "api_key_env",
+     "timeout_seconds"
+    ],
+    "title": "Llm",
+    "type": "object"
+   },
+   "Loosen": {
+    "additionalProperties": false,
+    "properties": {
+     "every_days": {
+      "exclusiveMinimum": 0,
+      "title": "Every Days",
+      "type": "integer"
+     },
+     "floor": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Floor",
+      "type": "integer"
+     },
+     "step_points": {
+      "exclusiveMinimum": 0,
+      "title": "Step Points",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "step_points",
+     "every_days",
+     "floor"
+    ],
+    "title": "Loosen",
+    "type": "object"
+   },
+   "MoveIn": {
+    "additionalProperties": false,
+    "properties": {
+     "early_flex_days": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Early Flex Days",
+      "type": "integer"
+     },
+     "ideal_from": {
+      "format": "date",
+      "title": "Ideal From",
+      "type": "string"
+     },
+     "latest": {
+      "format": "date",
+      "title": "Latest",
+      "type": "string"
+     }
+    },
+    "required": [
+     "ideal_from",
+     "latest"
+    ],
+    "title": "MoveIn",
+    "type": "object"
+   },
+   "Notifications": {
+    "additionalProperties": false,
+    "properties": {
+     "channel": {
+      "enum": [
+       "ntfy",
+       "telegram"
+      ],
+      "title": "Channel",
+      "type": "string"
+     },
+     "heartbeat_hours": {
+      "exclusiveMinimum": 0,
+      "title": "Heartbeat Hours",
+      "type": "integer"
+     },
+     "silence_alert_hours": {
+      "anyOf": [
+       {
+        "exclusiveMinimum": 0,
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": 48,
+      "title": "Silence Alert Hours"
+     },
+     "topic_env": {
+      "title": "Topic Env",
+      "type": "string"
+     }
+    },
+    "required": [
+     "channel",
+     "topic_env",
+     "heartbeat_hours"
+    ],
+    "title": "Notifications",
+    "type": "object"
+   },
+   "Replies": {
+    "additionalProperties": false,
+    "description": "Inbox that receives landlord replies.",
+    "properties": {
+     "folder": {
+      "default": "INBOX",
+      "title": "Folder",
+      "type": "string"
+     },
+     "imap_host": {
+      "title": "Imap Host",
+      "type": "string"
+     },
+     "imap_port": {
+      "default": 993,
+      "title": "Imap Port",
+      "type": "integer"
+     },
+     "lookback_days": {
+      "default": 30,
+      "exclusiveMinimum": 0,
+      "title": "Lookback Days",
+      "type": "integer"
+     },
+     "password_env": {
+      "title": "Password Env",
+      "type": "string"
+     },
+     "username_env": {
+      "title": "Username Env",
+      "type": "string"
+     }
+    },
+    "required": [
+     "imap_host",
+     "username_env",
+     "password_env"
+    ],
+    "title": "Replies",
+    "type": "object"
+   },
+   "ReplyLlm": {
+    "additionalProperties": false,
+    "description": "Optional local LLM that reads landlord replies (classification, date extraction).\n\nOff by default. Replies are private correspondence, so only a model on this machine or\nthe local network is accepted; a hosted endpoint is rejected on purpose.",
+    "properties": {
+     "api_key_env": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Api Key Env"
+     },
+     "base_url": {
+      "default": "http://localhost:11434/v1",
+      "title": "Base Url",
+      "type": "string"
+     },
+     "enabled": {
+      "default": false,
+      "title": "Enabled",
+      "type": "boolean"
+     },
+     "model": {
+      "default": "llama3.1",
+      "title": "Model",
+      "type": "string"
+     },
+     "timeout_seconds": {
+      "default": 20,
+      "exclusiveMinimum": 0,
+      "title": "Timeout Seconds",
+      "type": "number"
+     }
+    },
+    "title": "ReplyLlm",
+    "type": "object"
+   },
+   "Scoring": {
+    "additionalProperties": false,
+    "properties": {
+     "version": {
+      "default": "1",
+      "title": "Version",
+      "type": "string"
+     },
+     "weights": {
+      "$ref": "#/$defs/Weights"
+     }
+    },
+    "title": "Scoring",
+    "type": "object"
+   },
+   "SendPolicy": {
+    "additionalProperties": false,
+    "properties": {
+     "daily_cap": {
+      "minimum": 0,
+      "title": "Daily Cap",
+      "type": "integer"
+     },
+     "enabled": {
+      "default": false,
+      "title": "Enabled",
+      "type": "boolean"
+     },
+     "kill_switch_file": {
+      "format": "path",
+      "title": "Kill Switch File",
+      "type": "string"
+     },
+     "loosen": {
+      "$ref": "#/$defs/Loosen"
+     },
+     "min_score": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Min Score",
+      "type": "integer"
+     },
+     "mode": {
+      "default": "shadow",
+      "enum": [
+       "shadow",
+       "live"
+      ],
+      "title": "Mode",
+      "type": "string"
+     },
+     "per_platform_daily_cap": {
+      "minimum": 0,
+      "title": "Per Platform Daily Cap",
+      "type": "integer"
+     },
+     "platform_allow_list": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Platform Allow List",
+      "type": "array"
+     },
+     "quiet_hours": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Quiet Hours"
+     }
+    },
+    "required": [
+     "min_score",
+     "loosen",
+     "daily_cap",
+     "per_platform_daily_cap",
+     "kill_switch_file"
+    ],
+    "title": "SendPolicy",
+    "type": "object"
+   },
+   "Smtp": {
+    "additionalProperties": false,
+    "description": "Outgoing mail for the email sender. Credentials come from environment variables.",
+    "properties": {
+     "from_address": {
+      "title": "From Address",
+      "type": "string"
+     },
+     "host": {
+      "title": "Host",
+      "type": "string"
+     },
+     "password_env": {
+      "title": "Password Env",
+      "type": "string"
+     },
+     "port": {
+      "default": 587,
+      "title": "Port",
+      "type": "integer"
+     },
+     "username_env": {
+      "title": "Username Env",
+      "type": "string"
+     }
+    },
+    "required": [
+     "host",
+     "username_env",
+     "password_env",
+     "from_address"
+    ],
+    "title": "Smtp",
+    "type": "object"
+   },
+   "Station": {
+    "additionalProperties": false,
+    "description": "Walking distance to the closest metro, S-Bahn or tram stop (an estimate).",
+    "properties": {
+     "detour_factor": {
+      "default": 1.3,
+      "minimum": 1,
+      "title": "Detour Factor",
+      "type": "number"
+     },
+     "kinds": {
+      "items": {
+       "enum": [
+        "subway",
+        "rail",
+        "tram",
+        "bus"
+       ],
+       "type": "string"
+      },
+      "title": "Kinds",
+      "type": "array"
+     },
+     "max_walk_minutes": {
+      "anyOf": [
+       {
+        "exclusiveMinimum": 0,
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Max Walk Minutes"
+     },
+     "required": {
+      "default": false,
+      "title": "Required",
+      "type": "boolean"
+     },
+     "walking_speed_kmh": {
+      "default": 4.8,
+      "exclusiveMinimum": 0,
+      "title": "Walking Speed Kmh",
+      "type": "number"
+     }
+    },
+    "title": "Station",
+    "type": "object"
+   },
+   "Storage": {
+    "additionalProperties": false,
+    "properties": {
+     "db_path": {
+      "format": "path",
+      "title": "Db Path",
+      "type": "string"
+     }
+    },
+    "required": [
+     "db_path"
+    ],
+    "title": "Storage",
+    "type": "object"
+   },
+   "Target": {
+    "additionalProperties": false,
+    "description": "A place you travel to regularly (workplace, university, family).",
+    "properties": {
+     "arrival_time": {
+      "pattern": "^\\d{2}:\\d{2}$",
+      "title": "Arrival Time",
+      "type": "string"
+     },
+     "destination": {
+      "title": "Destination",
+      "type": "string"
+     },
+     "max_car_minutes": {
+      "anyOf": [
+       {
+        "exclusiveMinimum": 0,
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Max Car Minutes"
+     },
+     "max_pt_minutes": {
+      "anyOf": [
+       {
+        "exclusiveMinimum": 0,
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Max Pt Minutes"
+     },
+     "modes": {
+      "default": "any",
+      "enum": [
+       "any",
+       "all"
+      ],
+      "title": "Modes",
+      "type": "string"
+     },
+     "name": {
+      "title": "Name",
+      "type": "string"
+     }
+    },
+    "required": [
+     "name",
+     "destination",
+     "arrival_time"
+    ],
+    "title": "Target",
+    "type": "object"
+   },
+   "Weights": {
+    "additionalProperties": false,
+    "properties": {
+     "balcony": {
+      "default": 5,
+      "minimum": 0,
+      "title": "Balcony",
+      "type": "number"
+     },
+     "commute": {
+      "default": 25,
+      "minimum": 0,
+      "title": "Commute",
+      "type": "number"
+     },
+     "completeness": {
+      "default": 5,
+      "minimum": 0,
+      "title": "Completeness",
+      "type": "number"
+     },
+     "freshness": {
+      "default": 10,
+      "minimum": 0,
+      "title": "Freshness",
+      "type": "number"
+     },
+     "move_in": {
+      "default": 15,
+      "minimum": 0,
+      "title": "Move In",
+      "type": "number"
+     },
+     "parking": {
+      "default": 3,
+      "minimum": 0,
+      "title": "Parking",
+      "type": "number"
+     },
+     "price": {
+      "default": 20,
+      "minimum": 0,
+      "title": "Price",
+      "type": "number"
+     },
+     "private_landlord": {
+      "default": 7,
+      "minimum": 0,
+      "title": "Private Landlord",
+      "type": "number"
+     },
+     "size": {
+      "default": 10,
+      "minimum": 0,
+      "title": "Size",
+      "type": "number"
+     },
+     "station": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Station",
+      "type": "number"
+     }
+    },
+    "title": "Weights",
+    "type": "object"
+   }
+  },
+  "additionalProperties": false,
+  "properties": {
+   "alerts": {
+    "anyOf": [
+     {
+      "$ref": "#/$defs/Alerts"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null
+   },
+   "auto_reply": {
+    "anyOf": [
+     {
+      "$ref": "#/$defs/AutoReply"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null
+   },
+   "city": {
+    "$ref": "#/$defs/City"
+   },
+   "commute": {
+    "$ref": "#/$defs/Commute"
+   },
+   "criteria": {
+    "$ref": "#/$defs/Criteria"
+   },
+   "llm": {
+    "$ref": "#/$defs/Llm"
+   },
+   "notifications": {
+    "$ref": "#/$defs/Notifications"
+   },
+   "replies": {
+    "anyOf": [
+     {
+      "$ref": "#/$defs/Replies"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null
+   },
+   "reply_llm": {
+    "anyOf": [
+     {
+      "$ref": "#/$defs/ReplyLlm"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null
+   },
+   "scoring": {
+    "$ref": "#/$defs/Scoring"
+   },
+   "send_policy": {
+    "$ref": "#/$defs/SendPolicy"
+   },
+   "smtp": {
+    "anyOf": [
+     {
+      "$ref": "#/$defs/Smtp"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null
+   },
+   "storage": {
+    "$ref": "#/$defs/Storage"
+   }
+  },
+  "required": [
+   "city",
+   "criteria",
+   "commute",
+   "send_policy",
+   "llm",
+   "notifications",
+   "storage"
+  ],
+  "title": "Config",
+  "type": "object"
+ },
+ "profile": {
+  "$defs": {
+   "Applicant": {
+    "additionalProperties": false,
+    "properties": {
+     "age": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Age"
+     },
+     "first_name": {
+      "title": "First Name",
+      "type": "string"
+     },
+     "last_name": {
+      "title": "Last Name",
+      "type": "string"
+     }
+    },
+    "required": [
+     "first_name",
+     "last_name"
+    ],
+    "title": "Applicant",
+    "type": "object"
+   },
+   "Availability": {
+    "additionalProperties": false,
+    "description": "When you can attend a viewing. The only source of times an automatic reply may state.",
+    "properties": {
+     "blackout_dates": {
+      "items": {
+       "format": "date",
+       "type": "string"
+      },
+      "title": "Blackout Dates",
+      "type": "array"
+     },
+     "min_notice_hours": {
+      "default": 12,
+      "minimum": 0,
+      "title": "Min Notice Hours",
+      "type": "integer"
+     },
+     "viewing_minutes": {
+      "default": 30,
+      "exclusiveMinimum": 0,
+      "title": "Viewing Minutes",
+      "type": "integer"
+     },
+     "windows": {
+      "items": {
+       "$ref": "#/$defs/Window"
+      },
+      "minItems": 1,
+      "title": "Windows",
+      "type": "array"
+     }
+    },
+    "required": [
+     "windows"
+    ],
+    "title": "Availability",
+    "type": "object"
+   },
+   "Contact": {
+    "additionalProperties": false,
+    "properties": {
+     "phone": {
+      "title": "Phone",
+      "type": "string"
+     },
+     "sender_email": {
+      "default": "",
+      "title": "Sender Email",
+      "type": "string"
+     }
+    },
+    "required": [
+     "phone"
+    ],
+    "title": "Contact",
+    "type": "object"
+   },
+   "Fact": {
+    "additionalProperties": false,
+    "properties": {
+     "de": {
+      "title": "De",
+      "type": "string"
+     },
+     "en": {
+      "title": "En",
+      "type": "string"
+     },
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "relevant_if": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Relevant If",
+      "type": "array"
+     },
+     "usage": {
+      "enum": [
+       "always",
+       "if_relevant",
+       "on_request"
+      ],
+      "title": "Usage",
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "de",
+     "en",
+     "usage"
+    ],
+    "title": "Fact",
+    "type": "object"
+   },
+   "MoveIn": {
+    "additionalProperties": false,
+    "properties": {
+     "earliest": {
+      "format": "date",
+      "title": "Earliest",
+      "type": "string"
+     },
+     "latest": {
+      "format": "date",
+      "title": "Latest",
+      "type": "string"
+     },
+     "reason": {
+      "default": "",
+      "title": "Reason",
+      "type": "string"
+     }
+    },
+    "required": [
+     "earliest",
+     "latest"
+    ],
+    "title": "MoveIn",
+    "type": "object"
+   },
+   "Viewing": {
+    "additionalProperties": false,
+    "properties": {
+     "de": {
+      "title": "De",
+      "type": "string"
+     },
+     "en": {
+      "title": "En",
+      "type": "string"
+     }
+    },
+    "required": [
+     "de",
+     "en"
+    ],
+    "title": "Viewing",
+    "type": "object"
+   },
+   "Window": {
+    "additionalProperties": false,
+    "properties": {
+     "days": {
+      "items": {
+       "enum": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+       ],
+       "type": "string"
+      },
+      "minItems": 1,
+      "title": "Days",
+      "type": "array"
+     },
+     "end": {
+      "pattern": "^\\d{2}:\\d{2}$",
+      "title": "End",
+      "type": "string"
+     },
+     "start": {
+      "pattern": "^\\d{2}:\\d{2}$",
+      "title": "Start",
+      "type": "string"
+     }
+    },
+    "required": [
+     "days",
+     "start",
+     "end"
+    ],
+    "title": "Window",
+    "type": "object"
+   }
+  },
+  "additionalProperties": false,
+  "properties": {
+   "applicants": {
+    "items": {
+     "$ref": "#/$defs/Applicant"
+    },
+    "minItems": 1,
+    "title": "Applicants",
+    "type": "array"
+   },
+   "availability": {
+    "anyOf": [
+     {
+      "$ref": "#/$defs/Availability"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null
+   },
+   "contact": {
+    "$ref": "#/$defs/Contact"
+   },
+   "facts": {
+    "items": {
+     "$ref": "#/$defs/Fact"
+    },
+    "title": "Facts",
+    "type": "array"
+   },
+   "move_in": {
+    "$ref": "#/$defs/MoveIn"
+   },
+   "viewing": {
+    "$ref": "#/$defs/Viewing"
+   }
+  },
+  "required": [
+   "applicants",
+   "contact",
+   "facts",
+   "viewing",
+   "move_in"
+  ],
+  "title": "Profile",
+  "type": "object"
+ }
+}

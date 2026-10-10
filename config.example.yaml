@@ -1,0 +1,120 @@
+# Example only. Copy to config.yaml (gitignored) and put YOUR real values there.
+# Never put real addresses, employers, income or contact data in this tracked file.
+# No secrets here either; reference environment variables instead.
+
+city:
+  name: "München"                    # any German city; added to partial addresses for routing
+
+criteria:
+  max_warm_rent_eur: 1600
+  max_cold_rent_eur: 1350
+  min_area_m2: 52
+  min_rooms: 2
+  move_in:
+    ideal_from: 2027-01-01
+    latest: 2027-02-01
+    early_flex_days: 31              # up to this many days earlier passes with a flag, lower score
+  exclude_keywords:                  # whole words, German listings; negations like "kein WBS" ignored
+    - WBS
+    - Tausch
+    - Wohnungstausch
+    - Tauschwohnung
+    - Wohngemeinschaft
+    - Gewerbe
+  min_lease_months: 24               # shorter or unknown end date (Zwischenmiete) is rejected
+  nice_to_have: [balcony, parking]
+
+commute:
+  combine: all                       # all: every target must pass | any: one is enough
+  borderline_margin_minutes: 5       # estimated results within this margin go to review
+  pt_router: motis                   # motis works for every German city; mvg is Munich only
+  car_router: google_routes
+  targets:                           # replace with your own places; add as many as you need
+    - name: work_a
+      destination: "Marienplatz, München"
+      arrival_time: "09:00"          # weekday morning arrival
+      max_pt_minutes: 30
+    - name: work_b
+      destination: "Ostbahnhof, München"
+      arrival_time: "08:30"
+      max_pt_minutes: 40
+      max_car_minutes: 35
+      modes: any                     # public transport OR car within its limit
+
+send_policy:
+  enabled: false                     # master switch; keep false until shadow mode is verified
+  mode: shadow                       # shadow | live
+  min_score: 85
+  loosen:
+    step_points: 5
+    every_days: 3
+    floor: 70
+  daily_cap: 10
+  per_platform_daily_cap: 5
+  platform_allow_list: []            # e.g. [email, wg_gesucht]
+  quiet_hours: null                  # e.g. "22:00-07:00"; null means send any time
+  kill_switch_file: ./KILL           # if this file exists, nothing is sent
+
+llm:
+  base_url: "http://localhost:3001/v1"   # FreeLLMAPI, OpenAI-compatible
+  api_key_env: FREELLMAPI_KEY
+  timeout_seconds: 6                     # on timeout or failed validation, use the template
+  log_answering_model: true
+
+notifications:
+  channel: ntfy                      # ntfy | telegram
+  topic_env: NTFY_TOPIC
+  heartbeat_hours: 24
+
+replies:                             # optional: enables `mia check-replies`
+  imap_host: imap.example.test
+  imap_port: 993
+  folder: INBOX
+  username_env: MIA_IMAP_USER        # credentials stay in the environment
+  password_env: MIA_IMAP_PASSWORD
+  lookback_days: 30
+
+alerts:                              # optional: portal alert emails as the listing source
+  imap_host: imap.example.test
+  imap_port: 993
+  folder: INBOX
+  username_env: MIA_ALERT_USER
+  password_env: MIA_ALERT_PASSWORD
+  lookback_days: 3
+  sender_domains: [example-portal.test]   # only these sender domains are read
+
+smtp:                                # optional: only needed for live sending by email
+  host: smtp.example.test
+  port: 587
+  username_env: MIA_SMTP_USER
+  password_env: MIA_SMTP_PASSWORD
+  from_address: me@example.test      # replace in your local config.yaml
+
+# --- optional and OFF by default: read landlord replies with a local model, answer viewing offers ---
+# reply_llm:                         # only a local or private-network endpoint is accepted
+#   enabled: true
+#   base_url: http://localhost:11434/v1   # e.g. Ollama or any OpenAI-compatible local server
+#   model: llama3.1
+#   timeout_seconds: 20
+# auto_reply:                        # needs `availability` in your profile
+#   enabled: true
+#   mode: shadow                     # shadow first: logs what it would confirm, sends nothing
+#   daily_cap: 5
+#   max_replies_per_thread: 1
+#   horizon_days: 21
+
+storage:
+  db_path: ./data/housing.db
+
+scoring:
+  version: "1"
+  weights:               # relative weights; the score is normalised to 0-100
+    commute: 25
+    price: 20
+    size: 10
+    move_in: 15
+    balcony: 5
+    parking: 3
+    private_landlord: 7
+    freshness: 10
+    completeness: 5

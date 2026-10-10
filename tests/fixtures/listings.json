@@ -1,0 +1,17 @@
+[
+  {"source": "immoscout", "source_id": "S-1", "url": "https://example.test/s1",
+   "title": "Helle 2-Zi-Wohnung mit Balkon", "warm_rent_eur": 1450, "cold_rent_eur": 1200,
+   "area_m2": 58.4, "rooms": 2, "street": "Leopoldstraße", "postal_code": "80802",
+   "district": "Schwabing", "landlord_type": "agency", "features": ["balcony"]},
+  {"source": "kleinanzeigen", "source_id": "K-9", "url": "https://example.test/k9",
+   "title": "Schwabing 2 Zimmer, Balkon, privat", "warm_rent_eur": 1450, "cold_rent_eur": 1200,
+   "area_m2": 58.0, "rooms": 2, "street": "Leopold Str.", "postal_code": "80802",
+   "landlord_type": "private"},
+  {"source": "wg_gesucht", "source_id": "W-5", "url": "https://example.test/w5",
+   "title": "Ruhige 3-Zimmer-Wohnung", "warm_rent_eur": 1690, "cold_rent_eur": 1480,
+   "area_m2": 74, "rooms": 3, "postal_code": "80939", "district": "Freimann",
+   "landlord_type": "private"},
+  {"source": "immowelt", "source_id": "I-2", "url": "https://example.test/i2",
+   "title": "Zwei Zimmer, Hasenbergl", "warm_rent_eur": 1300, "area_m2": 58.0, "rooms": 2,
+   "postal_code": "80935", "landlord_type": "agency"}
+]

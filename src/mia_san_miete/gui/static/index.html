@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mia san Miete</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 30 16 16 30 2 16z' fill='%230098d4'/%3E%3Cpath d='M16 9 23 16 16 23 9 16z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header>
+  <div class="band" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="/" aria-label="Mia san Miete">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="none" stroke="var(--accent)" stroke-width="2"/><path d="M12 7 17 12 12 17 7 12z" fill="var(--accent)"/></svg>
+        <span class="wm">Mia san Miete</span>
+      </a>
+      <span id="demoChip"></span>
+      <div class="spacer"></div>
+      <span id="chips" style="display:flex;gap:8px;flex-wrap:wrap"></span>
+      <button class="btn" id="killBtn"></button>
+      <div class="theme"><button class="btn" id="themeBtn" aria-haspopup="menu" aria-expanded="false"><span class="sw" id="themeSw"></span><span id="themeName">Theme</span></button><div class="menu" id="themeMenu" role="menu"></div></div>
+    </div>
+    <nav role="tablist" id="tabs"></nav>
+  </div>
+</header>
+<div class="wrap"><main id="main"></main></div>
+<div class="drawer-bg" id="drawerBg"><div class="drawer" id="drawer" role="dialog" aria-modal="true"></div></div>
+<div id="tip"></div>
+
+<script src="/static/settings.js"></script>
+<script>
+"use strict";
+const $ = (s, r = document) => r.querySelector(s);
+function h(tag, attrs, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (k === "class") el.className = v;
+    else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else if (v !== false && v != null) el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  return el;
+}
+const SVGNS = "http://www.w3.org/2000/svg";
+function s(tag, attrs, ...kids) {
+  const el = document.createElementNS(SVGNS, tag);
+  for (const [k, v] of Object.entries(attrs || {})) el.setAttribute(k, v);
+  for (const kid of kids.flat()) if (kid != null) el.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  return el;
+}
+async function api(path, opts) {
+  const r = await fetch(path, opts ? { ...opts, headers: { "X-Mia": "1", "Content-Type": "application/json" } } : undefined);
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) {
+    const e = new Error(data.error || (data.errors && data.errors[0] && data.errors[0].message) || r.statusText);
+    e.errors = data.errors;
+    throw e;
+  }
+  return data;
+}
+const post = (p, body) => api(p, { method: "POST", body: JSON.stringify(body || {}) });
+const pct = x => x == null ? "n/a" : Math.round(x * 100) + "%";
+const eur = x => x == null ? "n/a" : Math.round(x).toLocaleString("en-US") + " €";
+const when = iso => { const d = new Date(iso); return d.toLocaleDateString(undefined, { month: "short", day: "numeric" }) + " " + d.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" }); };
+const STATUS = {
+  sent: ["✓", "Sent"], queued: ["…", "Needs review"], skipped: ["✕", "Skipped"],
+  shadow_would_send: ["◔", "Would send"], failed: ["!", "Failed"], reply_queued: ["…", "Reply waiting"], sent_manually: ["•", "Sent by you"],
+};
+function statusLabel(st) {
+  if (STATUS[st]) return STATUS[st];
+  if (st.startsWith("blocked_")) return ["⏸", "Blocked: " + st.slice(8).replace(/_/g, " ")];
+  return ["•", st.replace(/_/g, " ")];
+}
+function statusEl(st) { const [, l] = statusLabel(st); return h("span", { class: "st " + st }, h("i", { class: "mk" }), l); }
+
+// tooltip
+const tip = $("#tip");
+document.addEventListener("pointermove", e => {
+  const t = e.target.closest && e.target.closest("[data-tip]");
+  if (!t) { tip.style.opacity = 0; return; }
+  tip.textContent = t.getAttribute("data-tip");
+  tip.style.opacity = 1;
+  tip.style.left = Math.min(e.clientX + 12, innerWidth - 270) + "px";
+  tip.style.top = (e.clientY + 14) + "px";
+});
+
+// themes: tokens live in app.css; the choice is remembered in this browser only
+const root = document.documentElement;
+const THEMES = [
+  { id: "auto", name: "Match system", sw: ["#f3eee4", "#15171b"] },
+  { id: "paper", name: "Paper", sw: ["#f3eee4", "#1d6a58"] },
+  { id: "slate", name: "Slate", sw: ["#15171b", "#e3a93f"] },
+  { id: "bavarian", name: "Weiß-Blau (Bavarian)", sw: ["#ffffff", "#0098d4"] },
+  { id: "night", name: "Bayern Nacht", sw: ["#091a2d", "#0098d4"] },
+  { id: "contrast", name: "High contrast", sw: ["#ffffff", "#000000"] },
+];
+function applyTheme(id) {
+  if (!THEMES.some(t => t.id === id)) id = "auto";
+  if (id === "auto") root.removeAttribute("data-theme"); else root.setAttribute("data-theme", id);
+  const t = THEMES.find(x => x.id === id);
+  $("#themeName").textContent = t.name;
+  $("#themeSw").style.setProperty("--sw1", t.sw[0]); $("#themeSw").style.setProperty("--sw2", t.sw[1]);
+  $("#themeMenu").querySelectorAll("button").forEach(b => b.setAttribute("aria-checked", b.dataset.id === id));
+  try { localStorage.setItem("mia-theme", id); } catch (_) {}
+}
+(function initTheme() {
+  const menu = $("#themeMenu");
+  for (const t of THEMES) {
+    const b = h("button", { role: "menuitemradio", "data-id": t.id, onclick: () => { applyTheme(t.id); closeMenu(); } },
+      h("span", { class: "sw", style: `--sw1:${t.sw[0]};--sw2:${t.sw[1]}` }), t.name);
+    menu.append(b);
+  }
+  const closeMenu = () => { menu.classList.remove("open"); $("#themeBtn").setAttribute("aria-expanded", "false"); };
+  $("#themeBtn").onclick = e => { e.stopPropagation(); const open = menu.classList.toggle("open"); $("#themeBtn").setAttribute("aria-expanded", open); if (open) menu.querySelector("button").focus(); };
+  document.addEventListener("click", closeMenu);
+  menu.addEventListener("keydown", e => {
+    const items = [...menu.querySelectorAll("button")], i = items.indexOf(document.activeElement);
+    if (e.key === "Escape") { closeMenu(); $("#themeBtn").focus(); }
+    else if (e.key === "ArrowDown") { items[(i + 1) % items.length].focus(); e.preventDefault(); }
+    else if (e.key === "ArrowUp") { items[(i - 1 + items.length) % items.length].focus(); e.preventDefault(); }
+  });
+  let saved = "auto";
+  try { saved = localStorage.getItem("mia-theme") || "auto"; } catch (_) {}
+  applyTheme({ light: "paper", dark: "slate" }[saved] || saved);
+})();
+
+function toast(msg) { const t = h("div", { class: "toast" }, msg); document.body.append(t); setTimeout(() => t.remove(), 2600); }
+
+// ---------- state & routing ----------
+let overview = null, tab = "overview", listFilter = null;
+const TABS = [["overview", "Overview"], ["queue", "Review queue"], ["listings", "Flats"], ["settings", "Settings"]];
+
+function renderChrome() {
+  const p = overview.policy;
+  $("#demoChip").replaceChildren(overview.demo ? h("span", { class: "chip demo" }, "DEMO · fictional data") : "");
+  $("#chips").replaceChildren(
+    h("span", { class: "chip" }, "Mode ", h("b", {}, p.mode === "live" ? (p.enabled ? "Live" : "Live (auto-send off)") : "Shadow")),
+    h("span", { class: "chip" }, "Sent today ", h("b", {}, `${p.sent_today} / ${p.daily_cap}`)),
+    p.kill_switch ? h("span", { class: "chip warn" }, "⏻ ", h("b", {}, "Kill switch ON")) : "");
+  const kb = $("#killBtn");
+  kb.textContent = p.kill_switch ? "Resume sending" : "Kill switch";
+  kb.className = "btn " + (p.kill_switch ? "primary" : "danger");
+  kb.onclick = async () => {
+    if (!p.kill_switch && !confirm("Stop all sending now?")) return;
+    await post(p.kill_switch ? "/api/resume" : "/api/kill");
+    await refresh();
+  };
+  $("#tabs").replaceChildren(...TABS.map(([id, label]) =>
+    h("button", { role: "tab", "aria-selected": id === tab, onclick: () => { tab = id; render(); } },
+      label, id === "queue" && overview.queue_size ? h("span", { class: "badge" }, overview.queue_size) : null)));
+}
+
+async function refresh() { overview = await api("/api/overview"); render(); }
+async function render() {
+  renderChrome();
+  const main = $("#main");
+  main.replaceChildren();
+  try {
+    if (tab === "overview") main.append(await viewOverview());
+    else if (tab === "queue") main.append(await viewQueue());
+    else if (tab === "listings") main.append(await viewListings());
+    else main.append(await viewSettings());
+  } catch (e) { main.append(h("div", { class: "empty" }, "Could not load: " + e.message)); }
+}
+
+// ---------- charts ----------
+function hbars(rows, color) {
+  const max = Math.max(1, ...rows.map(r => r.value));
+  return h("div", { class: "bars" }, rows.map(r => h("div", { class: "brow", "data-tip": `${r.label}: ${r.value}` },
+    h("span", {}, r.label),
+    h("div", { class: "tr" }, h("div", { class: "fill", style: `width:${(r.value / max) * 100}%;background:${r.color || color || "var(--seq)"}` })),
+    h("span", { class: "val" }, r.value))));
+}
+function columns(daily) {
+  const W = 520, H = 170, pad = { l: 28, r: 6, t: 8, b: 24 };
+  const max = Math.max(1, ...daily.map(d => d.total));
+  const bw = (W - pad.l - pad.r) / daily.length;
+  const svg = s("svg", { viewBox: `0 0 ${W} ${H}`, width: "100%", role: "img", "aria-label": "Flats processed per day" });
+  const ticks = [0, Math.ceil(max / 2), max];
+  for (const t of [...new Set(ticks)]) {
+    const y = pad.t + (H - pad.t - pad.b) * (1 - t / max);
+    svg.append(s("g", { class: "axis" }, s("line", { x1: pad.l, x2: W - pad.r, y1: y, y2: y }), s("text", { x: pad.l - 6, y: y + 4, "text-anchor": "end" }, t)));
+  }
+  daily.forEach((d, i) => {
+    const ch = (H - pad.t - pad.b) * (d.total / max);
+    const w = bw * 0.6, x = pad.l + i * bw + (bw - w) / 2, y = H - pad.b - ch;
+    const label = new Date(d.day + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" });
+    const g = s("g", { "data-tip": `${label}: ${d.total} flats` });
+    g.append(s("rect", { x: pad.l + i * bw, y: pad.t, width: bw, height: H - pad.t - pad.b, fill: "transparent" }));
+    if (d.total) g.append(s("path", { d: `M${x},${H - pad.b} V${y + 3} q0,-3 3,-3 h${w - 6} q3,0 3,3 V${H - pad.b} z`, fill: "var(--seq)" }));
+    svg.append(g);
+    if (i % 2 === 0 || daily.length < 9) svg.append(s("text", { x: x + w / 2, y: H - 6, "text-anchor": "middle" }, label));
+  });
+  return svg;
+}
+const CATS = [["viewing_invite", "Viewing invite", "var(--s1)"], ["documents_request", "Documents requested", "var(--s2)"],
+  ["rejection", "Rejection", "var(--s3)"], ["auto_reply", "Auto-reply", "var(--s4)"], ["other", "Needs a look", "var(--s5)"]];
+
+async function viewOverview() {
+  const m = overview.metrics, st = m.statuses;
+  const processed = Object.values(st).reduce((a, b) => a + b, 0);
+  const kpi = (v, l, n) => h("div", { class: "fig" }, h("div", { class: "fv" }, v), h("div", { class: "fl" }, l), n ? h("div", { class: "fn" }, n) : null);
+  const funnel = ["queued", "skipped", "shadow_would_send", "sent", "failed"].filter(k => st[k]).map(k => ({ label: statusLabel(k)[1], value: st[k] }));
+  Object.keys(st).filter(k => k.startsWith("blocked_")).forEach(k => funnel.push({ label: statusLabel(k)[1], value: st[k] }));
+  const cats = CATS.map(([k, l, c]) => ({ label: l, value: m.by_category[k] || 0, color: c }));
+  const totalReplies = cats.reduce((a, c) => a + c.value, 0);
+  const acts = await api("/api/activity");
+  const srcRows = Object.entries(m.by_source).map(([k, v]) => h("tr", {}, h("td", {}, k), h("td", { class: "num" }, v.sent), h("td", { class: "num" }, v.replied), h("td", { class: "num" }, v.positive)));
+  return h("div", {},
+    h("div", { class: "figs" },
+      kpi(processed, "Flats processed"), kpi(overview.queue_size, "Waiting for review"), kpi(m.sent, "Messages sent"),
+      kpi(pct(m.reply_rate), "Reply rate", m.sent < 30 ? `${m.replied} of ${m.sent} sent · small sample` : `${m.replied} of ${m.sent}`),
+      kpi(pct(m.positive_rate), "Viewing or documents", `${m.positive} of ${m.sent}`),
+      kpi(m.median_reply_hours == null ? "n/a" : m.median_reply_hours + " h", "Median time to reply")),
+    h("div", { class: "cols" },
+      h("div", { class: "card" }, h("h3", {}, "Flats per day"), h("div", { class: "sub" }, "Last 15 days, all decisions"), columns(overview.daily)),
+      h("div", { class: "card" }, h("h3", {}, "What happened to each flat"), h("div", { class: "sub" }, "Latest decision per action"), funnel.length ? hbars(funnel) : h("div", { class: "empty" }, "No decisions yet")),
+      h("div", { class: "card" }, h("h3", {}, "Replies by type"), h("div", { class: "sub" }, totalReplies ? `${totalReplies} replies matched to sent messages. "Needs a look" means the keyword classifier found no clear signal, so read those yourself.` : "No replies yet"),
+        totalReplies ? [hbars(cats), h("div", { class: "legend" }, cats.map(c => h("span", {}, h("i", { style: `background:${c.color}` }), `${c.label} ${c.value}`)))] : null),
+      h("div", { class: "card" }, h("h3", {}, "By source"), h("div", { class: "sub" }, "Sent messages and their outcomes"),
+        srcRows.length ? h("div", { class: "scroll-x" }, h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, "Source"), h("th", { class: "num" }, "Sent"), h("th", { class: "num" }, "Replied"), h("th", { class: "num" }, "Positive"))), h("tbody", {}, srcRows))) : h("div", { class: "empty" }, "Nothing sent yet")),
+      h("div", { class: "card" }, h("h3", {}, "Recent activity"), h("div", { class: "sub" }, "Newest first"),
+        h("ul", { class: "feed" }, acts.slice(0, 10).map(a => h("li", { style: "cursor:pointer", onclick: () => openDrawer(a.id) },
+          h("span", { class: "t" }, when(a.at)), h("span", { class: "ti" }, a.title || a.source), statusEl(a.status), h("span", { class: "score hide-sm" }, a.score == null ? "–" : Math.round(a.score))))))));
+}
+
+// ---------- queue ----------
+let qSel = 0;
+async function viewQueue() {
+  const items = await api("/api/queue");
+  const wrap = h("div", {});
+  if (!items.length) return h("div", { class: "card empty" }, h("h3", {}, "Nothing waiting for review"), h("div", { class: "sub" }, "Flats the policy does not send on its own show up here."), h("div", { class: "empty-band" }));
+  qSel = Math.min(qSel, items.length - 1);
+  wrap.append(h("p", { class: "hint" }, "Keyboard: ↑ ↓ select · A approve · S skip (outside the text box)."));
+  items.forEach((it, i) => {
+    const l = it.listing || {};
+    const ta = h("textarea", { "aria-label": "Message" }); ta.value = it.body;
+    const subj = h("input", { type: "text", value: it.subject, "aria-label": "Subject" });
+    const err = h("div", { class: "err" });
+    const approve = h("button", { class: "btn primary" }, it.kind === "reply" ? "Approve & send reply" : "Approve & send");
+    const skip = h("button", { class: "btn" }, "Skip");
+    const copy = h("button", { class: "btn", type: "button", title: "Copy subject and message to the clipboard" }, "Copy message");
+    copy.onclick = async () => {
+      try { await navigator.clipboard.writeText(subj.value + "\n\n" + ta.value); toast("Copied"); }
+      catch (_) { ta.select(); toast("Select and copy the text"); }
+    };
+    const mine = h("button", { class: "btn", type: "button", title: "You sent it yourself, for example through the portal" }, "I sent it myself");
+    mine.onclick = async () => {
+      if (!confirm("Mark this as sent by you? It will be recorded and the card cleared.")) return;
+      await post(`/api/queue/${it.action_id}/sent-manually`); toast("Recorded"); await refresh();
+    };
+    approve.onclick = async () => {
+      approve.disabled = true; err.textContent = "";
+      try {
+        const r = await post(`/api/queue/${it.action_id}/approve`, { body: ta.value, subject: subj.value });
+        toast(r.status === "sent" ? "Sent" : r.status === "not_sent_shadow_mode" ? "Shadow mode: nothing was sent" : "Not sent: " + r.status.replace(/_/g, " "));
+        await refresh();
+      } catch (e) { err.textContent = e.message; approve.disabled = false; }
+    };
+    skip.onclick = async () => { await post(`/api/queue/${it.action_id}/skip`); await refresh(); };
+    const card = h("div", { class: "card q-card", "data-qi": i, tabindex: "0", style: i === qSel ? "outline:2px solid var(--accent)" : "" },
+      h("div", { class: "q-head" },
+        h("span", { class: "score" }, it.score == null ? "–" : Math.round(it.score)),
+        h("div", { style: "flex:1;min-width:200px" }, h("h3", {}, (it.kind === "reply" ? "Reply to landlord: " : "") + (l.title || it.source)),
+          h("div", { class: "facts" }, [l.warm_rent_eur != null ? eur(l.warm_rent_eur) + " warm" : null, l.area_m2 ? l.area_m2 + " m²" : null, l.rooms ? l.rooms + " rooms" : null, l.district || l.postal_code, it.source].filter(Boolean).join(" · "))),
+        l.url ? h("a", { class: "btn", href: l.url, target: "_blank", rel: "noopener noreferrer" }, "Open listing ↗") : null),
+      h("div", { class: "reasons" }, it.reasons.map(r => h("span", { class: "chip" }, r))),
+      it.kind === "reply" ? h("div", { class: "hint" }, "Viewing offered. This answer lists your free times; nothing the landlord wrote is copied into it.") : [commuteBlock(it.commute), breakdownBars(it.breakdown)],
+      subj, ta, err,
+      h("div", { class: "actions" }, approve, copy, mine, skip, h("span", { class: "hint" }, "Edits are checked against your profile before sending. Sending through a portal? Copy, open the listing, send, then \"I sent it myself\".")));
+    wrap.append(card);
+  });
+  wrap._items = items;
+  window._queueItems = items;
+  return wrap;
+}
+document.addEventListener("keydown", e => {
+  if (tab !== "queue" || /^(TEXTAREA|INPUT)$/.test(document.activeElement.tagName) || !window._queueItems) return;
+  const n = window._queueItems.length;
+  if (e.key === "ArrowDown") qSel = Math.min(n - 1, qSel + 1);
+  else if (e.key === "ArrowUp") qSel = Math.max(0, qSel - 1);
+  else if (e.key.toLowerCase() === "a") { $(`[data-qi="${qSel}"] .primary`)?.click(); return; }
+  else if (e.key.toLowerCase() === "s") { $(`[data-qi="${qSel}"] .btn:not(.primary)`)?.click(); return; }
+  else return;
+  document.querySelectorAll("[data-qi]").forEach(c => c.style.outline = +c.dataset.qi === qSel ? "2px solid var(--accent)" : "");
+  $(`[data-qi="${qSel}"]`)?.scrollIntoView({ block: "center", behavior: "smooth" });
+  e.preventDefault();
+});
+
+function commuteBlock(c) {
+  if (!c) return h("div", { class: "hint" }, "No commute data was stored for this decision.");
+  const rows = [];
+  for (const t of c.targets) for (const mode of ["pt", "car"]) {
+    const limit = t["max_" + mode];
+    if (!limit) continue;
+    const v = t[mode], scale = Math.max(limit * 1.6, v || 0, 1);
+    const verdict = v == null ? "? unknown" : v <= limit ? "✓ within limit" : v <= limit + c.margin ? `~ ${Math.round(v - limit)} min over (borderline)` : `✕ ${Math.round(v - limit)} min over`;
+    rows.push(h("div", { class: "crow", "data-tip": `${t.name}, ${mode === "pt" ? "public transport" : "car"}: ${v == null ? "unknown" : Math.round(v) + " min"} (limit ${limit} min)` },
+      h("div", { class: "top" }, h("span", {}, h("b", {}, t.name), mode === "pt" ? " · public transport" : " · car"), h("span", {}, v == null ? "unknown" : Math.round(v) + " min")),
+      h("div", { class: "ctrack" }, v == null ? null : h("div", { class: "cfill" + (v > limit ? " over" : ""), style: `width:${Math.min(100, (v / scale) * 100)}%` }), h("div", { class: "climit", style: `left:${(limit / scale) * 100}%` })),
+      h("div", { class: "cnote" }, `Limit ${limit} min (marker) · ${verdict}`)));
+  }
+  const a = c.area;
+  if (a) {
+    const bar = (title, v, limit, unit, extra) => {
+      const scale = Math.max(limit ? limit * 1.6 : 1, v || 0, 1);
+      const verdict = v == null ? "? unknown" : !limit ? "" : v <= limit ? "✓ within limit" : `✕ ${(v - limit).toFixed(1)} ${unit} over`;
+      return h("div", { class: "crow", "data-tip": `${title}: ${v == null ? "unknown" : v.toFixed(1) + " " + unit}` },
+        h("div", { class: "top" }, h("span", {}, h("b", {}, title), extra || ""), h("span", {}, v == null ? "unknown" : (unit === "km" ? v.toFixed(1) : Math.round(v)) + " " + unit)),
+        h("div", { class: "ctrack" }, v == null ? null : h("div", { class: "cfill" + (limit && v > limit ? " over" : ""), style: `width:${Math.min(100, (v / scale) * 100)}%` }), limit ? h("div", { class: "climit", style: `left:${(limit / scale) * 100}%` }) : null),
+        h("div", { class: "cnote" }, (limit ? `Limit ${limit} ${unit} (marker) · ` : "") + verdict));
+    };
+    if (a.max_km != null || a.km != null) rows.push(bar("Distance from center", a.km, a.max_km, "km", " · straight line"));
+    if (a.max_walk != null || a.walk_minutes != null || a.stop_found === false)
+      rows.push(bar("Walk to nearest stop", a.walk_minutes, a.max_walk, "min", a.station ? ` · ${a.station}${a.station_kind ? " (" + a.station_kind + ")" : ""}` : (a.stop_found === false ? " · none found nearby" : "")));
+  }
+  if (!rows.length) return h("div", { class: "hint" }, "No commute limits are set.");
+  return h("div", { class: "commute" }, rows,
+    h("div", { class: "cnote" }, (c.combine === "all" ? "Every target must pass." : "One target is enough.") + ((c.estimated || (c.area && c.area.estimated)) ? " Estimated from the postcode or district, not a street address." : "") + (c.area && c.area.walk_minutes != null ? " Walking time is an estimate from the straight-line distance." : "") + " Times are for a weekday morning arrival; this is a schematic comparison, not a map."));
+}
+
+function breakdownBars(bd) {
+  const rows = Object.entries(bd || {}).map(([k, v]) => ({ label: k.replace(/_/g, " "), value: Math.round(v.value * 100), w: v.weight }));
+  if (!rows.length) return null;
+  return h("div", { class: "bars" }, rows.map(r => h("div", { class: "brow", "data-tip": `${r.label}: ${r.value}% of full marks, weight ${r.w}` },
+    h("span", {}, r.label), h("div", { class: "tr" }, h("div", { class: "fill", style: `width:${r.value}%` })), h("span", { class: "val" }, r.value + "%"))));
+}
+
+// ---------- listings ----------
+async function viewListings() {
+  const rows = await api("/api/listings" + (listFilter ? "?status=" + encodeURIComponent(listFilter) : ""));
+  const statuses = [null, "queued", "sent", "skipped", "shadow_would_send"];
+  const filters = h("div", { class: "filters" }, statuses.map(f => h("button", { class: "chip", "aria-pressed": listFilter === f, onclick: () => { listFilter = f; render(); } }, f ? statusLabel(f)[1] : "All")));
+  if (!rows.length) return h("div", {}, filters, h("div", { class: "card empty" }, "No flats here yet."));
+  return h("div", {}, filters, h("div", { class: "scroll-x" }, h("table", {},
+    h("thead", {}, h("tr", {}, h("th", {}, "Flat"), h("th", { class: "hide-sm" }, "Source"), h("th", { class: "num" }, "Rent"), h("th", { class: "num hide-sm" }, "Size"), h("th", {}, "Status"), h("th", { class: "num" }, "Score"))),
+    h("tbody", {}, rows.map(r => h("tr", { tabindex: "0", onclick: () => openDrawer(r.id), onkeydown: e => e.key === "Enter" && openDrawer(r.id) },
+      h("td", {}, h("div", { style: "font-weight:550" }, r.title || r.source), h("div", { class: "hint" }, [r.district, when(r.at)].filter(Boolean).join(" · "))),
+      h("td", { class: "hide-sm" }, r.source), h("td", { class: "num" }, eur(r.warm_rent_eur ?? r.cold_rent_eur)),
+      h("td", { class: "num hide-sm" }, r.area_m2 ? r.area_m2 + " m²" : "n/a"), h("td", {}, statusEl(r.status)),
+      h("td", { class: "num" }, h("span", { class: "score" }, r.score == null ? "–" : Math.round(r.score)))))))));
+}
+
+async function openDrawer(id) {
+  const d = await api("/api/listing/" + id);
+  const l = d.listing, dr = $("#drawer");
+  const rows = [["Rent (warm / cold)", `${eur(l.warm_rent_eur)} / ${eur(l.cold_rent_eur)}`], ["Size", l.area_m2 ? `${l.area_m2} m² · ${l.rooms ?? "?"} rooms` : "n/a"],
+    ["Location", [l.street, l.postal_code, l.district].filter(Boolean).join(", ") || "n/a"], ["Available from", l.available_from || (l.available_immediately ? "immediately" : "n/a")],
+    ["Landlord", l.landlord_type], ["Source", l.source], ["Score", d.score == null ? "n/a" : `${Math.round(d.score)} (v${d.score_version})`]];
+  dr.replaceChildren(
+    h("div", { class: "actions", style: "justify-content:space-between;margin-bottom:8px" }, statusEl(d.status), h("button", { class: "btn", onclick: closeDrawer }, "Close ✕")),
+    h("h2", {}, l.title || "Flat"),
+    h("p", { class: "hint" }, "Listing text comes from the portal; treat it as untrusted."),
+    h("dl", { class: "kv" }, rows.flatMap(([k, v]) => [h("dt", {}, k), h("dd", {}, v)])),
+    d.reasons.length ? h("div", { class: "reasons", style: "margin:14px 0" }, d.reasons.map(r => h("span", { class: "chip" }, r))) : null,
+    h("h3", { style: "margin:16px 0 8px;font-size:14px" }, "Commute"), commuteBlock(d.commute),
+    h("h3", { style: "margin:16px 0 8px;font-size:14px" }, "Score breakdown"), breakdownBars(d.breakdown) || h("div", { class: "hint" }, "No breakdown stored."),
+    h("h3", { style: "margin:16px 0 8px;font-size:14px" }, "History"),
+    h("ul", { class: "tl" }, d.history.map(x => h("li", {}, when(x.at) + " · " + statusLabel(x.status)[1]))),
+    l.url ? h("p", {}, h("a", { class: "btn", href: l.url, target: "_blank", rel: "noopener noreferrer" }, "Open listing ↗")) : null);
+  $("#drawerBg").classList.add("open");
+}
+function closeDrawer() { $("#drawerBg").classList.remove("open"); }
+$("#drawerBg").addEventListener("click", e => { if (e.target.id === "drawerBg") closeDrawer(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+// ---------- settings ----------
+async function viewSettings() {
+  if (appState && appState.editable) { const editor = await viewSettingsEditor(appState); if (editor) return editor; }
+  const c = await api("/api/settings");
+  const sec = (title, obj) => h("div", { class: "card" }, h("h3", {}, title), h("dl", { class: "kv", style: "margin-top:10px" },
+    Object.entries(obj).flatMap(([k, v]) => [h("dt", {}, k.replace(/_/g, " ")), h("dd", {}, typeof v === "object" && v !== null ? JSON.stringify(v) : String(v))])));
+  return h("div", {}, h("p", { class: "hint" }, "Read-only view of the effective settings. Workplaces, addresses, names and credentials are never shown here. Edit config.yaml to change anything."),
+    h("div", { class: "grid cols" }, sec("Search criteria", c.criteria), sec("Send policy", c.send_policy), sec("Commute", c.commute), sec("Score weights", c.scoring_weights)));
+}
+
+let appState = null;
+async function boot() {
+  try { appState = await api("/api/state"); }
+  catch (e) { $("#main").replaceChildren(h("div", { class: "empty" }, "Could not reach the dashboard API: " + e.message)); return; }
+  if (appState.setup) {
+    for (const id of ["#tabs", "#chips", "#demoChip"]) $(id).replaceChildren();
+    $("#killBtn").style.display = "none";
+    $("#main").replaceChildren(viewSetup());
+    return;
+  }
+  $("#killBtn").style.display = "";
+  await refresh();
+}
+boot();
+setInterval(() => { if (!appState || appState.setup || tab === "settings" || document.visibilityState !== "visible" || document.activeElement.matches("textarea,input")) return; api("/api/overview").then(o => { const changed = JSON.stringify(o) !== JSON.stringify(overview); overview = o; if (changed && !$("#drawerBg").classList.contains("open")) render(); }).catch(() => {}); }, 15000);
+</script>
+</body>
+</html>

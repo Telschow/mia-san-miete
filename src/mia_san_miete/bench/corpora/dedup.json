@@ -1,0 +1,3802 @@
+[
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 47.5,
+   "cold": 955,
+   "warm": 1129,
+   "postal": "65235",
+   "street": "Beispielweg 18"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 48.2,
+   "cold": 944,
+   "warm": 1161,
+   "postal": "65235",
+   "street": "Beispielweg 18"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 84.7,
+   "cold": 905,
+   "warm": 1065,
+   "postal": "22490",
+   "street": "Mühlbachstraße 34"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 84.5,
+   "cold": 894,
+   "warm": 1078,
+   "postal": "22490",
+   "street": "Mühlbachstraße 34"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 71.5,
+   "cold": 1808,
+   "warm": 2137,
+   "postal": "40024",
+   "street": "Hafenstraße 40"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 70.6,
+   "cold": 1785,
+   "warm": 2182,
+   "postal": "40024",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 97.4,
+   "cold": 1722,
+   "warm": 2039,
+   "postal": "69724",
+   "street": "Hafenstraße 27"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 97.4,
+   "cold": 1723,
+   "warm": 2033,
+   "postal": "69724",
+   "street": "Hafenstraße 27"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 66.5,
+   "cold": 903,
+   "warm": 1063,
+   "postal": "23074",
+   "street": "Gartenstr. 50"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 65.9,
+   "cold": 879,
+   "warm": 1085,
+   "postal": "80522",
+   "street": "Gartenstr. 50"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 81.8,
+   "cold": 1162,
+   "warm": 1384,
+   "postal": "69880",
+   "street": "Am Park 45"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 81.5,
+   "cold": 1133,
+   "warm": 1376,
+   "postal": "69880",
+   "street": "Mühlbachstraße 35"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 63.7,
+   "cold": 915,
+   "warm": 1071,
+   "postal": "35806",
+   "street": "Lindenallee 47"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 63.3,
+   "cold": 912,
+   "warm": 1089,
+   "postal": "35806",
+   "street": "Gartenstr. 60"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 109.7,
+   "cold": 1295,
+   "warm": 1500,
+   "postal": "50326",
+   "street": "Am Park 50"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 107.1,
+   "cold": 1393,
+   "warm": 1656,
+   "postal": "50326",
+   "street": "Am Park 50"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 58.0,
+   "cold": 1062,
+   "warm": 1283,
+   "postal": "20249",
+   "street": "Hafenstraße 10"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 57.8,
+   "cold": 1088,
+   "warm": 1260,
+   "postal": "20249",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 61.5,
+   "cold": 1657,
+   "warm": 1975,
+   "postal": "60122",
+   "street": "Am Park 9"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 61.1,
+   "cold": 1673,
+   "warm": 2023,
+   "postal": "60122",
+   "street": "Am Park 9"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 105.8,
+   "cold": 1697,
+   "warm": 2087,
+   "postal": "53365",
+   "street": "Lindenallee 37"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 107.7,
+   "cold": 1915,
+   "warm": 2358,
+   "postal": "53365",
+   "street": "Lindenallee 37"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 53.1,
+   "cold": 1684,
+   "warm": 2021,
+   "postal": "98704",
+   "street": "Hafenstraße 11"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 49.6,
+   "cold": 1561,
+   "warm": 1823,
+   "postal": "98704",
+   "street": "Hafenstraße 11"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 81.7,
+   "cold": 1260,
+   "warm": 1508,
+   "postal": "90668",
+   "street": "Hafenstraße 45"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 81.6,
+   "cold": 922,
+   "warm": 1142,
+   "postal": "90668",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 79.9,
+   "cold": 1567,
+   "warm": 1824,
+   "postal": "13672",
+   "street": "Beispielweg 37"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 79.4,
+   "cold": 1848,
+   "warm": 2255,
+   "postal": "13672",
+   "street": "Beispielweg 37"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 60.1,
+   "cold": 1138,
+   "warm": 1344,
+   "postal": "52239",
+   "street": "Am Park 55"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 60.8,
+   "cold": 1104,
+   "warm": 1331,
+   "postal": "52239",
+   "street": "Lindenallee 21"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 89.9,
+   "cold": 1460,
+   "warm": 1780,
+   "postal": "35567",
+   "street": "Am Park 37"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 86.6,
+   "cold": 1275,
+   "warm": 1552,
+   "postal": "35567",
+   "street": "Am Park 37"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 67.6,
+   "cold": 865,
+   "warm": 1077,
+   "postal": "97434",
+   "street": "Hafenstraße 31"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 67.5,
+   "cold": 874,
+   "warm": 1064,
+   "postal": "62154",
+   "street": "Hafen Str. 31"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 54.4,
+   "cold": 1285,
+   "warm": 1521,
+   "postal": "59778",
+   "street": "Gartenstr. 55"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 53.8,
+   "cold": 1271,
+   "warm": 1566,
+   "postal": "59778",
+   "street": "Gartenstr. 55"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 54.3,
+   "cold": 1673,
+   "warm": 2044,
+   "postal": "17179",
+   "street": "Beispielweg 44"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 54.1,
+   "cold": 1645,
+   "warm": 2023,
+   "postal": "28646",
+   "street": "Beispielweg 44"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 67.1,
+   "cold": 880,
+   "warm": 1050,
+   "postal": "38364",
+   "street": "Mühlbachstraße 21"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 66.5,
+   "cold": 894,
+   "warm": 1074,
+   "postal": "38364",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 47.5,
+   "cold": 1792,
+   "warm": 2152,
+   "postal": "36842",
+   "street": "Beispielweg 49"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 47.4,
+   "cold": 2103,
+   "warm": 2531,
+   "postal": "36842",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 59.8,
+   "cold": 1325,
+   "warm": 1646,
+   "postal": "39015",
+   "street": "Mühlbachstraße 21"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 59.3,
+   "cold": 1565,
+   "warm": 1855,
+   "postal": "39015",
+   "street": "Mühlbach Str. 21"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 35.4,
+   "cold": 1611,
+   "warm": 1989,
+   "postal": "49534",
+   "street": "Gartenstr. 15"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 35.1,
+   "cold": 1646,
+   "warm": 1976,
+   "postal": "49534",
+   "street": "Mühlbachstraße 50"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 52.1,
+   "cold": 1280,
+   "warm": 1536,
+   "postal": "34842",
+   "street": "Beispielweg 7"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 52.0,
+   "cold": 1274,
+   "warm": 1524,
+   "postal": "34842",
+   "street": "Beispielweg 7"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 78.7,
+   "cold": 1116,
+   "warm": 1332,
+   "postal": "14764",
+   "street": "Am Park 37"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 78.6,
+   "cold": 1130,
+   "warm": 1380,
+   "postal": "14764",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 107.3,
+   "cold": 1746,
+   "warm": 2070,
+   "postal": "35309",
+   "street": "Hafenstraße 52"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 109.7,
+   "cold": 2026,
+   "warm": 2372,
+   "postal": "35309",
+   "street": "Hafen Str. 52"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 56.1,
+   "cold": 1522,
+   "warm": 1816,
+   "postal": "94497",
+   "street": "Gartenstr. 4"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 55.9,
+   "cold": 1540,
+   "warm": 1798,
+   "postal": "94497",
+   "street": "Gartenstr. 4"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 41.9,
+   "cold": 1780,
+   "warm": 2111,
+   "postal": "57743",
+   "street": "Hafenstraße 20"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 42.6,
+   "cold": 1767,
+   "warm": 2123,
+   "postal": "57743",
+   "street": "Hafenstraße 20"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 52.9,
+   "cold": 1193,
+   "warm": 1440,
+   "postal": "60406",
+   "street": "Am Park 9"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 53.4,
+   "cold": 1218,
+   "warm": 1463,
+   "postal": "60406",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 79.4,
+   "cold": 1161,
+   "warm": 1393,
+   "postal": "61795",
+   "street": "Lindenallee 37"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 79.8,
+   "cold": 1262,
+   "warm": 1508,
+   "postal": "61795",
+   "street": "Lindenallee 37"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 44.4,
+   "cold": 845,
+   "warm": 1005,
+   "postal": "84212",
+   "street": "Mühlbachstraße 2"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 44.6,
+   "cold": 832,
+   "warm": 987,
+   "postal": "84212",
+   "street": "Gartenstr. 34"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 56.2,
+   "cold": 1789,
+   "warm": 2097,
+   "postal": "27520",
+   "street": "Gartenstr. 43"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 55.6,
+   "cold": 1729,
+   "warm": 2149,
+   "postal": "27520",
+   "street": "Gartenstr. 43"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 58.7,
+   "cold": 1015,
+   "warm": 1200,
+   "postal": "13252",
+   "street": "Hafenstraße 17"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 58.7,
+   "cold": 1026,
+   "warm": 1196,
+   "postal": "13252",
+   "street": "Hafen Str. 17"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 62.4,
+   "cold": 1342,
+   "warm": 1640,
+   "postal": "85232",
+   "street": "Hafenstraße 33"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 63.0,
+   "cold": 1338,
+   "warm": 1638,
+   "postal": "85232",
+   "street": "Hafen Str. 33"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 55.5,
+   "cold": 1509,
+   "warm": 1827,
+   "postal": "89985",
+   "street": "Mühlbachstraße 33"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 56.0,
+   "cold": 1536,
+   "warm": 1826,
+   "postal": "89985",
+   "street": "Mühlbach Str. 33"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 35.4,
+   "cold": 1288,
+   "warm": 1540,
+   "postal": "10158",
+   "street": "Am Park 51"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 36.0,
+   "cold": 1302,
+   "warm": 1528,
+   "postal": "10158",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 51.9,
+   "cold": 1362,
+   "warm": 1644,
+   "postal": "47018",
+   "street": "Gartenstr. 3"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 52.2,
+   "cold": 1389,
+   "warm": 1690,
+   "postal": "47018",
+   "street": "Lindenallee 60"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 45.2,
+   "cold": 688,
+   "warm": 826,
+   "postal": "84017",
+   "street": "Beispielweg 37"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 45.9,
+   "cold": 693,
+   "warm": 832,
+   "postal": "84017",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 67.0,
+   "cold": 1458,
+   "warm": 1728,
+   "postal": "42858",
+   "street": "Hafenstraße 17"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 63.7,
+   "cold": 1635,
+   "warm": 2009,
+   "postal": "42858",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 57.2,
+   "cold": 1193,
+   "warm": 1470,
+   "postal": "61435",
+   "street": "Gartenstr. 50"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 58.4,
+   "cold": 1281,
+   "warm": 1590,
+   "postal": "61435",
+   "street": "Gartenstr. 50"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 53.4,
+   "cold": 1203,
+   "warm": 1462,
+   "postal": "67858",
+   "street": "Lindenallee 50"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 52.8,
+   "cold": 1237,
+   "warm": 1475,
+   "postal": "67858",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 34.3,
+   "cold": 1536,
+   "warm": 1845,
+   "postal": "66134",
+   "street": "Gartenstr. 15"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 34.4,
+   "cold": 1509,
+   "warm": 1822,
+   "postal": "72192",
+   "street": "Garten Str. 15"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 78.3,
+   "cold": 868,
+   "warm": 1035,
+   "postal": "13116",
+   "street": "Lindenallee 43"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 77.6,
+   "cold": 871,
+   "warm": 1035,
+   "postal": "13116",
+   "street": "Lindenallee 43"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 40.8,
+   "cold": 974,
+   "warm": 1154,
+   "postal": "70495",
+   "street": "Lindenallee 45"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 37.9,
+   "cold": 1064,
+   "warm": 1259,
+   "postal": "70495",
+   "street": "Lindenallee 45"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 109.0,
+   "cold": 1792,
+   "warm": 2132,
+   "postal": "81511",
+   "street": "Beispielweg 1"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 109.3,
+   "cold": 1795,
+   "warm": 2153,
+   "postal": "81511",
+   "street": "Beispielweg 1"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 83.6,
+   "cold": 845,
+   "warm": 1008,
+   "postal": "82816",
+   "street": "Mühlbachstraße 12"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 84.0,
+   "cold": 684,
+   "warm": 833,
+   "postal": "82816",
+   "street": "Mühlbachstraße 12"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 101.2,
+   "cold": 1027,
+   "warm": 1218,
+   "postal": "99581",
+   "street": "Am Park 37"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 100.8,
+   "cold": 1222,
+   "warm": 1456,
+   "postal": "99581",
+   "street": "Am Park 37"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 51.5,
+   "cold": 814,
+   "warm": 991,
+   "postal": "52600",
+   "street": "Lindenallee 54"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 54.3,
+   "cold": 742,
+   "warm": 877,
+   "postal": "52600",
+   "street": "Lindenallee 54"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 63.8,
+   "cold": 736,
+   "warm": 887,
+   "postal": "85627",
+   "street": "Beispielweg 31"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 63.4,
+   "cold": 740,
+   "warm": 897,
+   "postal": "85627",
+   "street": "Beispielweg 31"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 59.3,
+   "cold": 1768,
+   "warm": 2198,
+   "postal": "79074",
+   "street": "Hafenstraße 31"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 59.5,
+   "cold": 1830,
+   "warm": 2120,
+   "postal": "79074",
+   "street": "Am Park 47"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 94.2,
+   "cold": 1562,
+   "warm": 1869,
+   "postal": "19611",
+   "street": "Am Park 18"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 90.6,
+   "cold": 1694,
+   "warm": 2024,
+   "postal": "19611",
+   "street": "Am Park 18"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 65.2,
+   "cold": 1690,
+   "warm": 2092,
+   "postal": "35751",
+   "street": "Mühlbachstraße 30"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 64.5,
+   "cold": 1739,
+   "warm": 2098,
+   "postal": "35751",
+   "street": "Mühlbachstraße 30"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 77.0,
+   "cold": 1405,
+   "warm": 1697,
+   "postal": "39230",
+   "street": "Hafenstraße 7"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 76.7,
+   "cold": 1387,
+   "warm": 1703,
+   "postal": "39230",
+   "street": "Hafen Str. 7"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 59.2,
+   "cold": 997,
+   "warm": 1223,
+   "postal": "32163",
+   "street": "Mühlbachstraße 20"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 63.6,
+   "cold": 1119,
+   "warm": 1353,
+   "postal": "32163",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 39.9,
+   "cold": 1336,
+   "warm": 1575,
+   "postal": "81840",
+   "street": "Am Park 24"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 40.2,
+   "cold": 1323,
+   "warm": 1595,
+   "postal": "81840",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 103.3,
+   "cold": 827,
+   "warm": 980,
+   "postal": "53163",
+   "street": "Lindenallee 20"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 103.6,
+   "cold": 810,
+   "warm": 1001,
+   "postal": "53163",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 42.8,
+   "cold": 1171,
+   "warm": 1366,
+   "postal": "58325",
+   "street": "Gartenstr. 36"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 42.8,
+   "cold": 1161,
+   "warm": 1360,
+   "postal": "58325",
+   "street": "Gartenstr. 36"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 70.8,
+   "cold": 926,
+   "warm": 1120,
+   "postal": "75332",
+   "street": "Gartenstr. 49"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 71.0,
+   "cold": 923,
+   "warm": 1095,
+   "postal": "75332",
+   "street": "Beispielweg 13"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 59.0,
+   "cold": 1864,
+   "warm": 2252,
+   "postal": "45901",
+   "street": "Gartenstr. 34"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 58.6,
+   "cold": 1873,
+   "warm": 2249,
+   "postal": "45901",
+   "street": "Mühlbach Str. 49"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 87.3,
+   "cold": 777,
+   "warm": 929,
+   "postal": "94294",
+   "street": "Hafenstraße 54"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 88.1,
+   "cold": 774,
+   "warm": 942,
+   "postal": "94294",
+   "street": "Hafen Str. 54"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 104.1,
+   "cold": 712,
+   "warm": 834,
+   "postal": "71628",
+   "street": "Mühlbachstraße 57"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 103.8,
+   "cold": 688,
+   "warm": 852,
+   "postal": "71628",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 81.4,
+   "cold": 1718,
+   "warm": 2044,
+   "postal": "84676",
+   "street": "Gartenstr. 27"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 81.7,
+   "cold": 1697,
+   "warm": 2041,
+   "postal": "84676",
+   "street": "Am Park 8"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 61.2,
+   "cold": 1906,
+   "warm": 2254,
+   "postal": "48515",
+   "street": "Mühlbachstraße 42"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 61.3,
+   "cold": 1864,
+   "warm": 2256,
+   "postal": "48515",
+   "street": "Mühlbachstraße 42"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 61.4,
+   "cold": 1807,
+   "warm": 2178,
+   "postal": "48562",
+   "street": "Lindenallee 29"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 61.3,
+   "cold": 1825,
+   "warm": 2167,
+   "postal": "26500",
+   "street": "Lindenallee 29"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 72.1,
+   "cold": 1065,
+   "warm": 1290,
+   "postal": "45918",
+   "street": "Mühlbachstraße 31"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 72.4,
+   "cold": 1080,
+   "warm": 1288,
+   "postal": "45918",
+   "street": "Mühlbachstraße 31"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 62.5,
+   "cold": 1524,
+   "warm": 1834,
+   "postal": "79207",
+   "street": "Hafenstraße 33"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 62.7,
+   "cold": 1538,
+   "warm": 1807,
+   "postal": "70638",
+   "street": "Hafen Str. 33"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 67.6,
+   "cold": 1281,
+   "warm": 1561,
+   "postal": "92742",
+   "street": "Am Park 16"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 67.0,
+   "cold": 1298,
+   "warm": 1518,
+   "postal": "92742",
+   "street": "Beispielweg 6"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 45.2,
+   "cold": 1548,
+   "warm": 1880,
+   "postal": "38548",
+   "street": "Hafenstraße 60"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 45.0,
+   "cold": 1787,
+   "warm": 2208,
+   "postal": "38548",
+   "street": "Hafenstraße 60"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 63.0,
+   "cold": 1456,
+   "warm": 1713,
+   "postal": "87254",
+   "street": "Lindenallee 51"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 60.2,
+   "cold": 1628,
+   "warm": 1983,
+   "postal": "87254",
+   "street": "Lindenallee 51"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 77.1,
+   "cold": 1869,
+   "warm": 2305,
+   "postal": "82674",
+   "street": "Lindenallee 9"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 76.9,
+   "cold": 1868,
+   "warm": 2257,
+   "postal": "82674",
+   "street": "Lindenallee 9"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 37.1,
+   "cold": 1519,
+   "warm": 1842,
+   "postal": "26186",
+   "street": "Am Park 57"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 37.5,
+   "cold": 1356,
+   "warm": 1636,
+   "postal": "26186",
+   "street": "Am Park 57"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 68.3,
+   "cold": 1579,
+   "warm": 1901,
+   "postal": "91913",
+   "street": "Lindenallee 29"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 68.6,
+   "cold": 1606,
+   "warm": 1881,
+   "postal": "91913",
+   "street": "Lindenallee 29"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 78.1,
+   "cold": 1415,
+   "warm": 1668,
+   "postal": "38843",
+   "street": "Am Park 21"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 77.8,
+   "cold": 1174,
+   "warm": 1392,
+   "postal": "38843",
+   "street": "Am Park 21"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 52.4,
+   "cold": 1008,
+   "warm": 1211,
+   "postal": "61863",
+   "street": "Beispielweg 16"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 51.4,
+   "cold": 994,
+   "warm": 1179,
+   "postal": "79058",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 60.1,
+   "cold": 1678,
+   "warm": 1970,
+   "postal": "20215",
+   "street": "Beispielweg 5"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 60.3,
+   "cold": 1685,
+   "warm": 2010,
+   "postal": "20215",
+   "street": "Beispielweg 5"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 55.5,
+   "cold": 1703,
+   "warm": 2075,
+   "postal": "71650",
+   "street": "Am Park 2"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 56.5,
+   "cold": 1720,
+   "warm": 2063,
+   "postal": "71650",
+   "street": "Am Park 2"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 75.1,
+   "cold": 982,
+   "warm": 1193,
+   "postal": "45086",
+   "street": "Beispielweg 47"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 74.6,
+   "cold": 1000,
+   "warm": 1170,
+   "postal": "45086",
+   "street": "Beispielweg 47"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 82.2,
+   "cold": 1746,
+   "warm": 2098,
+   "postal": "45481",
+   "street": "Hafenstraße 2"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 82.2,
+   "cold": 1755,
+   "warm": 2129,
+   "postal": "45481",
+   "street": "Hafen Str. 2"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 74.1,
+   "cold": 1142,
+   "warm": 1342,
+   "postal": "95463",
+   "street": "Am Park 2"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 73.5,
+   "cold": 1147,
+   "warm": 1350,
+   "postal": "95463",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 46.6,
+   "cold": 1457,
+   "warm": 1729,
+   "postal": "56438",
+   "street": "Beispielweg 19"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 47.2,
+   "cold": 1459,
+   "warm": 1761,
+   "postal": "56438",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 101.1,
+   "cold": 1029,
+   "warm": 1208,
+   "postal": "74377",
+   "street": "Hafenstraße 29"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 97.5,
+   "cold": 902,
+   "warm": 1049,
+   "postal": "74377",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 49.6,
+   "cold": 1292,
+   "warm": 1582,
+   "postal": "21613",
+   "street": "Am Park 8"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 49.7,
+   "cold": 1286,
+   "warm": 1570,
+   "postal": "21613",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 38.0,
+   "cold": 1202,
+   "warm": 1442,
+   "postal": "19005",
+   "street": "Gartenstr. 45"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 37.5,
+   "cold": 1239,
+   "warm": 1493,
+   "postal": "19005",
+   "street": "Gartenstr. 45"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 90.7,
+   "cold": 1227,
+   "warm": 1507,
+   "postal": "33713",
+   "street": "Am Park 13"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 91.7,
+   "cold": 1228,
+   "warm": 1486,
+   "postal": "33713",
+   "street": "Am Park 13"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 44.5,
+   "cold": 1085,
+   "warm": 1259,
+   "postal": "54398",
+   "street": "Mühlbachstraße 40"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 44.2,
+   "cold": 857,
+   "warm": 1061,
+   "postal": "54398",
+   "street": "Mühlbach Str. 40"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 45.7,
+   "cold": 1321,
+   "warm": 1637,
+   "postal": "81054",
+   "street": "Hafenstraße 25"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 45.7,
+   "cold": 1365,
+   "warm": 1619,
+   "postal": "81054",
+   "street": "Hafenstraße 25"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 46.9,
+   "cold": 1814,
+   "warm": 2139,
+   "postal": "44322",
+   "street": "Beispielweg 22"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 47.1,
+   "cold": 1494,
+   "warm": 1810,
+   "postal": "44322",
+   "street": "Beispielweg 22"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 68.0,
+   "cold": 1480,
+   "warm": 1801,
+   "postal": "93555",
+   "street": "Mühlbachstraße 46"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 69.0,
+   "cold": 1471,
+   "warm": 1835,
+   "postal": "96171",
+   "street": "Mühlbach Str. 46"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 36.0,
+   "cold": 1202,
+   "warm": 1435,
+   "postal": "44956",
+   "street": "Beispielweg 49"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 36.3,
+   "cold": 1213,
+   "warm": 1439,
+   "postal": "44956",
+   "street": "Beispielweg 49"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 93.3,
+   "cold": 1041,
+   "warm": 1238,
+   "postal": "53751",
+   "street": "Lindenallee 57"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 93.3,
+   "cold": 1027,
+   "warm": 1271,
+   "postal": "53751",
+   "street": "Lindenallee 57"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 107.9,
+   "cold": 1306,
+   "warm": 1600,
+   "postal": "23654",
+   "street": "Gartenstr. 27"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 108.6,
+   "cold": 1301,
+   "warm": 1563,
+   "postal": "23654",
+   "street": "Gartenstr. 27"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 110.3,
+   "cold": 1518,
+   "warm": 1779,
+   "postal": "46029",
+   "street": "Am Park 22"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 107.9,
+   "cold": 1679,
+   "warm": 2078,
+   "postal": "46029",
+   "street": "Am Park 22"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 47.3,
+   "cold": 1773,
+   "warm": 2117,
+   "postal": "24526",
+   "street": "Mühlbachstraße 12"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 46.8,
+   "cold": 1749,
+   "warm": 2143,
+   "postal": "24526",
+   "street": "Mühlbach Str. 12"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 62.0,
+   "cold": 1121,
+   "warm": 1362,
+   "postal": "31752",
+   "street": "Beispielweg 17"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 62.3,
+   "cold": 1121,
+   "warm": 1373,
+   "postal": "31752",
+   "street": "Beispielweg 17"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 43.7,
+   "cold": 987,
+   "warm": 1183,
+   "postal": "74377",
+   "street": "Lindenallee 60"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 43.2,
+   "cold": 993,
+   "warm": 1173,
+   "postal": "74377",
+   "street": "Lindenallee 60"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 33.0,
+   "cold": 794,
+   "warm": 941,
+   "postal": "17246",
+   "street": "Mühlbachstraße 58"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 33.1,
+   "cold": 881,
+   "warm": 1063,
+   "postal": "17246",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 55.9,
+   "cold": 1214,
+   "warm": 1446,
+   "postal": "90419",
+   "street": "Am Park 30"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 56.9,
+   "cold": 1228,
+   "warm": 1436,
+   "postal": "90419",
+   "street": "Beispielweg 43"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 79.6,
+   "cold": 1306,
+   "warm": 1621,
+   "postal": "90564",
+   "street": "Hafenstraße 13"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 79.7,
+   "cold": 1335,
+   "warm": 1600,
+   "postal": "35017",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 40.0,
+   "cold": 806,
+   "warm": 1003,
+   "postal": "42248",
+   "street": "Lindenallee 40"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 39.7,
+   "cold": 822,
+   "warm": 1003,
+   "postal": "42248",
+   "street": "Lindenallee 40"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 35.9,
+   "cold": 948,
+   "warm": 1169,
+   "postal": "31739",
+   "street": "Beispielweg 19"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 36.7,
+   "cold": 948,
+   "warm": 1173,
+   "postal": "31739",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 61.7,
+   "cold": 1009,
+   "warm": 1213,
+   "postal": "94731",
+   "street": "Hafenstraße 60"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 59.8,
+   "cold": 1044,
+   "warm": 1288,
+   "postal": "94731",
+   "street": "Hafenstraße 60"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 61.9,
+   "cold": 1430,
+   "warm": 1761,
+   "postal": "69548",
+   "street": "Mühlbachstraße 46"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 61.9,
+   "cold": 1676,
+   "warm": 2013,
+   "postal": "69548",
+   "street": "Mühlbachstraße 46"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 37.5,
+   "cold": 1210,
+   "warm": 1453,
+   "postal": "58537",
+   "street": "Lindenallee 38"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 37.1,
+   "cold": 1224,
+   "warm": 1457,
+   "postal": "58537",
+   "street": "Hafenstraße 21"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 94.5,
+   "cold": 815,
+   "warm": 980,
+   "postal": "11224",
+   "street": "Gartenstr. 10"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 93.9,
+   "cold": 756,
+   "warm": 885,
+   "postal": "11224",
+   "street": "Garten Str. 10"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 79.2,
+   "cold": 956,
+   "warm": 1185,
+   "postal": "94817",
+   "street": "Gartenstr. 37"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 79.4,
+   "cold": 963,
+   "warm": 1184,
+   "postal": "57561",
+   "street": "Gartenstr. 37"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 88.9,
+   "cold": 1044,
+   "warm": 1259,
+   "postal": "22231",
+   "street": "Lindenallee 10"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 88.5,
+   "cold": 1036,
+   "warm": 1252,
+   "postal": "22231",
+   "street": "Garten Str. 14"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 89.0,
+   "cold": 1633,
+   "warm": 1979,
+   "postal": "48779",
+   "street": "Lindenallee 28"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 88.3,
+   "cold": 1688,
+   "warm": 1996,
+   "postal": "48779",
+   "street": "Lindenallee 28"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 42.2,
+   "cold": 1234,
+   "warm": 1459,
+   "postal": "45482",
+   "street": "Lindenallee 30"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 43.3,
+   "cold": 1221,
+   "warm": 1455,
+   "postal": "45482",
+   "street": "Lindenallee 30"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 71.8,
+   "cold": 924,
+   "warm": 1097,
+   "postal": "87925",
+   "street": "Lindenallee 42"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 71.5,
+   "cold": 914,
+   "warm": 1102,
+   "postal": "87925",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 65.0,
+   "cold": 1119,
+   "warm": 1306,
+   "postal": "19462",
+   "street": "Gartenstr. 49"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 64.8,
+   "cold": 1096,
+   "warm": 1324,
+   "postal": "19462",
+   "street": "Gartenstr. 49"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 85.2,
+   "cold": 1724,
+   "warm": 2016,
+   "postal": "90487",
+   "street": "Am Park 46"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 84.7,
+   "cold": 1732,
+   "warm": 2056,
+   "postal": "90487",
+   "street": "Am Park 46"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 36.7,
+   "cold": 1187,
+   "warm": 1470,
+   "postal": "64166",
+   "street": "Gartenstr. 59"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 36.0,
+   "cold": 1195,
+   "warm": 1471,
+   "postal": "64166",
+   "street": "Garten Str. 59"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 48.7,
+   "cold": 1230,
+   "warm": 1512,
+   "postal": "14256",
+   "street": "Hafenstraße 8"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 48.6,
+   "cold": 1262,
+   "warm": 1525,
+   "postal": "25672",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 33.4,
+   "cold": 1444,
+   "warm": 1755,
+   "postal": "64182",
+   "street": "Lindenallee 44"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 33.4,
+   "cold": 1415,
+   "warm": 1699,
+   "postal": "64182",
+   "street": "Am Park 17"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 59.9,
+   "cold": 1446,
+   "warm": 1713,
+   "postal": "33870",
+   "street": "Lindenallee 35"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 61.1,
+   "cold": 1463,
+   "warm": 1767,
+   "postal": "10786",
+   "street": "Lindenallee 35"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 51.3,
+   "cold": 1637,
+   "warm": 1949,
+   "postal": "92264",
+   "street": "Lindenallee 25"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 47.4,
+   "cold": 1794,
+   "warm": 2121,
+   "postal": "92264",
+   "street": "Lindenallee 25"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 77.9,
+   "cold": 846,
+   "warm": 1035,
+   "postal": "47781",
+   "street": "Mühlbachstraße 38"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 79.8,
+   "cold": 966,
+   "warm": 1175,
+   "postal": "47781",
+   "street": "Mühlbach Str. 38"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 61.0,
+   "cold": 996,
+   "warm": 1175,
+   "postal": "62351",
+   "street": "Hafenstraße 7"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 61.3,
+   "cold": 993,
+   "warm": 1200,
+   "postal": "62351",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 50.3,
+   "cold": 1315,
+   "warm": 1598,
+   "postal": "54056",
+   "street": "Am Park 19"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 49.6,
+   "cold": 1313,
+   "warm": 1611,
+   "postal": "54056",
+   "street": "Am Park 19"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 68.2,
+   "cold": 1694,
+   "warm": 2037,
+   "postal": "96724",
+   "street": "Lindenallee 25"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 69.2,
+   "cold": 1682,
+   "warm": 2022,
+   "postal": "96724",
+   "street": "Lindenallee 25"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 109.5,
+   "cold": 865,
+   "warm": 1044,
+   "postal": "90034",
+   "street": "Beispielweg 27"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 109.4,
+   "cold": 872,
+   "warm": 1059,
+   "postal": "90034",
+   "street": "Beispielweg 27"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 51.0,
+   "cold": 1245,
+   "warm": 1503,
+   "postal": "99194",
+   "street": "Hafenstraße 49"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 51.6,
+   "cold": 1244,
+   "warm": 1511,
+   "postal": "99194",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 97.5,
+   "cold": 1684,
+   "warm": 2029,
+   "postal": "74408",
+   "street": "Gartenstr. 33"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 93.5,
+   "cold": 1889,
+   "warm": 2221,
+   "postal": "74408",
+   "street": "Garten Str. 33"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 43.5,
+   "cold": 1206,
+   "warm": 1421,
+   "postal": "46507",
+   "street": "Gartenstr. 56"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 43.5,
+   "cold": 1192,
+   "warm": 1419,
+   "postal": "46507",
+   "street": "Garten Str. 56"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 49.8,
+   "cold": 1624,
+   "warm": 1925,
+   "postal": "56435",
+   "street": "Beispielweg 19"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 50.5,
+   "cold": 1644,
+   "warm": 1913,
+   "postal": "56435",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 56.6,
+   "cold": 1557,
+   "warm": 1833,
+   "postal": "15184",
+   "street": "Gartenstr. 56"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 57.1,
+   "cold": 1531,
+   "warm": 1869,
+   "postal": "20169",
+   "street": "Garten Str. 56"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 95.4,
+   "cold": 935,
+   "warm": 1149,
+   "postal": "98786",
+   "street": "Am Park 21"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 95.3,
+   "cold": 965,
+   "warm": 1127,
+   "postal": "98786",
+   "street": "Am Park 21"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 36.1,
+   "cold": 963,
+   "warm": 1124,
+   "postal": "97082",
+   "street": "Hafenstraße 38"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 36.1,
+   "cold": 950,
+   "warm": 1157,
+   "postal": "32188",
+   "street": "Hafenstraße 38"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 35.3,
+   "cold": 1603,
+   "warm": 1965,
+   "postal": "63033",
+   "street": "Gartenstr. 8"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 35.6,
+   "cold": 2101,
+   "warm": 2487,
+   "postal": "63033",
+   "street": "Garten Str. 8"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 41.9,
+   "cold": 1224,
+   "warm": 1478,
+   "postal": "23440",
+   "street": "Hafenstraße 8"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 41.9,
+   "cold": 1254,
+   "warm": 1464,
+   "postal": "23440",
+   "street": "Hafenstraße 8"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 40.6,
+   "cold": 885,
+   "warm": 1055,
+   "postal": "19143",
+   "street": "Hafenstraße 50"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 40.9,
+   "cold": 696,
+   "warm": 848,
+   "postal": "19143",
+   "street": "Hafen Str. 50"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 44.5,
+   "cold": 1875,
+   "warm": 2192,
+   "postal": "97333",
+   "street": "Beispielweg 18"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 44.8,
+   "cold": 1830,
+   "warm": 2225,
+   "postal": "97333",
+   "street": "Beispielweg 18"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 49.7,
+   "cold": 1749,
+   "warm": 2054,
+   "postal": "39828",
+   "street": "Hafenstraße 60"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 46.0,
+   "cold": 1974,
+   "warm": 2396,
+   "postal": "39828",
+   "street": "Hafenstraße 60"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 43.6,
+   "cold": 1763,
+   "warm": 2099,
+   "postal": "27607",
+   "street": "Lindenallee 28"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 44.6,
+   "cold": 1725,
+   "warm": 2083,
+   "postal": "27607",
+   "street": "Lindenallee 28"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 83.3,
+   "cold": 1417,
+   "warm": 1700,
+   "postal": "49558",
+   "street": "Gartenstr. 52"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 83.7,
+   "cold": 1423,
+   "warm": 1707,
+   "postal": "49558",
+   "street": "Am Park 20"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 46.7,
+   "cold": 874,
+   "warm": 1044,
+   "postal": "73513",
+   "street": "Am Park 24"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 46.4,
+   "cold": 677,
+   "warm": 801,
+   "postal": "73513",
+   "street": "Am Park 24"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 93.2,
+   "cold": 1706,
+   "warm": 2078,
+   "postal": "30443",
+   "street": "Lindenallee 51"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 92.6,
+   "cold": 1687,
+   "warm": 2042,
+   "postal": "30443",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 47.8,
+   "cold": 1805,
+   "warm": 2196,
+   "postal": "32255",
+   "street": "Hafenstraße 33"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 47.9,
+   "cold": 1803,
+   "warm": 2195,
+   "postal": "32255",
+   "street": "Hafen Str. 33"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 35.8,
+   "cold": 1863,
+   "warm": 2222,
+   "postal": "82528",
+   "street": "Gartenstr. 28"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 35.0,
+   "cold": 1883,
+   "warm": 2188,
+   "postal": "82528",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 33.8,
+   "cold": 774,
+   "warm": 916,
+   "postal": "27054",
+   "street": "Mühlbachstraße 28"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 33.2,
+   "cold": 755,
+   "warm": 894,
+   "postal": "27054",
+   "street": "Mühlbach Str. 28"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 56.9,
+   "cold": 1371,
+   "warm": 1663,
+   "postal": "98551",
+   "street": "Mühlbachstraße 12"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 56.7,
+   "cold": 1388,
+   "warm": 1642,
+   "postal": "85531",
+   "street": "Mühlbach Str. 12"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 58.5,
+   "cold": 989,
+   "warm": 1199,
+   "postal": "46363",
+   "street": "Beispielweg 49"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 58.6,
+   "cold": 1018,
+   "warm": 1209,
+   "postal": "46363",
+   "street": "Beispielweg 49"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 73.0,
+   "cold": 904,
+   "warm": 1067,
+   "postal": "82386",
+   "street": "Mühlbachstraße 54"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 73.2,
+   "cold": 900,
+   "warm": 1089,
+   "postal": "82386",
+   "street": "Mühlbach Str. 54"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 76.2,
+   "cold": 1433,
+   "warm": 1695,
+   "postal": "54197",
+   "street": "Beispielweg 13"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 76.3,
+   "cold": 1418,
+   "warm": 1684,
+   "postal": "54197",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 37.0,
+   "cold": 1776,
+   "warm": 2080,
+   "postal": "92277",
+   "street": "Mühlbachstraße 45"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 37.6,
+   "cold": 1770,
+   "warm": 2111,
+   "postal": "92277",
+   "street": "Mühlbachstraße 45"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 41.2,
+   "cold": 731,
+   "warm": 860,
+   "postal": "38407",
+   "street": "Gartenstr. 18"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 41.7,
+   "cold": 718,
+   "warm": 851,
+   "postal": "38407",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 59.2,
+   "cold": 1460,
+   "warm": 1771,
+   "postal": "92312",
+   "street": "Am Park 34"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 59.6,
+   "cold": 1502,
+   "warm": 1767,
+   "postal": "63278",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 51.7,
+   "cold": 731,
+   "warm": 849,
+   "postal": "42879",
+   "street": "Am Park 30"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 51.6,
+   "cold": 706,
+   "warm": 865,
+   "postal": "42879",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 63.8,
+   "cold": 1428,
+   "warm": 1680,
+   "postal": "70042",
+   "street": "Hafenstraße 31"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 63.3,
+   "cold": 1423,
+   "warm": 1722,
+   "postal": "56013",
+   "street": "Hafenstraße 31"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 61.9,
+   "cold": 1119,
+   "warm": 1376,
+   "postal": "90029",
+   "street": "Mühlbachstraße 23"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 62.3,
+   "cold": 1131,
+   "warm": 1343,
+   "postal": "55185",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 72.9,
+   "cold": 926,
+   "warm": 1086,
+   "postal": "12449",
+   "street": "Hafenstraße 22"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 73.1,
+   "cold": 934,
+   "warm": 1103,
+   "postal": "12449",
+   "street": "Hafen Str. 22"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 32.7,
+   "cold": 1854,
+   "warm": 2204,
+   "postal": "50952",
+   "street": "Gartenstr. 43"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 33.0,
+   "cold": 1817,
+   "warm": 2213,
+   "postal": "50952",
+   "street": "Garten Str. 43"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 51.3,
+   "cold": 1660,
+   "warm": 1975,
+   "postal": "96918",
+   "street": "Lindenallee 40"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 50.8,
+   "cold": 1663,
+   "warm": 2024,
+   "postal": "96918",
+   "street": "Lindenallee 40"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 60.7,
+   "cold": 1259,
+   "warm": 1560,
+   "postal": "88148",
+   "street": "Beispielweg 20"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 60.4,
+   "cold": 1270,
+   "warm": 1539,
+   "postal": "88148",
+   "street": "Beispielweg 20"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 58.1,
+   "cold": 1038,
+   "warm": 1242,
+   "postal": "45457",
+   "street": "Lindenallee 41"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 58.2,
+   "cold": 821,
+   "warm": 956,
+   "postal": "45457",
+   "street": "Lindenallee 41"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 42.1,
+   "cold": 1232,
+   "warm": 1481,
+   "postal": "52304",
+   "street": "Beispielweg 46"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 41.4,
+   "cold": 1245,
+   "warm": 1458,
+   "postal": "52304",
+   "street": "Beispielweg 46"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 69.0,
+   "cold": 1830,
+   "warm": 2214,
+   "postal": "77720",
+   "street": "Beispielweg 57"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 69.5,
+   "cold": 1829,
+   "warm": 2218,
+   "postal": "59353",
+   "street": "Beispielweg 57"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 62.0,
+   "cold": 941,
+   "warm": 1110,
+   "postal": "52475",
+   "street": "Gartenstr. 44"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 61.5,
+   "cold": 944,
+   "warm": 1133,
+   "postal": "52475",
+   "street": "Garten Str. 44"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 76.4,
+   "cold": 954,
+   "warm": 1131,
+   "postal": "33659",
+   "street": "Hafenstraße 60"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 76.0,
+   "cold": 959,
+   "warm": 1162,
+   "postal": "33659",
+   "street": "Beispielweg 59"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 35.6,
+   "cold": 1505,
+   "warm": 1821,
+   "postal": "19908",
+   "street": "Mühlbachstraße 48"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 36.5,
+   "cold": 1496,
+   "warm": 1806,
+   "postal": "19908",
+   "street": "Hafenstraße 39"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 45.1,
+   "cold": 1740,
+   "warm": 2017,
+   "postal": "45808",
+   "street": "Mühlbachstraße 59"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 47.2,
+   "cold": 1515,
+   "warm": 1859,
+   "postal": "45808",
+   "street": "Mühlbachstraße 59"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 96.1,
+   "cold": 1211,
+   "warm": 1450,
+   "postal": "85635",
+   "street": "Beispielweg 35"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 95.1,
+   "cold": 1228,
+   "warm": 1485,
+   "postal": "85635",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 87.7,
+   "cold": 1002,
+   "warm": 1181,
+   "postal": "88220",
+   "street": "Beispielweg 38"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 90.8,
+   "cold": 913,
+   "warm": 1094,
+   "postal": "88220",
+   "street": "Beispielweg 38"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 72.0,
+   "cold": 1549,
+   "warm": 1853,
+   "postal": "23450",
+   "street": "Gartenstr. 15"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 72.8,
+   "cold": 1549,
+   "warm": 1899,
+   "postal": "23450",
+   "street": "Garten Str. 15"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 54.8,
+   "cold": 996,
+   "warm": 1224,
+   "postal": "23192",
+   "street": "Mühlbachstraße 50"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 55.0,
+   "cold": 1012,
+   "warm": 1217,
+   "postal": "35323",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 58.0,
+   "cold": 1566,
+   "warm": 1933,
+   "postal": "45049",
+   "street": "Hafenstraße 28"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 61.5,
+   "cold": 1481,
+   "warm": 1760,
+   "postal": "45049",
+   "street": "Hafenstraße 28"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 76.9,
+   "cold": 1850,
+   "warm": 2239,
+   "postal": "78393",
+   "street": "Gartenstr. 23"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 76.7,
+   "cold": 2206,
+   "warm": 2611,
+   "postal": "78393",
+   "street": "Gartenstr. 23"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 78.5,
+   "cold": 890,
+   "warm": 1044,
+   "postal": "64614",
+   "street": "Mühlbachstraße 38"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 79.4,
+   "cold": 884,
+   "warm": 1071,
+   "postal": "64614",
+   "street": null
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 46.8,
+   "cold": 1760,
+   "warm": 2097,
+   "postal": "35759",
+   "street": "Hafenstraße 2"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 46.0,
+   "cold": 1750,
+   "warm": 2122,
+   "postal": "35759",
+   "street": "Hafen Str. 2"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 73.0,
+   "cold": 1186,
+   "warm": 1409,
+   "postal": "82319",
+   "street": "Lindenallee 39"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 72.2,
+   "cold": 805,
+   "warm": 977,
+   "postal": "82319",
+   "street": "Lindenallee 39"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 98.7,
+   "cold": 1356,
+   "warm": 1675,
+   "postal": "73319",
+   "street": "Am Park 6"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 97.6,
+   "cold": 1364,
+   "warm": 1623,
+   "postal": "73319",
+   "street": "Am Park 6"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 52.1,
+   "cold": 1596,
+   "warm": 1907,
+   "postal": "10009",
+   "street": "Mühlbachstraße 42"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 51.9,
+   "cold": 1589,
+   "warm": 1909,
+   "postal": "10009",
+   "street": "Mühlbach Str. 42"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 33.4,
+   "cold": 1075,
+   "warm": 1277,
+   "postal": "71041",
+   "street": "Beispielweg 59"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 34.2,
+   "cold": 1049,
+   "warm": 1283,
+   "postal": "82653",
+   "street": "Beispielweg 59"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 56.4,
+   "cold": 725,
+   "warm": 884,
+   "postal": "85904",
+   "street": "Lindenallee 6"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 56.8,
+   "cold": 727,
+   "warm": 860,
+   "postal": "85904",
+   "street": "Am Park 35"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 78.8,
+   "cold": 747,
+   "warm": 901,
+   "postal": "35493",
+   "street": "Beispielweg 45"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 78.3,
+   "cold": 751,
+   "warm": 915,
+   "postal": "35493",
+   "street": "Beispielweg 45"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 69.5,
+   "cold": 1213,
+   "warm": 1428,
+   "postal": "94745",
+   "street": "Am Park 7"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 68.5,
+   "cold": 1178,
+   "warm": 1448,
+   "postal": "65270",
+   "street": "Am Park 7"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 57.7,
+   "cold": 1488,
+   "warm": 1807,
+   "postal": "58461",
+   "street": "Lindenallee 3"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 57.7,
+   "cold": 1860,
+   "warm": 2230,
+   "postal": "58461",
+   "street": "Lindenallee 3"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 71.3,
+   "cold": 777,
+   "warm": 914,
+   "postal": "11994",
+   "street": "Beispielweg 27"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 71.3,
+   "cold": 776,
+   "warm": 938,
+   "postal": "11994",
+   "street": "Beispielweg 27"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.0,
+   "area": 82.9,
+   "cold": 1923,
+   "warm": 2283,
+   "postal": "66686",
+   "street": "Lindenallee 43"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 82.0,
+   "cold": 1632,
+   "warm": 1985,
+   "postal": "66686",
+   "street": "Lindenallee 43"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 105.4,
+   "cold": 1116,
+   "warm": 1367,
+   "postal": "94418",
+   "street": "Mühlbachstraße 48"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 104.8,
+   "cold": 1114,
+   "warm": 1335,
+   "postal": "94418",
+   "street": "Mühlbach Str. 48"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 111.1,
+   "cold": 1422,
+   "warm": 1749,
+   "postal": "88216",
+   "street": "Am Park 58"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 111.1,
+   "cold": 1447,
+   "warm": 1728,
+   "postal": "88216",
+   "street": "Mühlbachstraße 46"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 83.5,
+   "cold": 1088,
+   "warm": 1289,
+   "postal": "28148",
+   "street": "Gartenstr. 59"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 84.0,
+   "cold": 1082,
+   "warm": 1297,
+   "postal": "93908",
+   "street": "Garten Str. 59"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.5,
+   "area": 58.6,
+   "cold": 721,
+   "warm": 844,
+   "postal": "17665",
+   "street": "Hafenstraße 39"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 62.4,
+   "cold": 787,
+   "warm": 959,
+   "postal": "17665",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 59.1,
+   "cold": 815,
+   "warm": 965,
+   "postal": "36595",
+   "street": "Gartenstr. 51"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 58.3,
+   "cold": 735,
+   "warm": 885,
+   "postal": "36595",
+   "street": "Gartenstr. 51"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 54.8,
+   "cold": 908,
+   "warm": 1090,
+   "postal": "57451",
+   "street": "Gartenstr. 19"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 54.7,
+   "cold": 906,
+   "warm": 1077,
+   "postal": "57451",
+   "street": "Garten Str. 19"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 46.9,
+   "cold": 1535,
+   "warm": 1859,
+   "postal": "75232",
+   "street": "Mühlbachstraße 35"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 47.7,
+   "cold": 1548,
+   "warm": 1848,
+   "postal": "75232",
+   "street": "Mühlbach Str. 35"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 48.2,
+   "cold": 1791,
+   "warm": 2187,
+   "postal": "46355",
+   "street": "Mühlbachstraße 15"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 51.5,
+   "cold": 1928,
+   "warm": 2358,
+   "postal": "46355",
+   "street": "Mühlbach Str. 15"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 101.3,
+   "cold": 1767,
+   "warm": 2155,
+   "postal": "78890",
+   "street": "Beispielweg 43"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 100.6,
+   "cold": 1766,
+   "warm": 2157,
+   "postal": "78890",
+   "street": "Gartenstr. 19"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 1.5,
+   "area": 46.8,
+   "cold": 844,
+   "warm": 1022,
+   "postal": "24486",
+   "street": "Mühlbachstraße 7"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 47.9,
+   "cold": 836,
+   "warm": 1013,
+   "postal": "24486",
+   "street": null
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 1.5,
+   "area": 44.2,
+   "cold": 1081,
+   "warm": 1298,
+   "postal": "21419",
+   "street": "Hafenstraße 32"
+  },
+  "b": {
+   "rooms": 1.5,
+   "area": 43.7,
+   "cold": 1077,
+   "warm": 1302,
+   "postal": "89603",
+   "street": "Hafenstraße 32"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 53.6,
+   "cold": 821,
+   "warm": 1003,
+   "postal": "77377",
+   "street": "Lindenallee 50"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 53.5,
+   "cold": 824,
+   "warm": 1010,
+   "postal": "77377",
+   "street": "Hafen Str. 21"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 75.2,
+   "cold": 1126,
+   "warm": 1337,
+   "postal": "26929",
+   "street": "Gartenstr. 27"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 74.9,
+   "cold": 1140,
+   "warm": 1369,
+   "postal": "26929",
+   "street": "Garten Str. 27"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 53.6,
+   "cold": 1631,
+   "warm": 1926,
+   "postal": "38146",
+   "street": "Hafenstraße 46"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 52.9,
+   "cold": 1610,
+   "warm": 1940,
+   "postal": "76323",
+   "street": "Hafen Str. 46"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 3.5,
+   "area": 96.2,
+   "cold": 1696,
+   "warm": 2046,
+   "postal": "68118",
+   "street": "Hafenstraße 13"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 96.4,
+   "cold": 1459,
+   "warm": 1788,
+   "postal": "68118",
+   "street": "Hafenstraße 13"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.5,
+   "area": 71.9,
+   "cold": 937,
+   "warm": 1083,
+   "postal": "71936",
+   "street": "Hafenstraße 12"
+  },
+  "b": {
+   "rooms": 2.5,
+   "area": 71.8,
+   "cold": 931,
+   "warm": 1098,
+   "postal": "71936",
+   "street": "Hafenstraße 12"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.5,
+   "area": 91.8,
+   "cold": 1828,
+   "warm": 2255,
+   "postal": "11895",
+   "street": "Mühlbachstraße 60"
+  },
+  "b": {
+   "rooms": 3.5,
+   "area": 92.0,
+   "cold": 1874,
+   "warm": 2262,
+   "postal": "11895",
+   "street": "Mühlbachstraße 60"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 3.0,
+   "area": 84.6,
+   "cold": 1287,
+   "warm": 1555,
+   "postal": "82730",
+   "street": "Am Park 40"
+  },
+  "b": {
+   "rooms": 3.0,
+   "area": 85.5,
+   "cold": 1326,
+   "warm": 1595,
+   "postal": "82730",
+   "street": "Am Park 40"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 54.7,
+   "cold": 1747,
+   "warm": 2164,
+   "postal": "56540",
+   "street": "Am Park 8"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 54.7,
+   "cold": 1786,
+   "warm": 2103,
+   "postal": "56540",
+   "street": "Am Park 8"
+  }
+ },
+ {
+  "same": true,
+  "a": {
+   "rooms": 2.0,
+   "area": 56.4,
+   "cold": 1621,
+   "warm": 1974,
+   "postal": "23976",
+   "street": "Beispielweg 28"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 56.7,
+   "cold": 1628,
+   "warm": 1982,
+   "postal": "23976",
+   "street": "Beispielweg 28"
+  }
+ },
+ {
+  "same": false,
+  "a": {
+   "rooms": 2.0,
+   "area": 45.9,
+   "cold": 1119,
+   "warm": 1344,
+   "postal": "21691",
+   "street": "Beispielweg 15"
+  },
+  "b": {
+   "rooms": 2.0,
+   "area": 42.5,
+   "cold": 1226,
+   "warm": 1468,
+   "postal": "21691",
+   "street": null
+  }
+ }
+]

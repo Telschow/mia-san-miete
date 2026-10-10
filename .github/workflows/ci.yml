@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # the history scan needs every commit
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check src tests
+      - name: Tests
+        run: pytest -q
+      - name: Private-data scan (generic patterns only)
+        # No .private-terms exists in CI; the personal terms are checked locally by the hook.
+        run: mia check-private
+      - name: History scan (generic patterns only)
+        run: mia check-history
+      - name: Benchmarks run (quick)
+        run: mia bench --quick > /dev/null

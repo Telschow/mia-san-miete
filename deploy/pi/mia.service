@@ -1,0 +1,10 @@
+[Unit]
+Description=Mia san Miete cycle
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=__USER__
+Environment=MIA_HOME=__PROJECT__
+ExecStart=__PROJECT__/deploy/run.sh

@@ -1,0 +1,81 @@
+# Example only. Copy to profile/profile.yaml (gitignored) and fill in your real details.
+# Never commit real names, employers, income or phone numbers to this tracked file.
+# This is the ONLY source of personal facts the message generator may use. Every fact needs a German and an English text.
+# usage: always | if_relevant | on_request
+#   always       -> stated in every message
+#   if_relevant  -> only when the listing text contains one of `relevant_if`
+#   on_request   -> only offered ("available on request"), never attached
+
+applicants:
+  - first_name: ""
+    last_name: ""
+    age: null
+  - first_name: ""
+    last_name: ""
+    age: null
+
+contact:
+  phone: ""
+  sender_email: ""
+
+facts:
+  - id: household
+    de: "ein junges Paar ohne Kinder und ohne Haustiere"
+    en: "a young couple without children or pets"
+    usage: always
+  - id: employers
+    de: "Wir sind beide fest angestellt"
+    en: "We are both in permanent employment"
+    usage: always
+  - id: income
+    de: "unser Einkommen ist stabil und nachweisbar"        # add a rounded figure if you like
+    en: "our income is stable and documented"
+    usage: always
+  - id: character
+    de: "Wir sind ruhig, ordentlich und zuverlässig"
+    en: "We are quiet, tidy and reliable"
+    usage: always
+  - id: city_tenure
+    de: "Wir leben schon lange in der Stadt"
+    en: "We have lived in the city for a long time"
+    usage: always
+  - id: kitchen
+    de: "Die Küche würden wir gern übernehmen und sprechen gern über eine faire Ablöse"
+    en: "We would be happy to take over the kitchen and discuss a fair compensation"
+    usage: if_relevant
+    relevant_if: [küche, kueche, ablöse, abloese, kitchen]
+  - id: landlord_reference
+    de: "eine Empfehlung unseres bisherigen Vermieters"
+    en: "a reference from our previous landlord"
+    usage: on_request
+  - id: schufa
+    de: "eine Schufa-Auskunft"
+    en: "a Schufa report"
+    usage: on_request
+  - id: payslips
+    de: "aktuelle Gehaltsnachweise"
+    en: "recent payslips"
+    usage: on_request
+
+viewing:
+  de: "werktags ab 17:30 Uhr und am Wochenende jederzeit"
+  en: "on weekdays from 5:30 pm and at any time on weekends"
+
+move_in:
+  earliest: 2027-01-01
+  latest: 2027-02-01
+  reason: ""                       # optional, one short phrase; not used in messages yet
+
+# Optional: your weekly viewing availability. Needed only for the opt-in automatic reply to a
+# landlord's viewing offer; the reply may state only times that fall inside these windows.
+# availability:
+#   windows:
+#     - days: [mon, tue, wed, thu, fri]
+#       start: "17:30"
+#       end: "20:00"
+#     - days: [sat, sun]
+#       start: "09:00"
+#       end: "20:00"
+#   viewing_minutes: 30
+#   min_notice_hours: 12
+#   blackout_dates: []

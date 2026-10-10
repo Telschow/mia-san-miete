@@ -1,0 +1,171 @@
+[
+ {
+  "text": "Die Wohnung kann am Freitag um 17:30 besichtigt werden.",
+  "slots": [
+   [
+    11,
+    6,
+    17,
+    30
+   ]
+  ]
+ },
+ {
+  "text": "Termin: Mittwoch, 04.11., 18:00 Uhr.",
+  "slots": [
+   [
+    11,
+    4,
+    18,
+    0
+   ]
+  ]
+ },
+ {
+  "text": "Wir haben am Dienstag um 18 Uhr und am Donnerstag um 19 Uhr Zeit.",
+  "slots": [
+   [
+    11,
+    3,
+    18,
+    0
+   ],
+   [
+    11,
+    5,
+    19,
+    0
+   ]
+  ]
+ },
+ {
+  "text": "Kommen Sie am Samstag, den 7. November gegen 11 Uhr vorbei.",
+  "slots": [
+   [
+    11,
+    7,
+    11,
+    0
+   ]
+  ]
+ },
+ {
+  "text": "Besichtigung morgen um 17.45 Uhr?",
+  "slots": [
+   [
+    11,
+    3,
+    17,
+    45
+   ]
+  ]
+ },
+ {
+  "text": "Saturday 7th at 2 pm works for us.",
+  "slots": [
+   [
+    11,
+    7,
+    14,
+    0
+   ]
+  ]
+ },
+ {
+  "text": "Ich kann Ihnen Montag oder Dienstag anbieten, jeweils ab 18 Uhr.",
+  "slots": [
+   [
+    11,
+    9,
+    18,
+    0
+   ],
+   [
+    11,
+    3,
+    18,
+    0
+   ]
+  ]
+ },
+ {
+  "text": "Gruppenbesichtigung am 10.11. von 17 bis 18 Uhr.",
+  "slots": [
+   [
+    11,
+    10,
+    17,
+    0
+   ]
+  ]
+ },
+ {
+  "text": "Wie wäre es mit nächstem Mittwoch 19h?",
+  "slots": [
+   [
+    11,
+    4,
+    19,
+    0
+   ]
+  ]
+ },
+ {
+  "text": "Leider erst nächste Woche möglich, am Montag um 18 Uhr.",
+  "slots": [
+   [
+    11,
+    9,
+    18,
+    0
+   ]
+  ]
+ },
+ {
+  "text": "Sa., 07.11. um 10 Uhr oder So., 08.11. um 12 Uhr",
+  "slots": [
+   [
+    11,
+    7,
+    10,
+    0
+   ],
+   [
+    11,
+    8,
+    12,
+    0
+   ]
+  ]
+ },
+ {
+  "text": "Ich bin am Wochenende da, bitte rufen Sie an.",
+  "slots": []
+ },
+ {
+  "text": "Besichtigung um 18 Uhr.",
+  "slots": []
+ },
+ {
+  "text": "Am 5. November um halb sieben.",
+  "slots": [
+   [
+    11,
+    5,
+    18,
+    30
+   ]
+  ]
+ },
+ {
+  "text": "Thursday at 6:30 pm.",
+  "slots": [
+   [
+    11,
+    5,
+    18,
+    30
+   ]
+  ]
+ }
+]

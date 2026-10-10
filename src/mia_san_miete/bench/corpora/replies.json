@@ -1,0 +1,624 @@
+[
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage Wohnung",
+  "body": "Gerne laden wir Sie zur Besichtigung am Montag um 17 Uhr ein.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Besichtigungstermin",
+  "body": "Wir hätten am Samstag einen Termin für Sie frei. Passt Ihnen 11 Uhr?",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Ihre Anfrage",
+  "body": "Sie können die Wohnung gerne diese Woche besichtigen. Bitte rufen Sie mich an.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Wohnung",
+  "body": "Hallo, wir würden uns freuen, wenn Sie vorbeikommen könnten. Donnerstag ab 18 Uhr.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Einladung zur Besichtigung",
+  "body": "Hiermit laden wir Sie zur Gruppenbesichtigung am 12.11. ein.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Termin ist möglich am Dienstag, 16:30 Uhr. Bitte bestätigen Sie kurz.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Die Wohnung ist noch frei. Wann können Sie zur Besichtigung kommen?",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Viewing",
+  "body": "Thank you for your interest. We can offer you a viewing on Friday at 5 pm.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Enquiry",
+  "body": "You are welcome to visit the flat this week, please suggest a time.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Leider erst am Montag möglich, dann aber gern zur Besichtigung um 18 Uhr.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Wir haben mehrere Interessenten, laden Sie aber gern zum Termin am Mittwoch ein.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Bitte senden Sie uns eine aktuelle Schufa-Auskunft und Ihre Gehaltsnachweise.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Unterlagen",
+  "body": "Für die weitere Bearbeitung benötigen wir die Mieterselbstauskunft.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Wohnung",
+  "body": "Könnten Sie uns bitte die letzten drei Einkommensnachweise zukommen lassen?",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Bitte füllen Sie die angehängte Selbstauskunft aus und schicken Sie sie zurück.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Bewerbungsmappe",
+  "body": "Wir bitten um Ihre vollständige Bewerbungsmappe mit Schufa und Gehaltsnachweis.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Enquiry",
+  "body": "Please send us proof of income and a credit report.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Enquiry",
+  "body": "We would need your last three payslips and the completed documents form.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Schicken Sie uns zuerst Ihre Unterlagen, dann melden wir uns.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Leider ist die Wohnung bereits vergeben.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Absage",
+  "body": "Vielen Dank für Ihr Interesse. Die Wohnung wurde anderweitig vermietet.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Wohnung",
+  "body": "Wir müssen Ihnen leider mitteilen, dass die Wohnung nicht mehr verfügbar ist.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Leider haben wir uns für einen anderen Bewerber entschieden.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Die Wohnung ist schon vermietet, wir wünschen Ihnen weiterhin viel Erfolg.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Leider können wir keinen Termin mehr anbieten, die Wohnung ist vergeben.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Enquiry",
+  "body": "Unfortunately the flat is no longer available.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Enquiry",
+  "body": "Thank you, but the apartment has already been rented.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Absage",
+  "body": "Wir bedauern, Ihnen eine Absage erteilen zu müssen.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Leider nicht, die Wohnung ist bereits vermietet.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Automatische Antwort: Abwesenheit",
+  "body": "Ich bin bis zum 15.11. nicht im Büro und kann Besichtigungen erst danach anbieten.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Out of office",
+  "body": "I am away until Monday with limited access to email.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Automatic reply: Enquiry",
+  "body": "Thank you for your message. We will get back to you.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Abwesenheitsnotiz",
+  "body": "Vielen Dank für Ihre Nachricht, ich bin im Urlaub.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Undeliverable: Anfrage",
+  "body": "Delivery has failed to these recipients.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Re: Anfrage",
+  "body": "Ihre Anfrage ist eingegangen. Termin folgt.",
+  "headers": {
+   "Auto-Submitted": "auto-replied"
+  }
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Re: Anfrage",
+  "body": "Dies ist eine automatisch erstellte Nachricht, bitte nicht antworten. Termin folgt.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Danke für Ihre Nachricht. Wir melden uns bei Bedarf.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Wohnung",
+  "body": "Wie lange möchten Sie die Wohnung mieten?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Wohnung",
+  "body": "Sind Haustiere vorhanden?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Ist die Wohnung für Sie auch ohne Küche interessant?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Enquiry",
+  "body": "How many people would be moving in?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Wann genau möchten Sie einziehen?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Vielen Dank, wir prüfen alle Anfragen und melden uns.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Guten Tag, vielen Dank für Ihr Interesse. Die Wohnung kann am Freitag um 15:00 Uhr besichtigt werden.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Hallo, ich kann Ihnen den kommenden Mittwoch anbieten, sagen wir 18 Uhr? Gruß",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Wohnung",
+  "body": "Die Wohnung ist noch nicht vermietet. Wir würden uns freuen, Sie kennenzulernen. Wann hätten Sie Zeit?",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Wohnung",
+  "body": "Wir machen am Samstag einen Sammeltermin ab 10 Uhr, kommen Sie gerne dazu.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Enquiry",
+  "body": "Hello, the flat is still available. Would Tuesday at 6 pm work for a visit?",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Besichtigung ist ab nächster Woche möglich, bitte melden Sie sich telefonisch.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Falls Sie weiterhin Interesse haben, schicken Sie mir bitte Ihre Bewerbungsunterlagen inklusive Gehaltsabrechnungen.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Wohnung",
+  "body": "Bitte laden Sie Ihre Unterlagen (Schufa, Einkommensbelege, Ausweiskopie) im Portal hoch.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Enquiry",
+  "body": "Please fill in the attached tenant questionnaire and send it back with proof of income.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Wir benötigen noch eine Mietschuldenfreiheitsbescheinigung und die letzten Verdienstbescheinigungen.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Vielen Dank für Ihr Interesse, aber wir haben die Wohnung bereits an jemand anderen vergeben.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Die Anzeige ist leider nicht mehr aktuell.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Wohnung",
+  "body": "Es tut uns leid, die Wohnung ist leider weg.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Enquiry",
+  "body": "Sorry, we have already found a tenant.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Wir haben uns für einen Mieter entschieden und müssen Ihre Anfrage daher ablehnen.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Leider kommen Sie für diese Wohnung nicht in Frage.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Re: Anfrage",
+  "body": "Vielen Dank für Ihre E-Mail. Ich bin vom 3. bis 17. November nicht erreichbar.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Auto: Enquiry",
+  "body": "I am currently out of the office and will respond on my return.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Abwesenheitsnotiz",
+  "body": "Ich bin bis Montag im Urlaub.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Könnten Sie mir bitte Ihre Telefonnummer schicken?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Ist die Wohnung auch für drei Personen geeignet?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Vielen Dank, bitte schreiben Sie uns noch, wann Sie einziehen möchten und ob Sie Haustiere haben.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Der Termin muss leider verschoben werden, ich melde mich.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Enquiry",
+  "body": "Thanks for your message, can you tell us more about yourself?",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Servus, ich zeige die Wohnung am Donnerstag zwischen 17 und 19 Uhr. Kommen Sie einfach vorbei.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Sehr geehrte Frau Beispiel, gerne können Sie sich die Wohnung ansehen. Wann passt es Ihnen?",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Enquiry",
+  "body": "Hi, the apartment is still free. I could show it to you on Saturday morning.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Wir haben noch Besichtigungstermine frei, zum Beispiel Montag 16 Uhr oder Dienstag 18 Uhr.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Wohnung",
+  "body": "Hallo, die Wohnung ist noch verfügbar. Rufen Sie mich doch bitte kurz an, dann machen wir etwas aus.",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Re: Anfrage",
+  "body": "Danke für Ihre ausführliche Bewerbung! Ich würde Sie gerne persönlich kennenlernen, hätten Sie nächste Woche Zeit?",
+  "headers": {}
+ },
+ {
+  "label": "viewing_invite",
+  "subject": "Open house",
+  "body": "Dear applicant, we would like to invite you to an open house on 14 November, 2 pm.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Bitte senden Sie mir noch Ihre Schufa-Bonitätsauskunft und eine Kopie Ihres Arbeitsvertrags.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Zur Prüfung benötigen wir eine Verdienstbescheinigung der letzten drei Monate.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Enquiry",
+  "body": "Please send me your employment contract and the last three salary statements.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Wohnung",
+  "body": "Könnten Sie mir die ausgefüllte Mieterselbstauskunft per Mail zurückschicken?",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Wohnung",
+  "body": "Für den Mietvertrag brauchen wir Ihre Ausweiskopien und einen Einkommensnachweis.",
+  "headers": {}
+ },
+ {
+  "label": "documents_request",
+  "subject": "Re: Anfrage",
+  "body": "Bevor wir fortfahren: bitte laden Sie Ihre Bonitätsunterlagen hoch.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Hallo, leider hat sich die Wohnung erledigt, wir haben bereits einen Nachmieter.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Vielen Dank, die Wohnung ist leider nicht mehr zu haben.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Enquiry",
+  "body": "Thank you for applying. We have decided to go with another candidate.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Wir haben bereits einen Mietvertrag unterschrieben, daher leider keine Besichtigungen mehr.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Wohnung",
+  "body": "Schade, die Wohnung ging gestern an eine andere Familie.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Anfrage",
+  "body": "Ihre Bewerbung konnten wir leider nicht berücksichtigen.",
+  "headers": {}
+ },
+ {
+  "label": "rejection",
+  "subject": "Re: Enquiry",
+  "body": "Unfortunately, the unit has been let to someone else.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Automatische Antwort: Re: Anfrage",
+  "body": "Ich bin ab dem 20.10. wieder im Büro.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Re: Anfrage",
+  "body": "Dies ist ein automatischer Hinweis: Ihre Nachricht wurde zugestellt.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Out of Office: Enquiry",
+  "body": "I will be back on 3 November.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Re: Enquiry",
+  "body": "Thank you for your enquiry. Our office is closed until January.",
+  "headers": {}
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Re: Anfrage",
+  "body": "Wir melden uns.",
+  "headers": {
+   "Auto-Submitted": "auto-replied"
+  }
+ },
+ {
+  "label": "auto_reply",
+  "subject": "Delivery Status Notification (Failure)",
+  "body": "Your message could not be delivered.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Wie hoch ist Ihr monatliches Haushaltseinkommen?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Sind Sie Raucher?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Darf ich fragen, wie Sie auf die Anzeige gekommen sind?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Ab wann genau wäre die Wohnung für Sie interessant?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Vielen Dank für Ihre Nachricht. Ich schaue mir alle Bewerbungen in Ruhe an.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Enquiry",
+  "body": "Do you have any pets?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Welche Mietdauer stellen Sie sich vor?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Hallo, bitte rufen Sie mich zurück.",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Die Kaution beträgt drei Monatsmieten. Ist das für Sie in Ordnung?",
+  "headers": {}
+ },
+ {
+  "label": "other",
+  "subject": "Re: Anfrage",
+  "body": "Danke, wir melden uns.",
+  "headers": {}
+ }
+]
