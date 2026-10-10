@@ -8,7 +8,7 @@ Phases P0 to P4 are done; the reply monitor, metrics, alert-email source, MOTIS 
 `mia run` and the Mac/Pi deployment are built but **not yet verified on real data**. The
 remaining work is tracked as GitHub milestones. Order matters: verify before you build more.
 
-Issue links: https://github.com/Telschow/mia-san-miete-clean/issues
+Issue links: https://github.com/Telschow/mia-san-miete/issues
 
 | Milestone | Goal | Issues |
 |---|---|---|

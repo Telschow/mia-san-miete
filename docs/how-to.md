@@ -39,7 +39,7 @@ Nothing personal is ever committed to the repository.
 ## 2. Try it first on fictional data (5 minutes)
 
 ```bash
-git clone https://github.com/Telschow/mia-san-miete-clean.git mia && cd mia
+git clone https://github.com/Telschow/mia-san-miete.git mia && cd mia
 python3 -m venv .venv && . .venv/bin/activate
 pip install -e ".[dev]"
 mia demo
