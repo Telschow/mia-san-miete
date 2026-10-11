@@ -20,6 +20,8 @@ to Munich or to one person: ten large cities and four household types ship as pr
 **What it does:** finds, scores and drafts. **What it does not do:** log in to portals or send
 through them. You send from the portal yourself, or approve the email path in the queue.
 
+**Project page: <https://telschow.github.io/mia-san-miete/>**
+
 **New here? Start with the [how-to guide](docs/how-to.md)**, which takes you from a fresh clone to a supervised shadow run.
 
 ## Personalize it (nothing personal is ever committed)
