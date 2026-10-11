@@ -1,6 +1,6 @@
 # Mia san Miete
 
-[![CI](https://github.com/Telschow/mia-san-miete-clean/actions/workflows/ci.yml/badge.svg)](https://github.com/Telschow/mia-san-miete-clean/actions/workflows/ci.yml)
+[![CI](https://github.com/Telschow/mia-san-miete/actions/workflows/ci.yml/badge.svg)](https://github.com/Telschow/mia-san-miete/actions/workflows/ci.yml)
 
 A personal agent for the German rental market: discover new listings, filter and score them
 deterministically, draft a truthful message, and (under an explicit, capped policy) send it
@@ -51,6 +51,16 @@ generator with validator and template fallback, send policy (shadow mode default
 hours, kill switch, duplicate guard) with a content-free audit trail, approval queue, reply
 monitor and metrics, opt-in auto-reply, a local dashboard (themes, settings editor, first-run
 setup), `mia init` with city and household presets, benchmarks on fictional data, CI.
+
+Checked on real data (Munich, October 2026), with the limits that implies:
+
+| Part | Result |
+|---|---|
+| ImmoScout24 alert mails | parsed fully: title, rent (warm only), size, rooms, district; no postcode in the mail |
+| Immowelt alert mails | only click-tracking links; one redirect lookup per flat works for most cards, not all |
+| Kleinanzeigen, WG-Gesucht, immobilien.de | formats **not yet verified**: only account or confirmation mails were available |
+| MOTIS transit router | works; times are door to door, a few minutes above a station-to-station planner |
+| Scheduled shadow run on a Mac | runs every 5 minutes (launchd); nothing is sent |
 
 Not built: sending through portals. Mia finds, scores and drafts; you send from the portal
 yourself (the dashboard has "Copy message" and "Open listing"). Semi-automatic and automatic
@@ -168,9 +178,19 @@ and add an `alerts` section to `config.yaml` (IMAP host, env var names for the l
 `sender_domains`, the only sender domains that are read). Then `mia ingest-alerts` stores new
 flats; run it from cron. No scraping and no portal login.
 
-The parser is a heuristic and is **unverified against real alert mails**: forward a few real
-ones, run `mia ingest-alerts`, and check the stored title, rent, size and postcode. Fields
-that cannot be read stay empty and are flagged by the gates.
+Check what a portal really sends before trusting its parser. Two read-only helpers print
+nothing personal: `mia ingest-alerts --link-shapes` shows the structure of the links in your
+alert mails (hosts and paths, ids and query values masked), and `--show-mail <domain>` prints
+an outline of up to two mails from one sender domain without addresses or greetings (read it
+before sharing). If a run finds nothing, `mia ingest-alerts` says how many mails it saw, how
+many came from your `sender_domains`, and which domains it ignored. Fields that cannot be read
+stay empty; an alert with no rent, size or rooms at all is skipped with a clear reason.
+
+Some portals send only click-tracking links (Immowelt). For those, mia asks the tracker for
+the redirect target of one button per flat, never loads the page, skips unsubscribe and
+account links, remembers every answer in the local database and stops after 60 new lookups per
+run (`docs/adr/0007-click-link-resolution.md`). A flat whose links lead to a web page instead
+of a redirect is left out. Prices on such cards are read as cold rent.
 
 ## Running it: `mia run`
 
@@ -189,8 +209,14 @@ Scheduling on a Mac or a Raspberry Pi: see `docs/deploy.md`.
 ## Public-transport routing
 
 `pt_router: motis` uses a MOTIS 2 server (default: the community Transitous instance, or set
-`commute.motis_base_url` to your own). The API usage is **unverified against a live server**:
-check one route by hand before trusting the commute gate. The `mvg` router is not built.
+`commute.motis_base_url` to your own). Checked against a journey planner for one city: the
+times are door to door, so expect a few minutes more than a station-to-station planner. Check
+one route of yours with `mia check-router` before trusting the commute gate. The `mvg` router
+is not built.
+
+`car_router: motis` (free, no key) routes by car on the same server. It has no live traffic, so
+`commute.car_rush_hour_factor` (default 1.3, an assumption, not measured) scales the times. The
+alternative `google_routes` needs a Google key and billing account.
 
 ## Reply monitor and metrics
 
@@ -234,13 +260,13 @@ See `docs/adr/`.
 
 ## Roadmap
 
-P0 to P4 are done. Built but not yet verified on real data: reply monitor and metrics,
-alert-email source, MOTIS router, `mia run`, Mac and Pi deployment. What is next is tracked
-as milestones (details in `docs/roadmap.md`):
+P0 to P4 are done. Verified on real data: ImmoScout24 alerts, the MOTIS router, `mia run`
+and the Mac deployment. Still unverified: the other portals' alert formats, reply monitor and
+metrics, Pi deployment. What is next is tracked as milestones (details in `docs/roadmap.md`):
 
 | Milestone | Goal |
 |---|---|
-| M1 Verify and shadow run | Approval queue, heartbeat, shadow report done; checking parser and router on real data open |
+| M1 Verify and shadow run | Approval queue, heartbeat, shadow report, router and ImmoScout24 parser verified; other portals and the one-to-two-week shadow run open |
 | M2 Quality, CI and benchmarks | CI, labeled corpora, reproducible benchmarks, safety invariants |
 | M3 Dashboard GUI | Dashboard, approval queue, controls done; commute map open |
 | M4 Customization and onboarding | `mia init`, config reference, presets, extension points |

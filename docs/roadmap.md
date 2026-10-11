@@ -1,14 +1,14 @@
 # Roadmap
 
-**Update:** presets and the generated config reference (#15), area limits and walking distance to a stop, the MIT license and a manual-send flow are in; platform automation is an open decision (`docs/adr/0006-portal-automation.md`).
+**Status (2026-10-11):** the first real-data checks are done and a scheduled shadow run is live on a Mac. Verified: the ImmoScout24 alert parser (#2, partly), the MOTIS router (#3), `mia run` and the launchd deployment. Immowelt works partly through redirect lookups (`docs/adr/0007-click-link-resolution.md`). Not yet verified: Kleinanzeigen, WG-Gesucht and immobilien.de alert formats (only account mails have arrived), the reply monitor and metrics, the Pi deployment. Added from the real run: price-per-m² market check and stronger scam signals, `criteria.move_in.unknown`, a free MOTIS car router, `mia market-rent`, parser diagnostics (`--link-shapes`, `--show-mail`), TLS via certifi, `MIA_VENV` for the scheduler.
 
-**Earlier:** `mia init` (#14) and the per-flat commute view (#13) are built. The how-to guide (`docs/how-to.md`, #19) is written. M2 is mostly built too (CI workflow, labeled fictional corpora, `mia bench`, randomized safety-invariant tests). Its first finding: the reply classifier generalizes poorly (see `docs/benchmarks.md`). M1 and M3 are mostly built (approval queue, heartbeat and alerts, shadow report, router probe, dashboard, `mia demo`). Still open there: #2 and #3 need real alert mails and your network (`mia check-router`), and #13 still lacks the commute map.
+**Next:** run the shadow run for one to two weeks and review `mia shadow-report` for false rejects; verify the other portals once real alerts arrive; make setup portal-guided ("add a portal" with a mailbox check); limit push notifications to flats that are not skipped.
 
-Phases P0 to P4 are done; the reply monitor, metrics, alert-email source, MOTIS router,
-`mia run` and the Mac/Pi deployment are built but **not yet verified on real data**. The
-remaining work is tracked as GitHub milestones. Order matters: verify before you build more.
+**Earlier:** presets and the generated config reference (#15), area limits and walking distance to a stop, `mia init` (#14), the per-flat commute view (#13), the how-to guide (`docs/how-to.md`, #19), CI, labeled fictional corpora, benchmarks, the MIT license and a manual-send flow. Platform automation is an open decision (`docs/adr/0006-portal-automation.md`).
 
-Issue links: https://github.com/Telschow/mia-san-miete-clean/issues
+Phases P0 to P4 are done. Order matters: verify before you build more.
+
+Issue links: https://github.com/Telschow/mia-san-miete/issues
 
 | Milestone | Goal | Issues |
 |---|---|---|

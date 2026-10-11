@@ -39,7 +39,7 @@ Nothing personal is ever committed to the repository.
 ## 2. Try it first on fictional data (5 minutes)
 
 ```bash
-git clone https://github.com/Telschow/mia-san-miete-clean.git mia && cd mia
+git clone https://github.com/Telschow/mia-san-miete.git mia && cd mia
 python3 -m venv .venv && . .venv/bin/activate
 pip install -e ".[dev]"
 mia demo
@@ -140,9 +140,19 @@ Use a long random ntfy topic, since anyone who knows the topic can read your not
    domains the alerts really come from).
 4. Put the IMAP user and password in the env file.
 
-Supported alert formats are guessed from how the portals' links usually look
-(ImmoScout, Kleinanzeigen, WG-Gesucht, Immowelt). **This has not been checked against real
-mail.** Part 5 is how you check it.
+Practical notes from real use:
+
+- **Gmail** needs an app password for IMAP (Google account, security, 2-Step Verification
+  first). Google shows it as four groups of four; remove the spaces when you put it in the
+  env file, or the shell will split the line.
+- A label such as `Wohnung` shows up as an IMAP folder with the same name. If your filter
+  archives the alerts, set `alerts.folder` to the label, not `INBOX`.
+- A new portal account sends a confirmation mail first. Alerts only start after you confirm the
+  address and save a search with notifications switched on (Kleinanzeigen shows a separate
+  "Mitteilungen aktivieren" switch per saved search).
+
+Supported alert formats: ImmoScout24 is checked against real mail. Immowelt works partly (see
+below). Kleinanzeigen and WG-Gesucht are **not yet checked**. Part 5 is how you check them.
 
 ## 5. Verify on real data (do this before trusting anything)
 
@@ -162,8 +172,24 @@ mia gui --config config.yaml --profile profile/profile.yaml
 
 Open the **Flats** tab and compare a few rows with the real alert mails: title, rent, size,
 rooms, postcode. Empty fields mean the parser did not find them; such flats go to review.
-If a portal's mails are not recognised at all, that portal's format needs adding (issue #2).
 Reading mail is read-only: your inbox is never changed.
+
+If it prints `fetched=0`, the line below it says why: how many mails it saw in the folder, how
+many came from your `sender_domains`, and which sender domains it ignored (add the right one).
+To see what a portal's mails look like, without sharing anything personal:
+
+```bash
+mia ingest-alerts --config config.yaml --link-shapes       # masked link structure
+mia ingest-alerts --config config.yaml --show-mail <domain> # outline of up to 2 mails
+```
+
+If a portal's mails are recognised but fields are empty, or not recognised at all, that
+portal's format needs adding (issue #2): send the outline, not the mail.
+
+Immowelt sends only click-tracking links. mia asks the tracker for the redirect target of one
+button per flat (never loads the page, never opens unsubscribe or account links, remembers each
+answer, at most 60 new lookups per run). Each lookup is a request to the portal's tracker and
+may count as a click on your alert. Cards whose links lead to a web page instead are left out.
 
 ### 5.2 Public-transport router
 
@@ -173,7 +199,9 @@ mia check-router --config config.yaml --origin "Marienplatz, München"
 ```
 
 Compare each number with a journey planner (DB Navigator, Google Maps) for the same arrival
-time. A big difference or `no route found` means the router needs fixing before the commute
+time. The router reports door-to-door time, including the walk to and from the stop, so it is a
+few minutes above a station-to-station planner. For a car limit, `commute.car_router: motis`
+needs no key but has no live traffic (`car_rush_hour_factor`, default 1.3, is an assumption). A big difference or `no route found` means the router needs fixing before the commute
 rule can be trusted (issue #3). Without working routing, every flat's commute is unknown and
 lands in review (`commute incomplete`), which is safe but noisy.
 
@@ -210,6 +238,8 @@ The report lists:
 | Unwanted flats get through | `criteria.exclude_keywords` (whole words), `min_lease_months` |
 | Many flats say `commute incomplete` | Router or API key problem (part 5.2) |
 | Commute rejects flats you would take | Raise a target's `max_pt_minutes` or switch `modes` to `any` |
+| Every flat is queued for "move-in date unknown" | Alerts rarely state it: `criteria.move_in.unknown: flag` lets such flats through with a note |
+| Suspiciously cheap flats rank high | `criteria.market_warm_rent_per_m2` (run `mia market-rent` for your own median); far below it goes to review |
 | Scores feel off | `scoring.weights` (relative weights; the score is always 0 to 100) |
 | Too few or too many auto-send candidates | `send_policy.min_score` and the `loosen` schedule |
 
