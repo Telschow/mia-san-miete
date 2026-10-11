@@ -7,6 +7,7 @@ from collections.abc import Callable
 from typing import Protocol
 
 from .models import Listing
+from .net import urlopen
 
 
 class Notifier(Protocol):
@@ -31,7 +32,7 @@ def format_listing(listing: Listing) -> tuple[str, str]:
 
 def _http_post(url: str, data: bytes, headers: dict[str, str]) -> None:
     req = urllib.request.Request(url, data=data, headers=headers, method="POST")
-    with urllib.request.urlopen(req, timeout=10):
+    with urlopen(req, timeout=10):
         pass
 
 

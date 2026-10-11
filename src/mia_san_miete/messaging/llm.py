@@ -9,6 +9,8 @@ from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures import TimeoutError as FutureTimeout
 from typing import Protocol
 
+from ..net import urlopen
+
 _EXECUTOR = ThreadPoolExecutor(max_workers=4, thread_name_prefix="llm")
 
 SYSTEM = {
@@ -40,7 +42,7 @@ def _post(url: str, headers: dict[str, str], body: dict, timeout: float) -> dict
     req = urllib.request.Request(
         url, data=json.dumps(body).encode(), headers=headers, method="POST"
     )
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
+    with urlopen(req, timeout=timeout) as resp:
         return json.loads(resp.read())
 
 

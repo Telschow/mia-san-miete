@@ -2,8 +2,8 @@
 
 Everything here is optional and degrades to "unknown", which the gates send to review. The walk
 time is an estimate (straight line times a detour factor over a walking speed), not a routed
-path, and is flagged as such. The stop lookup follows the MOTIS API as remembered and is
-UNVERIFIED against a live server: check it with `mia check-area` before relying on it.
+path, and is flagged as such. The stop lookup was checked against a live MOTIS server for one
+address (right stops, distances and kinds); check yours with `mia check-area`.
 """
 
 from __future__ import annotations

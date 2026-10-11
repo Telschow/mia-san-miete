@@ -57,13 +57,16 @@ class Prompter:
         self._ask, self.say = ask, say
 
     def text(self, question: str, default: str | None = None, required: bool = False,
-             check: Callable[[str], str | None] | None = None) -> str:
+             check: Callable[[str], str | None] | None = None,
+             yes_keeps_default: bool = False) -> str:
         suffix = f" [{default}]" if default not in (None, "") else ""
         while True:
             try:
                 raw = self._ask(f"{question}{suffix}: ").strip()
             except EOFError as exc:
                 raise WizardError("input ended before the questions were answered") from exc
+            if yes_keeps_default and raw.lower() in ("y", "yes", "j", "ja"):
+                raw = ""                      # 'Y' meant 'keep it', not the new wording
             value = raw or (default or "")
             if required and not value:
                 self.say("  This one is required.")
@@ -141,7 +144,7 @@ def collect(p: Prompter, defaults: dict[str, Any] | None = None) -> dict[str, An
                                                              + timedelta(days=30)), check=_date)
     a["exclude_keywords"] = _csv(p.text("Words that exclude a flat, comma separated",
                                         ", ".join(d.get("exclude_keywords", DEFAULT_EXCLUDES))))
-    a["min_lease_months"] = p.number("Minimum lease length (months; shorter or unknown end is rejected)",
+    a["min_lease_months"] = p.number("Minimum lease length (months; not enforced yet: only sublets are rejected, unknown is accepted)",
                                      d.get("min_lease_months", 24), 0)
 
     say("\n2/5  Places you travel to (work, university)")
@@ -202,13 +205,15 @@ def collect(p: Prompter, defaults: dict[str, Any] | None = None) -> dict[str, An
     for f in d.get("facts", DEFAULT_FACTS):
         if not p.yes(f"Keep fact '{f['id']}': \"{f['de']}\"?", True):
             continue
-        de = p.text("  German wording", f["de"])
-        en = p.text("  English wording", f["en"])
+        de = p.text("  German wording", f["de"], yes_keeps_default=True)
+        en = p.text("  English wording", f["en"], yes_keeps_default=True)
         facts.append({**f, "de": de, "en": en})
     a["facts"] = facts
     a["viewing_de"] = p.text("When can you view flats (German, finishing the sentence "
-                             "'Besichtigungen sind bei uns ... moeglich')", DEFAULT_VIEWING["de"])
-    a["viewing_en"] = p.text("Same in English ('We can attend viewings ...')", DEFAULT_VIEWING["en"])
+                             "'Besichtigungen sind bei uns ... moeglich')", DEFAULT_VIEWING["de"],
+                             yes_keeps_default=True)
+    a["viewing_en"] = p.text("Same in English ('We can attend viewings ...')", DEFAULT_VIEWING["en"],
+                             yes_keeps_default=True)
     if p.yes("Set weekly viewing availability for the optional automatic reply later?", False):
         a["availability"] = {
             "weekday_start": p.text("Weekdays from", "17:30", check=_hhmm),

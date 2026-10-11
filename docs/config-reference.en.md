@@ -24,8 +24,11 @@ German version: config-reference.de.md
 | `criteria.move_in.ideal_from` | date (YYYY-MM-DD) | **required** | Preferred move-in date. |
 | `criteria.move_in.latest` | date (YYYY-MM-DD) | **required** | Latest acceptable move-in; later flats are rejected. |
 | `criteria.move_in.early_flex_days` | integer, ≥ 0 | `0` | Days before the preferred date that still pass (flagged, lower score). |
+| `criteria.move_in.unknown` | review | flag | `review` | A flat without a move-in date: `review` sends it to review (default), `flag` lets it through with a note. Portal alerts usually do not state the date. |
 | `criteria.exclude_keywords` | list (text) | [] | Whole words that exclude a flat (e.g. WBS, Tausch). Negations such as "kein WBS" are recognised. |
-| `criteria.min_lease_months` | integer, ≥ 0 | **required** | Minimum lease length in months; shorter or unknown end (sublets) is rejected. |
+| `criteria.min_lease_months` | integer, ≥ 0 | **required** | Minimum lease length in months (no effect yet): so far only sublets (Zwischenmiete, Untermiete auf Zeit) are rejected; an unknown length counts as open-ended and passes, and "befristet" without a duration goes to review. |
+| `criteria.max_warm_rent_per_m2` | number, > 0 | unset | Optional: highest warm rent per square metre in euro; dearer flats are rejected. |
+| `criteria.market_warm_rent_per_m2` | number, > 0 | unset | Optional: usual warm rent per square metre where you search (euro, see `mia market-rent`). Far below goes to review (possible scam), far above only gets a flag. |
 | `criteria.nice_to_have` | list (text) | [] | Nice-to-haves (balcony, parking); they raise the score and never exclude. |
 | `criteria.area.center` | text | unset | Optional: address or station counted as the middle (reference point for the radius). |
 | `criteria.area.max_km` | number, > 0 | unset | Optional: largest straight-line distance to the centre in km; needs `center`. An unknown location goes to review, never to reject. |
@@ -51,9 +54,10 @@ German version: config-reference.de.md
 | `commute.combine` | all | any | `all` | `all`: every place must pass; `any`: one is enough. |
 | `commute.borderline_margin_minutes` | integer, ≥ 0 | **required** | Minutes of tolerance: borderline cases with an estimated address go to review instead of reject. |
 | `commute.pt_router` | mvg | motis | **required** | Public-transport router: `motis` (all of Germany) or `mvg` (Munich only, not built yet). |
-| `commute.car_router` | google_routes | **required** | Car router; currently only `google_routes`. |
+| `commute.car_router` | google_routes | motis | **required** | Car router: `motis` (free, no live traffic) or `google_routes` (needs a key and a Google billing account). |
 | `commute.motis_base_url` | text | unset | Optional: your own MOTIS server; the default is the community Transitous instance. |
 | `commute.car_api_key_env` | text | `GOOGLE_ROUTES_API_KEY` | Name of the environment variable holding the Google Routes key (only needed for a car limit). |
+| `commute.car_rush_hour_factor` | number, ≥ 1 | `1.3` | Only for `motis`: multiplier on the free-flow drive time to allow for rush hour (an assumption, not measured). |
 
 ### Sending policy (`send_policy`)
 

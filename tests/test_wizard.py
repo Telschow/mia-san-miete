@@ -160,3 +160,13 @@ def test_cli_init_reports_missing_answers(tmp_path, capsys):
                "--answers", str(answers_file)])
     assert rc == 1 and "missing answers" in capsys.readouterr().err
     assert not Path(tmp_path / "config.yaml").exists()
+
+
+def test_yes_at_a_wording_prompt_keeps_the_default():
+    answers = iter(["y", "", "ja", "My own wording"])
+    said: list[str] = []
+    p = Prompter(lambda prompt: next(answers), said.append)
+    assert p.text("German", "Standardtext", yes_keeps_default=True) == "Standardtext"
+    assert p.text("German", "Standardtext", yes_keeps_default=True) == "Standardtext"
+    assert p.text("German", "Standardtext", yes_keeps_default=True) == "Standardtext"
+    assert p.text("German", "Standardtext", yes_keeps_default=True) == "My own wording"

@@ -21,7 +21,7 @@ criteria:
     - Tauschwohnung
     - Wohngemeinschaft
     - Gewerbe
-  min_lease_months: 24               # shorter or unknown end date (Zwischenmiete) is rejected
+  min_lease_months: 24               # no effect yet; sublets are rejected, an unknown lease length passes
   nice_to_have: [balcony, parking]
 
 commute:

@@ -17,6 +17,7 @@ from zoneinfo import ZoneInfo
 from ..config import Commute
 from ..db import Database
 from ..models import Listing
+from ..net import urlopen
 
 BERLIN = ZoneInfo("Europe/Berlin")
 
@@ -48,6 +49,18 @@ class CachedRouter:
         if value is not None:       # never cache failures
             self.db.cache_set(key, value)
         return value
+
+
+class ScaledRouter:
+    """Multiplies another router's minutes (rush-hour allowance for routers without traffic).
+    Kept outside the cache so changing the factor needs no cache reset."""
+
+    def __init__(self, inner: Router, factor: float) -> None:
+        self.inner, self.factor, self.mode = inner, factor, inner.mode
+
+    def minutes(self, origin: str, destination: str, arrive_by: datetime) -> float | None:
+        value = self.inner.minutes(origin, destination, arrive_by)
+        return None if value is None else value * self.factor
 
 
 def next_weekday_arrival(now: datetime, hhmm: str) -> datetime:
@@ -95,7 +108,7 @@ def _post_json(url: str, headers: dict[str, str], body: dict) -> dict:
     req = urllib.request.Request(
         url, data=json.dumps(body).encode(), headers=headers, method="POST"
     )
-    with urllib.request.urlopen(req, timeout=10) as resp:
+    with urlopen(req, timeout=10) as resp:
         return json.loads(resp.read())
 
 

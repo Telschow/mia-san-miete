@@ -20,6 +20,7 @@ from email.utils import parseaddr, parsedate_to_datetime
 from typing import Protocol
 
 from .db import Database
+from .net import ssl_context
 
 log = logging.getLogger(__name__)
 
@@ -176,7 +177,8 @@ class ImapMailbox:
 
     def __init__(
         self, host: str, port: int, username: str, password: str, folder: str = "INBOX",
-        factory: Callable[[str, int], imaplib.IMAP4] = lambda h, p: imaplib.IMAP4_SSL(h, p, timeout=30),
+        factory: Callable[[str, int], imaplib.IMAP4] = lambda h, p: imaplib.IMAP4_SSL(
+            h, p, timeout=30, ssl_context=ssl_context()),
     ) -> None:
         self.host, self.port, self.folder = host, port, folder
         self.username, self.password = username, password
