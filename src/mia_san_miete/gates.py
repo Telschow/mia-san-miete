@@ -29,6 +29,23 @@ SCAM_PATTERNS = [
     "besichtigung nicht moeglich",
 ]
 
+# Strong signals reject. Weak signals have innocent explanations (a landlord abroad, a quick
+# chat app), so one only flags and two together send the flat to review.
+SCAM_REGEXES = [
+    r"paysafe|bitcoin|moneygram|google play|itunes|paypal\s+freunde",
+    r"schl(?:ü|ue)ssel\s+(?:wird\s+)?(?:per|via|mit)\s+(?:post|dhl|dpd|hermes|kurier|paket)",
+    r"besichtigung\s+(?:erst\s+)?nach\s+(?:zahlung|überweisung|ueberweisung|kaution)",
+]
+WEAK_SCAM_REGEXES = {
+    "contact only through a chat app": r"(?:nur|ausschlie(?:ß|ss)lich|bitte nur)\s+(?:per|über|ueber|via)\s+(?:whatsapp|telegram|signal)",
+    "landlord abroad": r"\b(?:im|aus dem|vom)\s+ausland\b|auslandsaufenthalt",
+    "contract by post only": r"mietvertrag\s+(?:wird\s+)?(?:per\s+post|zugeschickt)",
+    "no viewing offered": r"(?:ohne|vor)\s+besichtigung",
+}
+FAR_BELOW_MARKET = 0.5     # share of the market rent per m2 below which a flat looks too good
+BELOW_MARKET = 0.7
+ABOVE_MARKET = 1.3
+
 SHORT_LEASE_TERMS = ["zwischenmiete", "untermiete auf zeit"]
 
 
@@ -79,6 +96,13 @@ def _text(listing: Listing) -> str:
     return f"{listing.title}\n{listing.description}"
 
 
+def check_details(listing: Listing, out: GateResult) -> None:
+    """An alert that carries no rent, size or rooms (a bare title) cannot be judged."""
+    if (listing.warm_rent_eur is None and listing.cold_rent_eur is None
+            and listing.area_m2 is None and listing.rooms is None):
+        out.rejects.append("alert has no details (rent, size, rooms): open the listing yourself")
+
+
 def check_price(listing: Listing, c: Criteria, out: GateResult) -> None:
     warm, cold = listing.warm_rent_eur, listing.cold_rent_eur
     if warm is None and cold is None:
@@ -94,6 +118,28 @@ def check_price(listing: Listing, c: Criteria, out: GateResult) -> None:
         out.rejects.append(f"warm rent {warm:.0f} above {c.max_warm_rent_eur}")
     if cold > c.max_cold_rent_eur:
         out.rejects.append(f"cold rent {cold:.0f} above {c.max_cold_rent_eur}")
+
+
+def check_rent_per_m2(listing: Listing, c: Criteria, out: GateResult) -> None:
+    warm = listing.warm_rent_eur
+    if warm is None and listing.cold_rent_eur is not None:
+        warm = listing.cold_rent_eur * WARM_TO_COLD_RATIO
+    if warm is None or not listing.area_m2:
+        return
+    per_m2 = warm / listing.area_m2
+    if c.max_warm_rent_per_m2 and per_m2 > c.max_warm_rent_per_m2:
+        out.rejects.append(f"{per_m2:.1f} EUR/m2 above {c.max_warm_rent_per_m2:g}")
+    ref = c.market_warm_rent_per_m2
+    if not ref:
+        return
+    share = per_m2 / ref
+    if share < FAR_BELOW_MARKET:
+        out.reviews.append(
+            f"rent {per_m2:.1f} EUR/m2 is far below the market {ref:g}: too good to be true?")
+    elif share < BELOW_MARKET:
+        out.flags.append(f"rent {per_m2:.1f} EUR/m2 is well below the market {ref:g}")
+    elif share > ABOVE_MARKET:
+        out.flags.append(f"rent {per_m2:.1f} EUR/m2 is well above the market {ref:g}")
 
 
 def check_size(listing: Listing, c: Criteria, out: GateResult) -> None:
@@ -126,6 +172,15 @@ def check_scam(listing: Listing, out: GateResult) -> None:
     for pattern in SCAM_PATTERNS:
         if pattern in text:
             out.rejects.append(f"scam red flag: {pattern}")
+    for rx in SCAM_REGEXES:
+        m = re.search(rx, text)
+        if m:
+            out.rejects.append(f"scam red flag: {m.group(0)}")
+    weak = [name for name, rx in WEAK_SCAM_REGEXES.items() if re.search(rx, text)]
+    if len(weak) >= 2:
+        out.reviews.append("possible scam: " + ", ".join(weak))
+    elif weak:
+        out.flags.append("check: " + weak[0])
     if (
         listing.deposit_eur
         and listing.cold_rent_eur
@@ -141,7 +196,7 @@ def check_move_in(listing: Listing, c: Criteria, out: GateResult) -> None:
         return
     d = listing.available_from
     if d is None:
-        out.reviews.append("move-in date unknown")
+        (out.flags if mi.unknown == "flag" else out.reviews).append("move-in date unknown")
         return
     if d > mi.latest:
         out.rejects.append(f"available {d} after {mi.latest}")
@@ -245,8 +300,10 @@ def evaluate_gates(
     area: AreaResult | None = None,
 ) -> GateResult:
     out = GateResult()
+    check_details(listing, out)
     check_price(listing, criteria, out)
     check_size(listing, criteria, out)
+    check_rent_per_m2(listing, criteria, out)
     check_exclusions(listing, criteria, out)
     check_scam(listing, out)
     check_move_in(listing, criteria, out)

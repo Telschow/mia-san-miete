@@ -31,3 +31,11 @@ Read of the Fredy README (github.com/orangecoding/fredy):
 1. Run Fredy with 3 to 4 Munich searches and measure publish-to-appearance latency.
 2. Inspect the SQLite schema in `/db`.
 3. Test whether Apprise `json://` can post to a local endpoint.
+
+## Update (2026-10-11)
+
+The alert-email source now works on real mail for ImmoScout24 and partly for Immowelt (see
+ADR 0007). Kleinanzeigen and WG-Gesucht alerts have not arrived yet, so nothing is decided
+about them. Fredy was not tried: it scrapes the portals, reads Kleinanzeigen and WG-Gesucht
+through a browser and Immowelt behind a bot wall, which makes it a fallback for portals whose
+alert mails turn out unusable, not a first choice. The three open checks above stay open.

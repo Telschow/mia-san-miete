@@ -22,11 +22,12 @@ from .gui.server import App, serve, settings_editable
 from .health import Health
 from .messaging.generator import DraftInvalid, generate_draft
 from .metrics import compute_metrics, format_metrics
+from .net import RedirectProbe, explain
 from .pipeline import run_once
 from .presets import UnknownPreset, list_presets, preset_answers
 from .privacy import HOOK, scan_history, scan_repo
 from .profile import load_profile
-from .providers.alert_email import AlertEmailProvider
+from .providers.alert_email import AlertEmailProvider, ClickResolver
 from .providers.base import FixtureProvider
 from .queue import ApprovalQueue, QueueError
 from .replies import ImapMailbox, check_replies
@@ -124,10 +125,18 @@ def main(argv: list[str] | None = None) -> int:
 
     alr = sub.add_parser("ingest-alerts", help="read portal alert emails and store new flats")
     alr.add_argument("--config", default="config.yaml")
+    alr.add_argument("--show-mail", metavar="DOMAIN", default=None,
+                     help="print an outline of up to 2 mails from this sender domain (no "
+                          "addresses or greetings; check it before sharing)")
+    alr.add_argument("--link-shapes", action="store_true",
+                     help="print the masked link structure of the alert mails (safe to share)")
 
     met = sub.add_parser("metrics", help="funnel and reply statistics")
     met.add_argument("--config", default="config.yaml")
     met.add_argument("--days", type=int, default=None, help="only the last N days")
+
+    mkt = sub.add_parser("market-rent", help="median warm rent per m2 of the flats seen so far")
+    mkt.add_argument("--config", default="config.yaml")
 
     priv = sub.add_parser("check-private", help="scan tracked files for private data")
     priv.add_argument("--root", default=".")
@@ -204,9 +213,10 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         db = Database(cfg.storage.db_path)
         engine = build_engine(cfg, profile, db, os.environ)
+        resolver = ClickResolver(RedirectProbe(), db.kv_get, db.kv_set)
         provider = AlertEmailProvider(
             ImapMailbox(a.imap_host, a.imap_port, user, password, a.folder),
-            a.sender_domains, a.lookback_days,
+            a.sender_domains, a.lookback_days, resolver=resolver,
         )
         notifier = build_notifier(cfg, os.environ)
         health = Health(db, notifier, cfg.notifications.heartbeat_hours,
@@ -395,9 +405,13 @@ Next:
                     print(f"  {stop.name}: {d * 1000:.0f} m, about "
                           f"{walking_minutes(d, s.walking_speed_kmh, s.detour_factor):.0f} min walk, "
                           f"kinds {sorted(stop_kinds(stop.modes)) or 'unknown'}")
+            if not (crit.area and crit.area.center) and not (
+                    crit.station and crit.station.max_walk_minutes):
+                print("Nothing else to check: set criteria.area.center (+ max_km) and/or "
+                      "criteria.station.max_walk_minutes in the config to test those lookups.")
             print("Compare with a map by hand: this lookup is unverified.")
         except Exception as exc:  # noqa: BLE001 - report any network or API error
-            print(f"lookup error {type(exc).__name__}: {exc}")
+            print(f"lookup error {explain(exc)}")
             return 1
         return 0
     if args.command == "check-router":
@@ -415,13 +429,37 @@ Next:
             try:
                 minutes = router.minutes(args.origin, t.destination, arrive)
             except Exception as exc:  # noqa: BLE001 - report any network or API error
-                print(f"{t.name}: router error {type(exc).__name__}: {exc}")
+                print(f"{t.name}: router error {explain(exc)}")
                 failed = True
                 continue
             print(f"{t.name}: {'no route found' if minutes is None else f'{minutes:.0f} min'} "
                   f"(arrive {arrive:%a %H:%M}); compare by hand with a journey planner")
             failed = failed or minutes is None
         return 1 if failed else 0
+    if args.command == "market-rent":
+        try:
+            cfg = load_config(args.config)
+        except (OSError, ValidationError, ValueError) as exc:
+            print(f"config invalid: {exc}", file=sys.stderr)
+            return 1
+        import json
+        import statistics
+        seen: dict[object, float] = {}
+        for cid, raw in Database(cfg.storage.db_path).conn.execute(
+                "SELECT canonical_id, data FROM listings"):
+            item = json.loads(raw)
+            warm = item.get("warm_rent_eur") or (item.get("cold_rent_eur") or 0) * 1.2
+            if warm and item.get("area_m2"):
+                seen[cid] = warm / item["area_m2"]
+        if len(seen) < 10:
+            print(f"only {len(seen)} flats with rent and size so far; collect at least 10 more first")
+            return 1
+        v = sorted(seen.values())
+        q1, med, q3 = statistics.quantiles(v, n=4)[0], statistics.median(v), statistics.quantiles(v, n=4)[2]
+        print(f"{len(v)} distinct flats: median {med:.1f} EUR/m2 warm (middle half {q1:.1f} to {q3:.1f})")
+        print(f"to use it: criteria.market_warm_rent_per_m2: {med:.0f}")
+        print("note: this is the median of what your alerts showed, not of the whole market")
+        return 0
     if args.command == "ingest-alerts":
         try:
             cfg = load_config(args.config)
@@ -436,15 +474,47 @@ Next:
         if not user or not password:
             print("IMAP credentials missing in the environment", file=sys.stderr)
             return 1
+        db = Database(cfg.storage.db_path)
+        resolver = ClickResolver(RedirectProbe(), db.kv_get, db.kv_set)
         provider = AlertEmailProvider(
             ImapMailbox(a.imap_host, a.imap_port, user, password, a.folder),
-            a.sender_domains, a.lookback_days,
+            a.sender_domains, a.lookback_days, resolver=resolver,
         )
-        stats = run_once([provider], Database(cfg.storage.db_path), notifier=None)
+        stats = run_once([provider], db, notifier=None)
+        if resolver.requests or resolver.skipped_over_cap:
+            print(f"click links looked up: {resolver.requests} "
+                  f"(over the per-run limit, left for next run: {resolver.skipped_over_cap})")
+            for shape, n in resolver.dead_ends.most_common(5):
+                print(f"  {n} x lookup did not end at a flat: {shape}")
         print(
             f"fetched={stats.fetched} new_flats={stats.new_flats} "
             f"duplicates={stats.duplicates} failed={stats.failed_providers}"
         )
+        if args.show_mail:
+            from .providers.alert_email import mail_skeleton
+            shown = 0
+            for dom, mails in provider.samples.items():
+                if dom == args.show_mail or dom.endswith("." + args.show_mail):
+                    for mail in mails:
+                        shown += 1
+                        print(f"\n===== mail {shown} from {dom} =====")
+                        print(mail_skeleton(mail))
+            if not shown:
+                print(f"no mail from {args.show_mail} in the last {a.lookback_days} days")
+        if args.link_shapes:
+            print("link shapes in mails from your sender_domains (host/path, ids masked):")
+            for shape, n in provider.link_shapes.most_common(25):
+                print(f"  {n:3d} x {shape}")
+        if stats.fetched == 0:
+            print(
+                f"mailbox '{a.folder}', last {a.lookback_days} days: {provider.mails_seen} mails, "
+                f"{provider.mails_allowed} from your sender_domains, "
+                f"{provider.mails_without_links} of those without a recognised flat link"
+            )
+            if provider.skipped_domains:
+                top = ", ".join(f"{d} ({n})" for d, n in provider.skipped_domains.most_common(8))
+                print(f"ignored sender domains: {top}")
+                print("add the portal's domain to alerts.sender_domains if it is among them")
         return 1 if stats.failed_providers else 0
     if args.command in ("check-replies", "metrics"):
         try:

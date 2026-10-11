@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 from collections.abc import Callable, Mapping
@@ -13,8 +14,8 @@ from .db import Database
 from .dispatcher import Dispatcher
 from .engine import Engine
 from .geo.area import CachedGeo, SafeGeo, needs_geo
-from .geo.motis import make_pt_router
-from .geo.travel import CachedRouter, GoogleRoutesRouter, Router
+from .geo.motis import DEFAULT_BASE_URL, MotisCarRouter, make_pt_router
+from .geo.travel import CachedRouter, GoogleRoutesRouter, Router, ScaledRouter
 from .llm_reply import LocalReplyLlm
 from .messaging.llm import LlmClient, OpeningWriter
 from .notify import Notifier, NtfyNotifier
@@ -27,6 +28,22 @@ from .senders.email import EmailSender
 log = logging.getLogger(__name__)
 
 
+def _why(exc: Exception) -> str:
+    """The error type, and for an HTTP error its status and the service's own short message
+    (never the request, so no API key can appear)."""
+    code = getattr(exc, "code", None)
+    if code is None:
+        return type(exc).__name__
+    detail = ""
+    try:
+        body = json.loads(exc.read(2000))            # type: ignore[attr-defined]
+        err = body.get("error", {}) if isinstance(body, dict) else {}
+        detail = f" {err.get('status', '')}: {str(err.get('message', ''))[:160]}".rstrip(": ")
+    except Exception:  # noqa: BLE001 - the body is only a courtesy
+        pass
+    return f"{type(exc).__name__} {code}{detail}"
+
+
 class SafeRouter:
     """A routing outage must not lose a flat: unknown commute sends it to the approval queue."""
 
@@ -37,7 +54,7 @@ class SafeRouter:
         try:
             return self.inner.minutes(origin, destination, arrive_by)
         except Exception as exc:  # noqa: BLE001 - any routing failure degrades to unknown
-            log.warning("%s routing failed: %s", self.mode, type(exc).__name__)
+            log.warning("%s routing failed: %s", self.mode, _why(exc))
             return None
 
 
@@ -70,6 +87,10 @@ def build_engine(
         pt = SafeRouter(CachedRouter(motis, db))
     if wants_geo:
         geo = SafeGeo(CachedGeo(motis, db))
+    if car is None and c.car_router == "motis":
+        car = SafeRouter(ScaledRouter(
+            CachedRouter(MotisCarRouter(c.motis_base_url or DEFAULT_BASE_URL), db),
+            c.car_rush_hour_factor))
     if car is None:
         key = env.get(c.car_api_key_env)
         needs_car = any(t.max_car_minutes for t in c.targets)

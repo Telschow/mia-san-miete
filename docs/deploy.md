@@ -22,6 +22,19 @@ mia check-config config.yaml && mia install-hook && mia check-private
 
 Keep `send_policy.enabled: false` (or `mode: shadow`) for the first one to two weeks.
 
+The `replies` section is optional. While nothing is sent there is nothing to reply to, and the
+reply scan reads the whole inbox folder, so leave it out until you start sending.
+
+To judge the stored flats again after changing criteria (this keeps the routing, geocoding and
+link-lookup caches, and deletes every decision and draft):
+
+```bash
+sqlite3 data/housing.db "DELETE FROM auto_replies; DELETE FROM replies; DELETE FROM outbound; DELETE FROM drafts; DELETE FROM actions; DELETE FROM listings; DELETE FROM canonicals;"
+```
+
+If your virtual environment is not `.venv` inside the project folder, add its full path to the
+env file as `MIA_VENV=...`; `deploy/run.sh` uses it.
+
 Before scheduling anything, run once by hand and read the output:
 
 ```bash

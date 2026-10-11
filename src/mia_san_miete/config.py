@@ -20,6 +20,7 @@ class MoveIn(_Strict):
     ideal_from: date
     latest: date
     early_flex_days: int = Field(default=0, ge=0)   # days before ideal_from that still pass
+    unknown: Literal["review", "flag"] = "review"   # a flat without a move-in date
 
     @model_validator(mode="after")
     def _ordered(self) -> MoveIn:
@@ -65,6 +66,8 @@ class Criteria(_Strict):
     move_in: MoveIn
     exclude_keywords: list[str] = []
     min_lease_months: int = Field(ge=0)
+    max_warm_rent_per_m2: float | None = Field(default=None, gt=0)    # hard limit, euro per m2
+    market_warm_rent_per_m2: float | None = Field(default=None, gt=0)  # reference for the checks
     nice_to_have: list[str] = []
     area: Area | None = None
     station: Station | None = None
@@ -102,9 +105,10 @@ class Commute(_Strict):
     combine: Literal["all", "any"] = "all"   # all: every target must pass
     borderline_margin_minutes: int = Field(ge=0)
     pt_router: Literal["mvg", "motis"]
-    car_router: Literal["google_routes"]
+    car_router: Literal["google_routes", "motis"]
     motis_base_url: str | None = None   # default: community Transitous instance
     car_api_key_env: str = "GOOGLE_ROUTES_API_KEY"   # only read if a target has a car limit
+    car_rush_hour_factor: float = Field(default=1.3, ge=1)   # motis car times ignore traffic
 
     @model_validator(mode="after")
     def _unique_names(self) -> Commute:
@@ -276,6 +280,13 @@ class Config(_Strict):
 
 
 def load_config(path: str | Path) -> Config:
-    with open(path, encoding="utf-8") as fh:
+    try:
+        fh = open(path, encoding="utf-8")  # noqa: SIM115 - closed right below
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            f"{path} not found. Create it with 'cp config.example.yaml config.yaml' "
+            "(or run the guided setup) and edit it; see docs/how-to.md."
+        ) from None
+    with fh:
         raw = yaml.safe_load(fh)
     return Config.model_validate(raw)

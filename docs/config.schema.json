@@ -173,9 +173,18 @@
       "type": "string"
      },
      "car_router": {
-      "const": "google_routes",
+      "enum": [
+       "google_routes",
+       "motis"
+      ],
       "title": "Car Router",
       "type": "string"
+     },
+     "car_rush_hour_factor": {
+      "default": 1.3,
+      "minimum": 1,
+      "title": "Car Rush Hour Factor",
+      "type": "number"
      },
      "combine": {
       "default": "all",
@@ -246,6 +255,19 @@
       "title": "Exclude Keywords",
       "type": "array"
      },
+     "market_warm_rent_per_m2": {
+      "anyOf": [
+       {
+        "exclusiveMinimum": 0,
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Market Warm Rent Per M2"
+     },
      "max_cold_rent_eur": {
       "exclusiveMinimum": 0,
       "title": "Max Cold Rent Eur",
@@ -255,6 +277,19 @@
       "exclusiveMinimum": 0,
       "title": "Max Warm Rent Eur",
       "type": "integer"
+     },
+     "max_warm_rent_per_m2": {
+      "anyOf": [
+       {
+        "exclusiveMinimum": 0,
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Max Warm Rent Per M2"
      },
      "min_area_m2": {
       "exclusiveMinimum": 0,
@@ -380,6 +415,15 @@
      "latest": {
       "format": "date",
       "title": "Latest",
+      "type": "string"
+     },
+     "unknown": {
+      "default": "review",
+      "enum": [
+       "review",
+       "flag"
+      ],
+      "title": "Unknown",
       "type": "string"
      }
     },

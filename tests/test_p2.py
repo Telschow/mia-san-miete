@@ -235,3 +235,62 @@ def test_city_is_configurable_for_routing():
     compute_commute(_l(street="Reeperbahn 1", postal_code="20359"), CFG.commute, pt, car, NOW,
                     "Hamburg")
     assert seen and all(o.endswith("20359 Hamburg") for o in seen)
+
+
+def test_rent_per_m2_and_weak_scam_signals():
+    from mia_san_miete.gates import GateResult, check_rent_per_m2, check_scam
+
+    c = CFG.criteria.model_copy(update={"max_warm_rent_per_m2": 30, "market_warm_rent_per_m2": 24})
+
+    def rent(warm, area):
+        out = GateResult()
+        check_rent_per_m2(_l(warm_rent_eur=warm, area_m2=area), c, out)
+        return out
+
+    assert rent(1800, 50).rejects                                 # 36 EUR/m2 above the hard limit
+    assert rent(500, 50).reviews                                  # 10 EUR/m2 is under half the market
+    assert rent(900, 60).flags and not rent(900, 60).reviews      # 15 EUR/m2 is well below
+    assert rent(1400, 60).verdict == Verdict.PASS                 # 23.3 EUR/m2 is normal
+
+    def scam(text):
+        out = GateResult()
+        check_scam(_l(description=text), out)
+        return out
+
+    assert scam("Zahlung per Paysafe").rejects
+    assert scam("Schlüssel wird per DHL verschickt").rejects
+    assert scam("Vermieter im Ausland, Kontakt nur per WhatsApp").reviews
+    one = scam("Kontakt nur über WhatsApp")
+    assert one.flags and not one.reviews and not one.rejects
+
+
+def test_motis_car_router_reads_direct_leg_and_rush_hour_factor_scales():
+    from mia_san_miete.geo.motis import MotisCarRouter
+    from mia_san_miete.geo.travel import ScaledRouter
+
+    seen = []
+
+    def fake_get(url):
+        seen.append(url)
+        if "geocode" in url:
+            return [{"lat": 48.1, "lon": 11.5}]
+        return {"direct": [{"duration": 1200}], "itineraries": []}
+
+    car = MotisCarRouter("https://motis.example.test", get=fake_get)
+    arrive = datetime(2026, 10, 12, 8, 0, tzinfo=UTC)
+    assert car.minutes("A", "B", arrive) == 20.0
+    assert any("directModes=CAR" in u and "transitModes=" in u for u in seen)
+    assert ScaledRouter(car, 1.3).minutes("A", "B", arrive) == 26.0
+
+
+def test_unknown_move_in_can_be_a_flag_and_empty_alerts_are_skipped():
+    crit = CFG.criteria
+    flagged = crit.model_copy(update={"move_in": crit.move_in.model_copy(update={"unknown": "flag"})})
+    full = dict(warm_rent_eur=1200, area_m2=60, rooms=2, available_from=None)
+    assert any("move-in date unknown" in r for r in evaluate_gates(
+        _l(**full), crit, CFG.commute, GOOD).reviews)
+    g = evaluate_gates(_l(**full), flagged, CFG.commute, GOOD)
+    assert not any("move-in" in r for r in g.reviews) and "move-in date unknown" in g.flags
+    empty = evaluate_gates(_l(warm_rent_eur=None, cold_rent_eur=None, area_m2=None, rooms=None),
+                           crit, CFG.commute, GOOD)
+    assert any("no details" in r for r in empty.rejects)

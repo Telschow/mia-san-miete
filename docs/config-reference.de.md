@@ -24,8 +24,11 @@ Englische Version: config-reference.en.md
 | `criteria.move_in.ideal_from` | Datum (JJJJ-MM-TT) | **Pflicht** | Wunschtermin für den Einzug. |
 | `criteria.move_in.latest` | Datum (JJJJ-MM-TT) | **Pflicht** | Spätester akzeptabler Einzug; danach wird aussortiert. |
 | `criteria.move_in.early_flex_days` | Ganzzahl, ≥ 0 | `0` | Tage vor dem Wunschtermin, die noch durchgehen (mit Hinweis, niedrigerer Score). |
+| `criteria.move_in.unknown` | review | flag | `review` | Wohnung ohne Einzugstermin: `review` schickt sie zur Prüfung (Standard), `flag` lässt sie mit Hinweis durch. Portal-Alarme nennen den Termin meist nicht. |
 | `criteria.exclude_keywords` | Liste (Text) | [] | Ganze Wörter, die eine Wohnung ausschließen (z. B. WBS, Tausch). Verneinungen wie „kein WBS“ werden erkannt. |
-| `criteria.min_lease_months` | Ganzzahl, ≥ 0 | **Pflicht** | Mindestmietdauer in Monaten; kürzere oder unbekannte Befristung (Zwischenmiete) wird aussortiert. |
+| `criteria.min_lease_months` | Ganzzahl, ≥ 0 | **Pflicht** | Mindestmietdauer in Monaten (noch ohne Wirkung): ausgeschlossen werden bisher nur Zwischenmiete und Untermiete auf Zeit; eine unbekannte Dauer gilt als unbefristet und geht durch, „befristet“ ohne Dauer geht in die Prüfung. |
+| `criteria.max_warm_rent_per_m2` | Zahl, > 0 | nicht gesetzt | Optional: höchste Warmmiete pro Quadratmeter in Euro; teurere Wohnungen werden aussortiert. |
+| `criteria.market_warm_rent_per_m2` | Zahl, > 0 | nicht gesetzt | Optional: übliche Warmmiete pro Quadratmeter in deiner Gegend (Euro, siehe `mia market-rent`). Weit darunter geht in die Prüfung (Betrugsverdacht), weit darüber gibt einen Hinweis. |
 | `criteria.nice_to_have` | Liste (Text) | [] | Wünschenswertes (balcony, parking); fließt in den Score ein, schließt nichts aus. |
 | `criteria.area.center` | Text | nicht gesetzt | Optional: Adresse oder Bahnhof, der als Mitte der Stadt gilt (Bezugspunkt für den Radius). |
 | `criteria.area.max_km` | Zahl, > 0 | nicht gesetzt | Optional: größte Luftlinie zur Mitte in Kilometern; braucht `center`. Unbekannter Ort geht in die Prüfung, nie in die Ablehnung. |
@@ -51,9 +54,10 @@ Englische Version: config-reference.en.md
 | `commute.combine` | all | any | `all` | `all`: jedes Ziel muss passen; `any`: ein Ziel genügt. |
 | `commute.borderline_margin_minutes` | Ganzzahl, ≥ 0 | **Pflicht** | Minuten Toleranz: Grenzfälle bei geschätzter Adresse gehen in die Prüfung statt in die Ablehnung. |
 | `commute.pt_router` | mvg | motis | **Pflicht** | Routing für den ÖPNV: `motis` (ganz Deutschland) oder `mvg` (nur München, noch nicht gebaut). |
-| `commute.car_router` | google_routes | **Pflicht** | Routing fürs Auto; derzeit nur `google_routes`. |
+| `commute.car_router` | google_routes | motis | **Pflicht** | Routing fürs Auto: `motis` (kostenlos, ohne Verkehrslage) oder `google_routes` (braucht Schlüssel und Abrechnung bei Google). |
 | `commute.motis_base_url` | Text | nicht gesetzt | Optional: eigener MOTIS-Server; Standard ist die Transitous-Gemeinschaftsinstanz. |
 | `commute.car_api_key_env` | Text | `GOOGLE_ROUTES_API_KEY` | Name der Umgebungsvariable mit dem Google-Routes-Schlüssel (nur nötig bei Auto-Limit). |
+| `commute.car_rush_hour_factor` | Zahl, ≥ 1 | `1.3` | Nur für `motis`: Faktor auf die Fahrzeit ohne Verkehr, damit der Berufsverkehr berücksichtigt wird (Annahme, nicht gemessen). |
 
 ### Sendepolitik (`send_policy`)
 

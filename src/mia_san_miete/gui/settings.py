@@ -35,6 +35,7 @@ import yaml
 from pydantic import ValidationError
 
 from ..config import Config
+from ..net import ssl_context
 from ..notify import NtfyNotifier
 from ..presets import preset_answers
 from ..profile import Profile
@@ -296,7 +297,8 @@ def _generic(exc: BaseException) -> str:
 
 def run_connection_test(
     kind: str, cfg: dict[str, Any], env: dict[str, str],
-    imap_factory: Callable[[str, int], Any] = lambda h, p: imaplib.IMAP4_SSL(h, p, timeout=10),
+    imap_factory: Callable[[str, int], Any] = lambda h, p: imaplib.IMAP4_SSL(
+        h, p, timeout=10, ssl_context=ssl_context()),
     smtp_factory: Callable[[str, int], Any] = lambda h, p: smtplib.SMTP(h, p, timeout=10),
     ntfy_post: Callable[..., None] | None = None,
 ) -> dict[str, Any]:

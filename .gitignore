@@ -19,3 +19,4 @@ secrets/
 .private-terms
 *.local.yaml
 .env.*
+*.bak

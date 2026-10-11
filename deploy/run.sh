@@ -26,8 +26,11 @@ set -a
 set +a
 
 cd "$ROOT"
+# The virtual environment is .venv in the project unless MIA_VENV (set in the env file) says otherwise.
+VENV="${MIA_VENV:-$ROOT/.venv}"
+[ -r "$VENV/bin/activate" ] || { echo "no virtual environment at $VENV (set MIA_VENV in $ENV_FILE)" >&2; exit 1; }
 # shellcheck disable=SC1091
-. .venv/bin/activate
+. "$VENV/bin/activate"
 
 echo "--- $(date -u +%FT%TZ) run"
 mia run --config config.yaml --profile profile/profile.yaml

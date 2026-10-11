@@ -1,9 +1,9 @@
 """Public-transport routing via a MOTIS 2 server (works for all of Germany).
 
-UNVERIFIED against a live server: endpoint names and fields follow the MOTIS 2 API as
-remembered (`/api/v1/geocode`, `/api/v1/plan`). The default is the community Transitous
-instance; check its usage policy, or run your own MOTIS, before relying on it. Check one
-real route by hand against a journey planner before trusting the gates.
+Checked against the community Transitous instance (October 2026): `/api/v1/geocode`,
+`/api/v1/plan` (public transport and `directModes=CAR`) and `/api/v1/reverse-geocode` answer
+as read here. Times are door to door. Check its usage policy, or run your own MOTIS, before
+relying on it, and check one real route by hand against a journey planner.
 """
 
 from __future__ import annotations
@@ -14,6 +14,7 @@ import urllib.request
 from collections.abc import Callable
 from datetime import UTC, datetime
 
+from ..net import urlopen
 from .area import Stop, haversine_km
 
 DEFAULT_BASE_URL = "https://api.transitous.org"
@@ -22,7 +23,7 @@ USER_AGENT = "mia-san-miete/0.1 (personal flat search; contact via repository)"
 
 def _get_json(url: str) -> object:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=15) as resp:
+    with urlopen(req, timeout=15) as resp:
         return json.loads(resp.read())
 
 
@@ -87,6 +88,31 @@ class MotisRouter:
         data = self._get(f"{self.base_url}/api/v1/plan?{query}")
         itineraries = data.get("itineraries") if isinstance(data, dict) else None
         durations = [i["duration"] for i in itineraries or [] if "duration" in i]
+        return min(durations) / 60.0 if durations else None
+
+
+class MotisCarRouter(MotisRouter):
+    """Car times from the same MOTIS server (street routing, no live traffic). Free, no key.
+    Check one route by hand: `mia check-router` style, against a map for the same hour."""
+
+    mode = "car"
+
+    def minutes(self, origin: str, destination: str, arrive_by: datetime) -> float | None:
+        src, dst = self._place(origin), self._place(destination)
+        if not src or not dst:
+            return None
+        query = urllib.parse.urlencode({
+            "fromPlace": src,
+            "toPlace": dst,
+            "time": arrive_by.astimezone(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "arriveBy": "true",
+            "directModes": "CAR",
+            "transitModes": "",
+            "numItineraries": 1,
+        })
+        data = self._get(f"{self.base_url}/api/v1/plan?{query}")
+        direct = data.get("direct") if isinstance(data, dict) else None
+        durations = [i["duration"] for i in direct or [] if "duration" in i]
         return min(durations) / 60.0 if durations else None
 
 
