@@ -1,10 +1,24 @@
+<p align="center"><img src="docs/images/rauten.svg" alt="" width="882" height="14"></p>
+
 # Mia san Miete
 
 [![CI](https://github.com/Telschow/mia-san-miete/actions/workflows/ci.yml/badge.svg)](https://github.com/Telschow/mia-san-miete/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-0b6bb5.svg)](LICENSE)
 
-A personal agent for the German rental market: discover new listings, filter and score them
-deterministically, draft a truthful message, and (under an explicit, capped policy) send it
-fast. The name is a Bavarian pun; nothing in the code is tied to one city or one person.
+*Servus!* Mia is a personal agent for the German rental market. It reads your portal alert
+emails, filters and scores every flat with fixed rules, drafts a truthful message, and sends
+only under an explicit, capped policy, with you in control. Shadow mode and a kill switch are
+the default.
+
+The name is a Bavarian pun on *Mia san mia* ("we are who we are"). The tool itself is not tied
+to Munich or to one person: ten large cities and four household types ship as presets.
+
+<p align="center"><img src="docs/images/dashboard-bavarian.png" alt="Dashboard in the Weiß-Blau theme, fictional demo data" width="760"></p>
+
+<p align="center"><sub>Weiß-Blau theme with fictional demo data. Paper, Slate, Bayern Nacht and High contrast are included.</sub></p>
+
+**What it does:** finds, scores and drafts. **What it does not do:** log in to portals or send
+through them. You send from the portal yourself, or approve the email path in the queue.
 
 **New here? Start with the [how-to guide](docs/how-to.md)**, which takes you from a fresh clone to a supervised shadow run.
 
