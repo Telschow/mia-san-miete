@@ -1,7 +1,6 @@
 title: Mia san Miete
 description: A personal agent for the German rental market. Finds, scores and drafts; you stay in control.
 lang: en
-theme: minima
 markdown: kramdown
 plugins:
   - jekyll-optional-front-matter
@@ -12,12 +11,13 @@ relative_links:
   collections: false
 titles_from_headings:
   enabled: true
-  strip_title: true
+  strip_title: false
   collections: false
 defaults:
   - scope:
       path: ""
     values:
-      layout: page
+      layout: default
 exclude:
   - config.schema.json
+  - _preview

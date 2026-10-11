@@ -17,9 +17,10 @@ Nothing personal is ever committed to the repository.
   the realistic workflow is: Mia finds, scores and drafts; you open the listing and send the
   drafted message yourself (see part 7). Direct sending works only for listings that carry a
   contact email.
-- **Several parts are unverified on real data:** the alert-mail parser, the transit router,
-  the reply classifier and the slot parser were all tested on fictional data only. Parts 4 and
-  5 tell you how to check them on your own mail.
+- **Some parts are unverified on real data:** the ImmoScout24 parser and the transit router
+  were checked on real data (October 2026) and Immowelt partly; the Kleinanzeigen, WG-Gesucht
+  and immobilien.de parsers, the reply classifier and the slot parser were tested on fictional
+  data only. Parts 4 and 5 tell you how to check them on your own mail.
 - **Portals restrict automation.** Reading alert emails that you receive yourself is the
   low-risk path. Account bans are a risk you accept if you automate sending. Mia does not
   solve captchas or evade detection.

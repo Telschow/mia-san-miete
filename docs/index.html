@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mia san Miete · A personal agent for the German rental market</title>
+  <meta name="description" content="Mia san Miete reads your portal alert emails, filters and scores every flat with fixed rules, drafts a truthful message and sends only under an explicit, capped policy. Shadow mode by default.">
+  <meta property="og:title" content="Mia san Miete">
+  <meta property="og:description" content="Finds, scores, drafts. You decide. A personal agent for the German rental market.">
+  <meta property="og:image" content="https://telschow.github.io/mia-san-miete/images/dashboard-bavarian.png">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="band" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./">Mia san <span>Miete</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="how-to.html">How-to</a>
+        <a href="deploy.html">Deploy</a>
+        <a href="config-reference.en.html">Configuration</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="adr/">Decisions</a>
+        <a href="https://github.com/Telschow/mia-san-miete">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow">Personal rental agent · Germany</p>
+          <h1>Finds, scores, drafts.<br>You decide.</h1>
+          <p class="lead"><em>Servus!</em> Mia reads the alert emails your portals send you, filters and scores every flat with fixed rules, drafts a truthful message, and sends only under an explicit, capped policy. Out of the box, nothing is ever sent.</p>
+          <div class="cta">
+            <a class="btn primary" href="how-to.html">Get started</a>
+            <a class="btn ghost" href="https://github.com/Telschow/mia-san-miete">View on GitHub</a>
+          </div>
+        </div>
+        <figure class="shot">
+          <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <img src="images/dashboard-bavarian.png" alt="The Mia dashboard in the Weiß-Blau theme, listing scored flats with fictional demo data" width="1280" height="1524">
+          <figcaption>The local dashboard in the Weiß-Blau theme. Fictional demo data.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="facts">
+      <ul class="wrap">
+        <li><b>Shadow mode first</b>It logs what it would do. A kill switch and daily caps stand behind every send.</li>
+        <li><b>No scraping, no login</b>It reads your own alert emails over read-only IMAP.</li>
+        <li><b>Local and private</b>Your data lives in gitignored files. A pre-commit hook guards the repository.</li>
+        <li><b>Tested in the open</b>CI on Python 3.11 to 3.13, MIT licensed.</li>
+      </ul>
+    </div>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>How a flat travels through it</h2>
+          <p>Every step is deterministic and explainable. A language model, if you run one, only writes a sentence or two about the listing, and a validator checks it against facts you allowed.</p>
+        </div>
+        <ol class="steps">
+          <li><b>Alert email</b><span>A saved search on a portal mails you a new listing. Mia reads that mailbox, read-only.</span></li>
+          <li><b>Parse and dedup</b><span>Title, rent, size, rooms and place are extracted. The same flat on two portals counts once.</span></li>
+          <li><b>Hard gates</b><span>Rent, size, move-in, exclusions, scam signals, price per m². Any reject means skip.</span></li>
+          <li><b>Commute and area</b><span>Door-to-door transit or car time to your places, distance to the centre, walk to a stop.</span></li>
+          <li><b>Score and decide</b><span>A 0 to 100 score, then the policy: skip, review queue, would-send or send.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="alt" id="safe">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Built to be hard to misuse</h2>
+          <p>Portals restrict automated access, and a wrong message to a landlord is hard to take back. The defaults reflect that.</p>
+        </div>
+        <div class="cards">
+          <div class="card"><h3>Sending is off</h3><p><code>send_policy.enabled</code> is <code>false</code> and the mode is <code>shadow</code>. Live sending needs an allow-list of platforms, caps, quiet hours and a kill switch you can trigger with one command.</p></div>
+          <div class="card"><h3>Truthful by construction</h3><p>A draft may state only the facts you list in your profile. The validator rejects anything else and falls back to a fixed template.</p></div>
+          <div class="card"><h3>No tricks</h3><p>No captcha solving, no detection evasion, no portal logins. Platform sending is evaluated in a decision record, not built.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="status">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Where it stands</h2>
+          <p>Checked on real data in Munich, October 2026. What is not yet checked says so.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Part</th><th>State</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>ImmoScout24 alert mails</td><td><span class="tag ok">verified</span></td><td>Title, warm rent, size, rooms and district parse from real mail.</td></tr>
+              <tr><td>Immowelt alert mails</td><td><span class="tag part">partial</span></td><td>Click-tracking links only; one redirect lookup per flat works for most cards.</td></tr>
+              <tr><td>Kleinanzeigen, WG-Gesucht, immobilien.de</td><td><span class="tag todo">waiting</span></td><td>Only account mails so far; formats unverified.</td></tr>
+              <tr><td>Transit and car routing</td><td><span class="tag ok">verified</span></td><td>MOTIS, door to door; car times have no live traffic.</td></tr>
+              <tr><td>Scheduled shadow run on a Mac</td><td><span class="tag ok">running</span></td><td>Every five minutes; nothing is sent.</td></tr>
+              <tr><td>Reply monitor and auto-reply</td><td><span class="tag todo">untested</span></td><td>Fictional tests only; not run on real replies.</td></tr>
+              <tr><td>Sending through portals</td><td><span class="tag todo">not built</span></td><td>By design. You send from the portal, or approve the email path in the queue.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:1rem"><a href="roadmap.html">Read the roadmap</a> for the plan and open work.</p>
+      </div>
+    </section>
+
+    <section class="alt" id="screens">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>The dashboard</h2>
+          <p>A local web app with a review queue, a shadow report, settings and five themes. Everything below is fictional demo data.</p>
+        </div>
+        <div class="gallery">
+          <figure class="shot"><img src="images/dashboard-queue.png" alt="Review queue with drafts to approve, edit or skip" width="1280" height="900" loading="lazy"><figcaption>Review queue: approve, edit or skip each draft.</figcaption></figure>
+          <figure class="shot"><img src="images/dashboard-night.png" alt="Dashboard in the dark Bayern Nacht theme" width="1280" height="1524" loading="lazy"><figcaption>Bayern Nacht, the dark theme.</figcaption></figure>
+          <figure class="shot phone"><img src="images/dashboard-mobile.png" alt="Dashboard on a phone" width="390" height="844" loading="lazy"><figcaption>On a phone.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="start">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Try it in five minutes</h2>
+          <p>The demo runs on fictional data: nothing real is read and nothing is sent.</p>
+        </div>
+        <pre class="ink-pre"><code>git clone https://github.com/Telschow/mia-san-miete.git mia &amp;&amp; cd mia
+python3 -m venv .venv &amp;&amp; . .venv/bin/activate
+pip install -e ".[dev]"
+mia demo     # dashboard on fictional data
+mia init     # guided setup; writes your private, gitignored files</code></pre>
+        <p>Then follow the <a href="how-to.html">how-to guide</a>: alerts into an inbox, checks on real data, and one to two weeks in shadow mode before anything else.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Mia san Miete · MIT licensed · fictional demo data in all screenshots</span>
+      <span><a href="https://github.com/Telschow/mia-san-miete">Source</a> · <a href="https://github.com/Telschow/mia-san-miete/issues">Issues</a> · <a href="adr/">Decisions</a></span>
+    </div>
+  </footer>
+</body>
+</html>

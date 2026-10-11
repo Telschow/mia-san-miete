@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title and page.title != site.title %}{{ page.title | strip_html | escape }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="band" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="{{ '/' | relative_url }}">Mia san <span>Miete</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="{{ '/how-to.html' | relative_url }}"{% if page.url == '/how-to.html' %} aria-current="page"{% endif %}>How-to</a>
+        <a href="{{ '/deploy.html' | relative_url }}"{% if page.url == '/deploy.html' %} aria-current="page"{% endif %}>Deploy</a>
+        <a href="{{ '/config-reference.en.html' | relative_url }}"{% if page.url == '/config-reference.en.html' %} aria-current="page"{% endif %}>Configuration</a>
+        <a href="{{ '/roadmap.html' | relative_url }}"{% if page.url == '/roadmap.html' %} aria-current="page"{% endif %}>Roadmap</a>
+        <a href="{{ '/adr/' | relative_url }}">Decisions</a>
+        <a href="https://github.com/Telschow/mia-san-miete">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="doc">
+    <div class="wrap">
+      {{ content }}
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Mia san Miete · MIT licensed · fictional demo data in all screenshots</span>
+      <span><a href="{{ '/' | relative_url }}">Home</a> · <a href="https://github.com/Telschow/mia-san-miete">Source</a> · <a href="https://github.com/Telschow/mia-san-miete/issues">Issues</a></span>
+    </div>
+  </footer>
+</body>
+</html>
