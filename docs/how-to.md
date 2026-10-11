@@ -13,7 +13,7 @@ Nothing personal is ever committed to the repository.
 - **Shadow first.** Out of the box nothing is sent. The agent decides, logs what it would
   have done, and puts borderline flats in a review queue.
 - **Alert-sourced flats cannot be sent automatically yet.** Portal alert emails carry no
-  landlord contact address, and platform (browser) senders are not built (issue #23). Today
+  landlord contact address, and platform (browser) senders are not built (issue #13). Today
   the realistic workflow is: Mia finds, scores and drafts; you open the listing and send the
   drafted message yourself (see part 7). Direct sending works only for listings that carry a
   contact email.
@@ -405,10 +405,10 @@ it, and no document is ever attached.
 | Part | Status |
 |---|---|
 | Scoring, gates, send policy, dedup, queue, dashboard | Unit and randomized tests; CI on Python 3.11 to 3.13 |
-| Alert-mail parser | Fictional mails only; unverified on real portal mail (issue #2) |
-| MOTIS transit router | Not verified against a live server (issue #3) |
-| Reply classifier | 57% on a small fictional held-out set; misses land in "Needs a look" (issue #26) |
-| Slot parser and auto-reply | Fictional tests; not run on real replies (issue #27) |
-| Platform (browser) senders | Not built (issue #23) |
+| Alert-mail parser | ImmoScout24 checked on real mail, Immowelt partly; Kleinanzeigen, WG-Gesucht and immobilien.de unverified (issues #2, #32) |
+| MOTIS transit router | Checked against a journey planner for one city; door-to-door times (issue #3, closed) |
+| Reply classifier | 57% on a small fictional held-out set; misses land in "Needs a look" (issue #16) |
+| Slot parser and auto-reply | Fictional tests; not run on real replies (issue #17) |
+| Platform (browser) senders | Not built (issue #13) |
 
 Benchmarks and their limits: `docs/benchmarks.md`. Roadmap: `docs/roadmap.md`.

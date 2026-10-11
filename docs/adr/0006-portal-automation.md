@@ -14,7 +14,7 @@ Mia **does not log in to portals and does not send through them.** Today it:
   duplicate guard, so the same flat is not sent twice).
 
 Alert emails carry no landlord address, so flats found through alerts cannot be sent
-automatically yet. That is issue #23.
+automatically yet. That is issue #13.
 
 ## Options
 
