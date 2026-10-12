@@ -354,6 +354,8 @@ it, and no document is ever attached.
 - **Move to another machine**: copy those files, run the common setup there, stop the old
   scheduler first (never run two machines against the same inbox with sending enabled).
 - **Stop everything**: `mia kill` (stops sending), then remove the scheduler entry.
+  Relative paths in `config.yaml` (`kill_switch_file`, `storage.db_path`) count from the
+  folder of `config.yaml`, so `mia kill --config /path/to/config.yaml` works from any folder.
 - **Retention**: message drafts are deleted after 30 days; the audit table never contains
   message text.
 
