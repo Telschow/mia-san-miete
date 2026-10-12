@@ -20,6 +20,14 @@ class RunStats:
     new_flats: int = 0
     duplicates: int = 0
     failed_providers: list[str] = field(default_factory=list)
+    # flats whose processing raised: they were stored but got no decision, so the run is not
+    # a success even though discovery went on ("source/source_id")
+    failed_listings: list[str] = field(default_factory=list)
+    notify_failures: int = 0
+
+    @property
+    def ok(self) -> bool:
+        return not (self.failed_providers or self.failed_listings)
 
 
 def run_once(
@@ -45,13 +53,19 @@ def run_once(
                 stats.new_flats += 1
                 if notifier:
                     title, body = format_listing(listing)
-                    notifier.send(title, body, listing.url)
+                    try:
+                        notifier.send(title, body, listing.url)
+                    except Exception:   # a push notice is best effort; the flat still counts
+                        log.exception("notification failed for %s/%s", listing.source,
+                                      listing.source_id)
+                        stats.notify_failures += 1
                 if on_new_flat:
                     try:
                         on_new_flat(listing, result)
                     except Exception:   # a processing bug must not stop discovery
                         log.exception("processing failed for %s/%s", listing.source,
                                       listing.source_id)
+                        stats.failed_listings.append(f"{listing.source}/{listing.source_id}")
             else:
                 stats.duplicates += 1
     return stats

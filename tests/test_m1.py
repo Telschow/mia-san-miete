@@ -91,6 +91,15 @@ def test_heartbeat_silence_and_failure_alerts():
     assert [x[0] for x in notes.sent[n:]] == ["Mia: cycle problem"]
 
 
+def test_failed_flat_processing_raises_a_cycle_alert():
+    db, notes = Database(), Notes()
+    h = Health(db, notes, heartbeat_hours=24, silence_hours=48,
+               clock=lambda: datetime(2026, 11, 2, 9, 0, tzinfo=UTC))
+    h.after_cycle(RunStats(fetched=1, new_flats=1, failed_listings=["immoscout/1"]))
+    assert [(n[0], "processing failed" in n[1]) for n in notes.sent] == [
+        ("Mia: cycle problem", True)]
+
+
 def test_notifier_outage_never_breaks_the_cycle():
     class Down:
         def send(self, *a, **k):
