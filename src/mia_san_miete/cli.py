@@ -232,9 +232,10 @@ def main(argv: list[str] | None = None) -> int:
         print(
             f"fetched={stats.fetched} new_flats={stats.new_flats} "
             f"duplicates={stats.duplicates} failed={stats.failed_providers} "
+            f"failed_flats={stats.failed_listings} "
             f"(send_policy enabled={pol.enabled} mode={pol.mode})"
         )
-        return 1 if stats.failed_providers else 0
+        return 0 if stats.ok else 1
     if args.command == "init":
         import yaml as _yaml
         prompter = Prompter()

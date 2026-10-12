@@ -289,4 +289,19 @@ def load_config(path: str | Path) -> Config:
         ) from None
     with fh:
         raw = yaml.safe_load(fh)
-    return Config.model_validate(raw)
+    return _anchor_paths(Config.model_validate(raw), Path(path).resolve().parent)
+
+
+def _anchor_paths(cfg: Config, base: Path) -> Config:
+    """Relative file paths in the config mean "next to the config file", not "in whatever
+    folder the command was started from": otherwise `mia kill` run elsewhere writes a KILL file
+    the scheduler never sees, and the GUI opens an empty database."""
+
+    def anchored(p: Path) -> Path:
+        return p if p.is_absolute() else base / p
+
+    return cfg.model_copy(update={
+        "send_policy": cfg.send_policy.model_copy(
+            update={"kill_switch_file": anchored(cfg.send_policy.kill_switch_file)}),
+        "storage": cfg.storage.model_copy(update={"db_path": anchored(cfg.storage.db_path)}),
+    })

@@ -45,6 +45,30 @@ _ROOMS_LABEL = re.compile(r"(?:Zimmer|Zimmeranzahl|Räume)\s*:\s*" + _NUM, re.IG
 _PLZ = re.compile(r"\b(\d{5})\b")
 _COLD = re.compile(r"kalt", re.IGNORECASE)
 _WARM = re.compile(r"warm|gesamtmiete", re.IGNORECASE)
+# money figures that are not the rent: deposit, commission, running costs, parking
+_NOT_RENT = re.compile(r"kaution|provision|courtage|nebenkosten|heizkosten|stellplatz|garage",
+                       re.IGNORECASE)
+_PER_M2 = re.compile(r"\s*(?:/|pro|je)\s*(?:m²|m2|qm)", re.IGNORECASE)   # used with .match(pos)
+
+
+_RENT_LABELS = (("cold", _COLD), ("warm", _WARM), ("other", _NOT_RENT))
+
+
+def _rent_kind(text: str, start: int, end: int) -> str | None:
+    """'cold', 'warm', 'other' (not a rent) or None (unlabelled) for the money figure at
+    text[start:end]. A label right after the figure wins ('1.200 € kalt, 1.450 € warm');
+    otherwise the nearest label before it ('Warmmiete 1.450 € (kalt 1.200 €)': warm, then
+    cold; 'Kaution 3.600 €': other)."""
+    if _PER_M2.match(text, end):
+        return "other"
+    follows = re.match(r"[ \t]*[,;:]?[ \t]*(\w+)", text[end:end + 30])   # same line only
+    if follows:
+        for kind, rx in _RENT_LABELS:
+            if rx.match(follows.group(1)):
+                return kind
+    before = text[max(0, start - 20):start]
+    found = [(m.end(), kind) for kind, rx in _RENT_LABELS for m in rx.finditer(before)]
+    return max(found)[1] if found else None
 
 
 def _num(text: str) -> float:
@@ -77,10 +101,30 @@ def link_shape(url: str) -> str:
     return shape
 
 
+PORTAL_DOMAINS: dict[str, tuple[str, ...]] = {
+    "immoscout": ("immobilienscout24.de", "is24.de"),
+    "kleinanzeigen": ("kleinanzeigen.de",),
+    "wg_gesucht": ("wg-gesucht.de",),
+    "immowelt": ("immowelt.de",),
+}
+
+
 def portal_for(url: str) -> tuple[str, str] | None:
+    """(source, listing id) for a link that really points at a portal: http(s) only, and the
+    host must be the portal's domain or a subdomain of it. A portal path inside another
+    site's URL ('https://evil.example/www.immowelt.de/expose/1') or a javascript: link is not
+    a listing; such a URL would end up as the 'Open listing' link and the push click target."""
+    try:
+        parts = urlsplit(url.strip())
+        host = (parts.hostname or "").lower()
+    except ValueError:
+        return None
+    if parts.scheme.lower() not in ("http", "https") or not host:
+        return None
+    target = host + parts.path
     for source, pattern in PORTALS:
-        m = pattern.search(url)
-        if m:
+        m = pattern.search(target)
+        if m and any(host == d or host.endswith("." + d) for d in PORTAL_DOMAINS[source]):
             return source, m.group(1)
     return None
 
@@ -250,13 +294,36 @@ class _Collector(HTMLParser):
         self.blocks.append(_Block(source, sid, url, anchor))
 
 
+_TITLE_START = re.compile(r"^[ \t]*Titel[ \t]*:", re.MULTILINE | re.IGNORECASE)
+
+
+def _labelled_records(body: str) -> list[tuple[int, int]]:
+    """(start, end) of each labelled record ('Titel: ...' then Link, Adresse, Warmmiete, ...).
+
+    ImmoScout24 puts a flat's fields after its link, so a record runs from its 'Titel:' line
+    to the next 'Titel:' line or the next rule, whichever comes first."""
+    starts = [m.start() for m in _TITLE_START.finditer(body)]
+    records = []
+    for i, start in enumerate(starts):
+        end = starts[i + 1] if i + 1 < len(starts) else len(body)
+        rule = _SEPARATOR.search(body, start, end)
+        records.append((start, rule.start() if rule else end))
+    return records
+
+
 def _blocks_from_plain(body: str, resolver: ClickResolver | None = None) -> list[_Block]:
     blocks: list[_Block] = []
     matches = [(m, _hit(m.group(0), resolver, body[max(0, m.start() - 120):m.start()]))
                for m in _URL.finditer(body)]
     matches = [(m, h) for m, h in matches if h]
+    records = _labelled_records(body)
     for i, (m, hit) in enumerate(matches):
         if any((b.source, b.source_id) == hit[:2] for b in blocks):
+            continue
+        record = next(((a, b) for a, b in records if a <= m.start() < b), None)
+        if record:
+            # labelled mail: the whole record, fields before and after the link
+            blocks.append(_Block(hit[0], hit[1], hit[2], "", body[record[0]:record[1]]))
             continue
         # text before the link (titles usually sit above their link) up to the previous link
         start = matches[i - 1][0].end() if i else 0
@@ -376,12 +443,13 @@ def listing_from_block(block: _Block, received_at: datetime) -> Listing:
         raw = raw[seps[-1].end():]          # header and search summary above the last rule
     labels = {m.group(1).lower(): m.group(2) for m in _LABEL.finditer(raw)}
     text = re.sub(r"[ \t\xa0]+", " ", raw)
-    rents = [(_num(m.group(1)), text[max(0, m.start() - 20):m.end() + 20]) for m in _RENT.finditer(text)]
+    rents = [(_num(m.group(1)), _rent_kind(text, m.start(), m.end())) for m in _RENT.finditer(text)]
+    rents = [(value, kind) for value, kind in rents if kind != "other"]
     cold = warm = None
-    for value, ctx in rents:
-        if _COLD.search(ctx) and cold is None:
+    for value, kind in rents:
+        if kind == "cold" and cold is None:
             cold = value
-        elif _WARM.search(ctx) and warm is None:
+        elif kind == "warm" and warm is None:
             warm = value
     if cold is None and warm is None and rents:
         if block.closed and block.source in UNLABELED_RENT_IS_COLD:

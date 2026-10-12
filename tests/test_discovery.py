@@ -164,12 +164,60 @@ def test_labelled_alert_fields():
 
     blocks = _blocks_from_plain(ALERT_TEXT)
     first, second = (listing_from_block(b, datetime.now(UTC)) for b in blocks)
-    # the search summary above the rule must not leak into the first flat
-    assert first.title == "Erste Wohnung" and first.warm_rent_eur is None and first.rooms is None
+    # the fields after a flat's link belong to that flat, not to the next one
+    assert first.title == "Erste Wohnung"
+    assert (first.warm_rent_eur, first.area_m2, first.rooms) == (1599.0, 55.0, 2.5)
+    assert first.district == "Milbertshofen" and first.street == "Frankfurter Ring 1"
+    assert first.features == ["balcony"]
+    # the search summary above the rule must not leak into any flat
     assert second.title == "Zweite Wohnung"
-    assert (second.warm_rent_eur, second.area_m2, second.rooms) == (1599.0, 55.0, 2.5)
-    assert second.district == "Milbertshofen" and second.street == "Frankfurter Ring 1"
-    assert second.features == ["balcony"]
+    assert second.warm_rent_eur is None and second.rooms is None and second.street is None
+
+
+THREE_FLATS = """Angebote, die zu deiner Suche passen:
+----------------------------------------------------------------------
+Titel: Wohnung A
+Link:
+https://push.search.is24.de/email/expose/101?PID=x
+Adresse: Teststraße 1, Schwabing, München
+Warmmiete: 2.900 €
+Wohnfläche: 40 m²
+Zimmer: 1
+
+Titel: Wohnung B
+Link:
+https://push.search.is24.de/email/expose/102?PID=x
+Adresse: Beispielweg 2, Sendling, München
+Warmmiete: 1.300 €
+Wohnfläche: 70 m²
+Zimmer: 3
+
+Titel: Wohnung C
+Link:
+https://push.search.is24.de/email/expose/103?PID=x
+Adresse: Musterplatz 3, Pasing, München
+Warmmiete: 1.450 €
+Wohnfläche: 62 m²
+Zimmer: 2
+----------------------------------------------------------------------
+Du erhältst diese E-Mail, weil du einen Suchauftrag angelegt hast. Ab 9,99 € im Monat.
+"""
+
+
+def test_labelled_alert_keeps_each_flat_with_its_own_figures():
+    """Regression: each flat got the previous flat's rent, size and address, and the first
+    flat of every mail had none (so it was skipped as 'alert has no details')."""
+    from datetime import UTC, datetime
+
+    from mia_san_miete.providers.alert_email import _blocks_from_plain, listing_from_block
+
+    listings = [listing_from_block(b, datetime.now(UTC)) for b in _blocks_from_plain(THREE_FLATS)]
+    got = [(x.source_id, x.title, x.warm_rent_eur, x.area_m2, x.rooms, x.street) for x in listings]
+    assert got == [
+        ("101", "Wohnung A", 2900.0, 40.0, 1.0, "Teststraße 1"),
+        ("102", "Wohnung B", 1300.0, 70.0, 3.0, "Beispielweg 2"),
+        ("103", "Wohnung C", 1450.0, 62.0, 2.0, "Musterplatz 3"),
+    ]
 
 
 def test_click_resolver_follows_caches_and_skips_actions():
@@ -394,3 +442,43 @@ def test_click_cards_try_other_links_when_the_button_leads_nowhere():
     assert asked == ["button", "img", "price"]          # stops at the first link that leads to a flat
     assert listing.source_id == "zzz999" and listing.cold_rent_eur == 1022.0 and listing.area_m2 == 62.0
     assert "https" not in listing.description
+
+
+def test_portal_links_must_point_at_the_portal_itself():
+    """Regression: an unanchored match accepted a portal path inside any URL, so a spoofed
+    alert could put a foreign or javascript: link behind 'Open listing'."""
+    from mia_san_miete.providers.alert_email import portal_for
+
+    assert portal_for("https://www.kleinanzeigen.de/s-anzeige/flat/123") == ("kleinanzeigen", "123")
+    assert portal_for("https://push.search.is24.de/email/expose/9?PID=x") == ("immoscout", "9")
+    assert portal_for("https://www.immowelt.de/expose/abc123") == ("immowelt", "abc123")
+    for bad in (
+        "https://evil.example/www.kleinanzeigen.de/s-anzeige/x/123",
+        "javascript:fetch('/api/kill')//www.immowelt.de/expose/abc",
+        "https://immowelt.de.evil.example/expose/abc",
+        "https://notimmowelt.de/expose/abc",
+        "ftp://www.immowelt.de/expose/abc",
+    ):
+        assert portal_for(bad) is None, bad
+
+
+def test_rent_figures_are_read_by_their_own_label():
+    """Regression: a deposit was read as the warm rent (flat silently rejected as too dear),
+    a price per m² as the rent (flat passed the price gate), and 'Warmmiete 1.450 € (kalt
+    1.200 €)' gave cold=1450 and no warm rent."""
+    from datetime import UTC, datetime
+
+    from mia_san_miete.providers.alert_email import _Block, listing_from_block
+
+    def rents(text):
+        listing = listing_from_block(_Block("immowelt", "x1", "u", "", text), datetime.now(UTC))
+        return listing.cold_rent_eur, listing.warm_rent_eur
+
+    assert rents("Wohnung\nWarmmiete 1.450 € (kalt 1.200 €)") == (1200.0, 1450.0)
+    assert rents("Wohnung\nKaution 3.600 €, Miete 1.200 €") == (None, 1200.0)
+    assert rents("Wohnung\n21,50 €/m², Gesamtmiete 1.290 €") == (None, 1290.0)
+    assert rents("Wohnung\n21,50 €/m² · 1.290 €") == (None, 1290.0)
+    assert rents("Wohnung\n18 € pro m², 1.100 €") == (None, 1100.0)
+    assert rents("Wohnung\n1.200 € kalt, 1.450 € warm") == (1200.0, 1450.0)
+    assert rents("Wohnung\nKaltmiete: 1.680 €\nWarmmiete: 1.840 €") == (1680.0, 1840.0)
+    assert rents("Wohnung\n1.300 € zzgl. 250 € Nebenkosten") == (None, 1300.0)

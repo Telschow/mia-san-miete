@@ -127,8 +127,12 @@ class Dispatcher:
         return None
 
     def _deliver(self, listing: Listing, draft: Draft) -> tuple[str, str | None]:
-        sender = self.senders.get(listing.source) or self.senders.get("email")
+        sender = self.senders.get(listing.source)
+        if sender is None and listing.contact_email:
+            sender = self.senders.get("email")
         if sender is None:
+            # no portal sender and no address to mail (alert mails never carry one): the
+            # draft waits in the queue; this is not a platform failure
             return "blocked_no_sender", None
         try:
             return "sent", sender.send(listing, draft)

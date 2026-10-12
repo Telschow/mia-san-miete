@@ -79,6 +79,36 @@ def test_pipeline_notifies_once_per_flat_and_isolates_failures():
     assert run_once([FixtureProvider(FIXTURE)], db, Spy()).new_flats == 0
 
 
+def test_unreachable_notifier_does_not_stop_processing():
+    """Regression: an OSError from the push notifier aborted the run, so the flat being
+    handled never got a decision and later flats were never read. On the next run they all
+    counted as already seen."""
+    processed = []
+
+    class Down:
+        def send(self, title, body, url=None):
+            raise OSError("ntfy unreachable")
+
+    db = Database()
+    stats = run_once([FixtureProvider(FIXTURE)], db, Down(),
+                     on_new_flat=lambda listing, result: processed.append(listing.source_id))
+    assert stats.new_flats == 3 and len(processed) == 3
+    assert stats.notify_failures == 3
+    assert stats.ok
+
+
+def test_processing_failure_is_reported_not_silent():
+    """Regression: a crash in processing was only logged; the run reported success."""
+
+    def boom(listing, result):
+        raise RuntimeError("database is locked")
+
+    stats = run_once([FixtureProvider(FIXTURE)], Database(), None, on_new_flat=boom)
+    assert stats.new_flats == 3
+    assert len(stats.failed_listings) == 3
+    assert not stats.ok
+
+
 def test_ntfy_notifier_posts_body_and_click_header():
     calls = []
     n = NtfyNotifier("https://ntfy.test/topic", post=lambda u, d, h: calls.append((u, d, h)))

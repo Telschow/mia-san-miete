@@ -40,6 +40,9 @@ class Health:
         now = self.clock()
         if stats.failed_providers:
             self.failure("source failed: " + ", ".join(stats.failed_providers))
+        if stats.failed_listings:
+            self.failure(f"processing failed for {len(stats.failed_listings)} new flat(s); "
+                         "see the log")
         if stats.fetched:
             self._set("last_listing_seen", now)
         elif self._get("last_listing_seen") is None:
