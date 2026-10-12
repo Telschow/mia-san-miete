@@ -237,3 +237,22 @@ def test_start_of_day_is_berlin_midnight_in_utc():
 
 def test_load_config_still_valid():
     assert load_config("config.example.yaml").send_policy.enabled is False
+
+
+def test_alert_listing_without_contact_waits_in_queue_not_failed(tmp_path, profile):
+    """Regression: alert mails carry no contact address. In live mode the email sender raised
+    'listing has no contact email', the action became 'failed', the draft was thrown away and
+    after three such flats the whole platform was blocked as failing."""
+    db, rec = Database(), Recorder()
+    policy = _policy(tmp_path)
+    cfg = CFG.model_copy(update={"send_policy": policy})
+    disp = Dispatcher(policy, db, {"email": rec})      # the runner only wires an email sender
+    eng = Engine(cfg, profile, disp, FakeRouter("pt", 20.0), FakeRouter("car", 20.0), None,
+                 live_since=date(2026, 11, 1), clock=lambda: NOW)
+    outcomes = [_go(eng, db, _l(source_id=str(i), contact_email=None,
+                                street=f"Leopoldstraße {i}")).status for i in range(1, 5)]
+    assert outcomes == ["blocked_no_sender"] * 4
+    assert rec.sent == []
+    assert len(db.pending_drafts()) == 4
+    # with an address the same platform still sends
+    assert _go(eng, db, _l(source_id="9", street="Leopoldstraße 9")).status == "sent"
